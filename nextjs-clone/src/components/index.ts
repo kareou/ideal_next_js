@@ -1,0 +1,10 @@
+export { default as Navigation } from './Navigation';
+export { default as HeroSection } from './HeroSection';
+export { default as ProcessSection } from './ProcessSection';
+export { default as ServicesSection } from './ServicesSection';
+export { default as TrustSection } from './TrustSection';
+export { default as CompanySection } from './CompanySection';
+export { default as TeamSection } from './TeamSection';
+export { default as TestimonialsSection } from './TestimonialsSection';
+export { default as CTASection } from './CTASection';
+export { default as Footer } from './Footer'; 
