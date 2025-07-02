@@ -1,10 +1,13 @@
-"use client";
-import Navigation from "../../components/Navigation";
-
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Users, Award, Shield } from "lucide-react";
 import Image from "next/image";
 import { CTASection } from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About - Ideal Tax",
+  description:
+    "Our staff of independent Tax Attorneys and Enrolled Agents continue to expand their knowledge so to provide new and innovative ways in helping clients resolve their burdensome tax problems.",
+};
 
 const About = () => {
   const stats = [
@@ -16,7 +19,7 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* <Navigation /> */}
+      {/*  */}
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
         <div className="container mx-auto px-6">

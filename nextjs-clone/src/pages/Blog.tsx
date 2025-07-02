@@ -148,8 +148,6 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-
       {/* Header Section */}
       <div className="pt-32 pb-16 bg-gradient-to-r from-mint-50 to-deep-blue-50">
         <div className="container mx-auto px-6">
@@ -298,7 +296,6 @@ const Blog = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

@@ -1,109 +1,423 @@
+import React from "react";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import {
+  CheckCircle,
+  DollarSign,
+  Scale,
+  TrendingDown,
+  Calendar,
+  User,
+  ArrowLeft,
+  AlertTriangle,
+  FileText,
+  Calculator,
+  CreditCard,
+  Building,
+  Shield,
+  Phone,
+} from "lucide-react";
+import Link from "next/link";
+import { Metadata } from "next";
 
-import React from 'react';
-import Navigation from '../../components/Navigation';
-import Footer from '../../components/Footer';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, DollarSign, Scale, TrendingDown } from 'lucide-react';
+export const metadata: Metadata = {
+  title: "Offer in Compromise - Ideal Tax",
+  description:
+"The Offer in Compromise or OIC program is an IRS program that allows individuals with unpaid tax debt liabilities to negotiate a settlement amount that is less than what is owed to clear the IRS tax debt.",
+};
 
 const OfferInCompromise = () => {
-  const qualifications = [
-    "Doubt as to liability of the tax debt",
-    "Doubt as to collectibility of the full amount",
-    "Effective tax administration hardship",
-    "Financial inability to pay in full",
-    "Compliance with all filing requirements",
-    "Current with estimated tax payments"
+  const qualifyingConditions = [
+    {
+      title: "Doubt about Liability",
+      description:
+        "The debtor can prove that the tax liability has been incorrectly assessed",
+      icon: <Scale className="w-6 h-6 text-brand-teal" />,
+    },
+    {
+      title: "Doubt about Collectability",
+      description:
+        "The debtor can demonstrate that the debt is unlikely to be collected in full by IRS under any circumstances",
+      icon: <DollarSign className="w-6 h-6 text-brand-teal" />,
+    },
+    {
+      title: "Effective Tax Administration",
+      description:
+        "The debtor cannot contest the liability or collectability but can show extenuating circumstances that would make it impossible to collect the debt",
+      icon: <Shield className="w-6 h-6 text-brand-teal" />,
+    },
+  ];
+
+  const paymentOptions = [
+    {
+      title: "Lump-Sum Cash Offer",
+      description:
+        "Payments made in five or fewer installments within 5 months of acceptance",
+      requirements:
+        "Must include 20% of offer amount plus $186 application fee when submitting",
+    },
+    {
+      title: "Periodic Payments",
+      description:
+        "Monthly payments for less than 24 months but more than 5 months",
+      requirements:
+        "Must send first monthly payment plus application fee when applying",
+    },
+  ];
+
+  const relatedServices = [
+    {
+      title: "Federal/State Tax Investigation",
+      description:
+        "Obtain all records, transcripts, and supporting documents going back 10 years to construct the most advantageous resolution program",
+      link: "/services/tax-audits",
+    },
+    {
+      title: "Installment Agreement (IA)",
+      description:
+        "Various types of installment agreements available based on income, liability amount, and terms",
+      link: "/services/installment-agreements-irs-payment-plans",
+    },
+    {
+      title: "Currently Non-Collectible Status (CNC)",
+      description:
+        "For individuals experiencing extreme economic hardship - suspends all payments and collection efforts for 2 years",
+      link: "/services/currently-non-collectible-status",
+    },
+    {
+      title: "Penalty Abatement",
+      description:
+        "Motion for penalty reduction that could reduce penalties and fees by up to 40%",
+      link: "/services/penalty-abatement",
+    },
+    {
+      title: "Wage Garnishments and Bank Levy Holds",
+      description:
+        "Immediate garnishment and levy holds to negotiate successful resolution - withheld funds can be returned within 72 hours",
+      link: "/services/wage-garnishments",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
+      {/* Header Section */}
+      <div className="pt-32 pb-16 bg-gradient-to-r from-mint-50 to-deep-blue-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Offer in <span className="text-brand-teal">Compromise</span>
-            </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Settle your tax debt for less than you owe. Our experts help you qualify 
-              for an Offer in Compromise to significantly reduce your IRS tax liability.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Reduce Tax Debt
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
-              >
-                Call (877) 518-2860
-              </Button>
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/services"
+              className="inline-flex items-center text-brand-teal hover:text-brand-blue transition-colors mb-6"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Services
+            </Link>
+            <div className="mb-6">
+              <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-sm font-medium">
+                Tax Settlement Services
+              </span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Settle for Pennies on the Dollar
-              </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                An Offer in Compromise (OIC) allows you to settle your tax debt for less than 
-                the full amount owed. This powerful IRS program can provide significant savings 
-                for taxpayers who qualify based on their financial situation.
-              </p>
-              <div className="space-y-3">
-                {qualifications.map((qualification, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <Scale className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{qualification}</span>
-                  </div>
-                ))}
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+              Offer in Compromise Program
+            </h1>
+            <div className="flex items-center text-gray-600 mb-4">
+              <div className="flex items-center mr-6">
+                <User className="w-4 h-4 mr-2" />
+                Tax Settlement Specialists
+              </div>
+              <div className="flex items-center">
+                <Calendar className="w-4 h-4 mr-2" />
+                Professional Service
               </div>
             </div>
-            <div className="bg-gradient-to-br from-mint-100 to-deep-blue-100 rounded-2xl p-8 text-center">
-              <TrendingDown className="w-16 h-16 text-brand-teal mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Dramatic Debt Reduction</h3>
-              <p className="text-gray-700">
-                Successfully negotiated offers can reduce tax debt by 80% or more. 
-                Our experienced team maximizes your chances of IRS acceptance.
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              The Offer in Compromise (OIC) program is an IRS program that
+              allows individuals with unpaid tax debt liabilities to negotiate a
+              settlement amount that is less than what is owed to clear the IRS
+              tax debt. This powerful program can provide significant savings
+              for taxpayers who qualify.
+            </p>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              What is the Offer in Compromise Program?
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              A person who owes money but can't afford the full amount due to
+              financial hardship may be able to offer the IRS a lower, more
+              affordable settlement. This offer could include a lump-sum payment
+              or a series over several months. The IRS offers a forgiveness
+              program for any remaining debt if it accepts the OIC, which
+              contrasts with traditional IRS payment plans.
+            </p>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
+              <div className="flex items-start">
+                <AlertTriangle className="w-6 h-6 text-yellow-500 mr-3 mt-1" />
+                <div>
+                  <h4 className="font-bold text-yellow-700 mb-2">
+                    Important Requirements
+                  </h4>
+                  <p className="text-yellow-600 mb-2">
+                    The OIC program is only available to taxpayers who have:
+                  </p>
+                  <ul className="text-yellow-600 space-y-1">
+                    <li>• Filed all their tax returns</li>
+                    <li>• No open bankruptcy case</li>
+                    <li>
+                      • Ability to make initial payment and pay application fee
+                    </li>
+                    <li>
+                      • Low-income applicants may be exempt from initial fee
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Qualifying Conditions
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              To be eligible for an OIC settlement, a taxpayer must meet at
+              least one of the following conditions:
+            </p>
+
+            <div className="grid md:grid-cols-1 gap-6 mb-8">
+              {qualifyingConditions.map((condition, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm"
+                >
+                  <div className="flex items-start space-x-4">
+                    {condition.icon}
+                    <div>
+                      <h4 className="text-xl font-semibold text-gray-800 mb-2">
+                        {condition.title}
+                      </h4>
+                      <p className="text-gray-600">{condition.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              The OIC Process
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              The IRS requires that you submit a formal offer using IRS Form
+              656, Offer In Compromise. There is a $186 fee for filing an OIC,
+              though you might be exempted if your monthly income falls below
+              poverty guidelines.
+            </p>
+
+            <div className="bg-blue-50 p-6 rounded-lg mb-8">
+              <h4 className="text-lg font-semibold text-blue-800 mb-4">
+                Required Documentation
+              </h4>
+              <p className="text-blue-700 mb-4">
+                You must submit detailed financial information via:
               </p>
+              <ul className="text-blue-700 space-y-2">
+                <li>
+                  • <strong>Form 433-A:</strong> Collection Statement for
+                  individuals
+                </li>
+                <li>
+                  • <strong>Form 433-B:</strong> Collection Statement for
+                  businesses
+                </li>
+                <li>• Pay slips, bank records, vehicle registrations</li>
+                <li>
+                  • Extensive financial documentation (often boxes of documents)
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              What Should You Offer?
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              To calculate your minimum offer amount, the IRS wants to know your
+              collection potential based on your financial disclosures. Your
+              offer must equal:
+            </p>
+
+            <div className="bg-green-50 p-6 rounded-lg mb-8">
+              <h4 className="text-lg font-semibold text-green-800 mb-4">
+                Calculation Formula
+              </h4>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-green-700 font-medium">
+                    Settlement Amount =
+                  </p>
+                  <p className="text-green-600">
+                    Monthly disposable income × number of months + net
+                    realizable equity in assets
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <p className="text-green-700 font-medium">Examples:</p>
+                  <div className="mt-2 space-y-2 text-green-600">
+                    <p>
+                      <strong>Example 1:</strong> Monthly income $5,000,
+                      expenses $4,500 = $500 disposable × 12 = $6,000 minimum
+                      offer
+                    </p>
+                    <p>
+                      <strong>Example 2:</strong> Monthly income $4,250,
+                      expenses $4,500 = $0 disposable income
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Payment Options
+            </h2>
+            <div className="grid md:grid-cols-1 gap-6 mb-8">
+              {paymentOptions.map((option, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <h4 className="text-xl font-semibold text-gray-800">
+                      {option.title}
+                    </h4>
+                    <CreditCard className="w-6 h-6 text-brand-teal" />
+                  </div>
+                  <p className="text-gray-600 mb-3">{option.description}</p>
+                  <p className="text-sm text-gray-500">{option.requirements}</p>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Important Considerations
+            </h2>
+
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+              <h4 className="text-lg font-semibold text-red-800 mb-4">
+                Risks and Disadvantages
+              </h4>
+              <ul className="text-red-700 space-y-2">
+                <li>
+                  • Interest continues to accrue during the negotiation process
+                </li>
+                <li>
+                  • The IRS can use your submitted financial information to
+                  speed up collection efforts if your offer is rejected
+                </li>
+                <li>
+                  • Tax liens remain in effect until the offer is accepted and
+                  paid in full
+                </li>
+                <li>
+                  • Failure to make required payments will result in offer
+                  rejection with no appeal rights
+                </li>
+                <li>
+                  • The IRS has two years to make a decision on your offer
+                </li>
+              </ul>
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Related Tax Resolution Services
+            </h2>
+            <div className="space-y-4 mb-8">
+              {relatedServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                        {service.title}
+                      </h4>
+                      <p className="text-gray-600">{service.description}</p>
+                    </div>
+                    <Link
+                      href={service.link}
+                      className="ml-4 text-brand-teal hover:text-brand-blue font-medium text-sm whitespace-nowrap"
+                    >
+                      Learn More →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Professional Representation Matters
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              Preparing a package that gives the IRS every chance to accept your
+              offer in compromise is key to success. The average taxpayer
+              doesn't know everything about the IRS or how they work. Having
+              experienced tax professionals like Ideal Tax representing you
+              significantly increases your chances of approval.
+            </p>
+
+            <div className="bg-brand-teal/10 p-6 rounded-lg mb-8">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                Expert OIC Assistance Available
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Don't navigate the complex OIC process alone. Our experienced
+                team at Ideal Tax has helped thousands of clients successfully
+                negotiate offers in compromise and resolve their tax problems.
+                We can evaluate your situation, prepare your application
+                properly, and represent you throughout the entire process.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/free-tax-consultation"
+                  className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block text-center"
+                >
+                  Get Free Tax Consultation
+                </Link>
+                <a
+                  href="tel:888-224-3004"
+                  className="flex items-center justify-center bg-white text-brand-blue border-2 border-brand-blue hover:bg-brand-blue hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
+                >
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call (888) 224-3004
+                </a>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-brand-teal to-brand-blue text-white p-8 rounded-lg">
+              <h3 className="text-2xl font-bold mb-4">
+                Ready to Settle Your Tax Debt for Less?
+              </h3>
+              <p className="text-white/90 mb-6 leading-relaxed">
+                An Offer in Compromise can potentially save you thousands of
+                dollars and provide a fresh start. Our experts will determine if
+                you qualify and guide you through every step of the process to
+                maximize your chances of IRS acceptance.
+              </p>
+              <Link
+                href="/free-tax-consultation"
+                className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
+              >
+                Check Your OIC Eligibility Today
+              </Link>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Could You Qualify for Massive Savings?
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Don't pay more than you have to. Find out if you qualify for an Offer in Compromise 
-              and potentially save thousands on your tax debt.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-            >
-              Check Qualification
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </div>
   );
 };

@@ -1,109 +1,199 @@
+import React from "react";
+import Link from "next/link";
+import { Calendar, User, ArrowLeft } from "lucide-react";
+import { Metadata } from "next";
 
-import React from 'react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
-import { Button } from '@/components/ui/button';
-import { CheckCircle, DollarSign, Shield, TrendingDown } from 'lucide-react';
+export const metadata: Metadata = {
+  title: "Complete Guide to Tax Debt Relief Options - Ideal Tax",
+  description:
+    "Explore comprehensive tax debt relief options including IRS Fresh Start Program, installment agreements, Offer in Compromise, and more. Get professional help today.",
+};
 
 const TaxDebtRelief = () => {
-  const programs = [
-    "IRS Fresh Start Program",
-    "Offer in Compromise",
-    "Installment Agreements",
-    "Currently Non-Collectible status",
-    "Penalty Abatement",
-    "Innocent Spouse Relief"
-  ];
-
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
+      {/* Header Section */}
+      <div className="pt-32 pb-16 bg-gradient-to-r from-mint-50 to-deep-blue-50">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Tax Debt Relief & <span className="text-brand-teal">IRS Forgiveness</span>
-            </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Struggling with overwhelming tax debt? Our proven debt relief programs can 
-              help you settle your IRS debt for less than you owe and get a fresh start.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Get Debt Relief Now
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
-              >
-                Call (877) 518-2860
-              </Button>
+          <div className="max-w-4xl mx-auto">
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-brand-teal hover:text-brand-blue transition-colors mb-6"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Blog
+            </Link>
+            <div className="mb-6">
+              <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-sm font-medium">
+                Tax Relief
+              </span>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Comprehensive Tax Debt Solutions
-              </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Don't let tax debt destroy your financial future. Our experienced team 
-                specializes in IRS debt relief programs that can significantly reduce 
-                or eliminate your tax obligations through legitimate government programs.
-              </p>
-              <div className="space-y-3">
-                {programs.map((program, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <CheckCircle className="w-5 h-5 text-brand-teal mt-1 flex-shrink-0" />
-                    <span className="text-gray-700">{program}</span>
-                  </div>
-                ))}
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+              Complete Guide to Tax Debt Relief Options
+            </h1>
+            <div className="flex items-center text-gray-600 mb-4">
+              <div className="flex items-center mr-6">
+                <User className="w-4 h-4 mr-2" />
+                Tax Relief Specialists
+              </div>
+              <div className="flex items-center">
+                <Calendar className="w-4 h-4 mr-2" />
+                December 15, 2023
               </div>
             </div>
-            <div className="bg-gradient-to-br from-mint-100 to-deep-blue-100 rounded-2xl p-8 text-center">
-              <TrendingDown className="w-16 h-16 text-brand-teal mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Significant Savings</h3>
-              <p className="text-gray-700">
-                Our clients typically save thousands of dollars through our proven 
-                debt relief strategies. Let us help you achieve financial freedom.
+          </div>
+        </div>
+      </div>
+
+      {/* Article Content */}
+      <div className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto prose prose-lg">
+            <p className="text-xl text-gray-600 mb-8">
+              Facing overwhelming tax debt can be stressful and financially
+              devastating. Fortunately, the IRS offers several tax debt relief
+              programs designed to help taxpayers resolve their obligations and
+              regain financial stability.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Understanding Tax Debt Relief
+            </h2>
+            <p className="mb-6">
+              Tax debt relief encompasses various programs and strategies that
+              can help reduce, eliminate, or restructure your tax obligations.
+              These options range from payment plans to complete debt
+              forgiveness, depending on your financial situation and
+              eligibility.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              IRS Fresh Start Program
+            </h2>
+            <p className="mb-6">
+              The IRS Fresh Start Program is a comprehensive initiative that
+              expanded eligibility for various tax relief options:
+            </p>
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>
+                Increased thresholds for streamlined installment agreements
+              </li>
+              <li>Extended payment plan terms up to 72 months</li>
+              <li>Expanded Offer in Compromise acceptance criteria</li>
+              <li>Penalty relief for certain situations</li>
+              <li>Lien withdrawal and subordination options</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Installment Agreements
+            </h2>
+            <p className="mb-6">
+              Installment agreements allow you to pay your tax debt over time
+              through monthly payments:
+            </p>
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>
+                <strong>Short-term plans:</strong> Pay within 120 days with no
+                setup fee
+              </li>
+              <li>
+                <strong>Long-term plans:</strong> Monthly payments over 72
+                months
+              </li>
+              <li>
+                <strong>Partial payment plans:</strong> Pay less than the full
+                amount owed
+              </li>
+              <li>
+                <strong>Direct debit agreements:</strong> Automatic payments
+                with reduced fees
+              </li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Offer in Compromise (OIC)
+            </h2>
+            <p className="mb-6">
+              An Offer in Compromise allows you to settle your tax debt for less
+              than the full amount owed. The IRS considers three scenarios:
+            </p>
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>
+                <strong>Doubt as to collectibility:</strong> Unlikely to collect
+                the full amount
+              </li>
+              <li>
+                <strong>Doubt as to liability:</strong> Dispute over the amount
+                owed
+              </li>
+              <li>
+                <strong>Effective tax administration:</strong> Would cause
+                economic hardship
+              </li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Currently Not Collectible (CNC) Status
+            </h2>
+            <p className="mb-6">
+              If you're experiencing financial hardship, the IRS may place your
+              account in Currently Not Collectible status, temporarily stopping
+              collection activities while you're unable to pay.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Penalty and Interest Relief
+            </h2>
+            <p className="mb-6">
+              You may qualify for penalty relief in certain situations:
+            </p>
+            <ul className="list-disc list-inside mb-6 space-y-2">
+              <li>First-time penalty abatement for good compliance history</li>
+              <li>
+                Reasonable cause penalty relief for circumstances beyond your
+                control
+              </li>
+              <li>Administrative waiver for certain penalties</li>
+              <li>Interest abatement in specific situations</li>
+            </ul>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Innocent Spouse Relief
+            </h2>
+            <p className="mb-6">
+              If you filed a joint return with your spouse and believe you
+              shouldn't be held responsible for their tax obligations, you may
+              qualify for innocent spouse relief.
+            </p>
+
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Professional Representation Benefits
+            </h2>
+            <p className="mb-6">
+              Working with qualified tax professionals can significantly improve
+              your chances of successful debt resolution through expert
+              negotiation and proper documentation.
+            </p>
+
+            <div className="bg-brand-teal/10 p-6 rounded-lg mt-12">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">
+                Get Professional Tax Debt Relief Help
+              </h3>
+              <p className="text-gray-600 mb-4">
+                Don't face tax debt alone. Our experienced tax professionals can
+                evaluate your situation and help you find the best relief option
+                for your circumstances.
               </p>
+              <Link
+                href="/free-tax-consultation"
+                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
+              >
+                Get Free Consultation
+              </Link>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Stop Tax Debt From Destroying Your Life
-            </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Take control of your tax situation today. Our debt relief experts are ready 
-              to help you find the best solution for your unique circumstances.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-            >
-              Get Your Debt Relief Plan
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      </div>
     </div>
   );
 };

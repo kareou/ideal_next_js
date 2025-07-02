@@ -74,7 +74,7 @@ const Navigation = () => {
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   className="flex items-center text-gray-700 hover:text-brand-blue transition-colors font-medium"
                 >
-                  Our Services
+                  Services
                   <ChevronDown className="ml-1 w-4 h-4" />
                 </button>
                 
@@ -99,14 +99,20 @@ const Navigation = () => {
                 )}
               </div>
 
-              <Link href="/about" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
-                Who We Are
-              </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
-                Blogs
+              <Link href="/careers" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
+                Careers
               </Link>
               <Link href="/contact-us" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
-                Contact Us
+                Contact
+              </Link>
+              <Link href="/reviews" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
+                Reviews
+              </Link>
+              <Link href="/faq" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
+                FAQs
+              </Link>
+              <Link href="/blog" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
+                Blog
               </Link>
               
               {/* CTA Button */}

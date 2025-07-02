@@ -1,15 +1,47 @@
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
 
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: { service: string } 
+}): Promise<Metadata> {
+  const { service } = await params;
+  
+  if (!serviceComponentMap[service]) {
+    return {
+      title: "Service Not Found | Ideal Tax",
+      description: "The requested service could not be found."
+    };
+  }
+
+  try {
+    const componentName = serviceComponentMap[service];
+    const module = await import(`../../../pages/services/${componentName}`);
+    
+    // Return the metadata from the component file
+    return module.metadata || {
+      title: "Tax Services | Ideal Tax",
+      description: "Professional tax resolution services"
+    };
+  } catch (error) {
+    console.error(`Failed to load metadata for service: ${service}`, error);
+    return {
+      title: "Tax Services | Ideal Tax",
+      description: "Professional tax resolution services"
+    };
+  }
+}
 // Map of service slugs to component names
 const serviceComponentMap: Record<string, string> = {
   'amending-tax-returns': 'AmendingTaxReturns',
   'asset-protection': 'AssetProtection',
   'back-taxes': 'BackTaxes',
   'bank-levy': 'BankLevy',
-  'currently-non-collectible': 'CurrentlyNonCollectible',
-  'innocent-spouse-relief': 'InnocentSpouseRelief',
-  'installment-agreements': 'InstallmentAgreements',
+  'currently-non-collectible-status': 'CurrentlyNonCollectible',
+  'innocent-spouse-tax-relief': 'InnocentSpouseRelief',
+  'installment-agreements-irs-payment-plans': 'InstallmentAgreements',
   'offer-in-compromise': 'OfferInCompromise',
   'penalty-abatement': 'PenaltyAbatement',
   'seizure': 'Seizure',
@@ -30,7 +62,9 @@ async function getServiceComponent(serviceSlug: string) {
 
   try {
     const module = await import(`../../../pages/services/${componentName}`);
-    return module.default;
+
+    return module.default
+
   } catch (error) {
     console.error(`Failed to load component for service: ${serviceSlug}`, error);
     return null;
@@ -78,7 +112,7 @@ export default async function ServiceDetailPage({
 }: {
   params: { service: string };
 }) {
-  const { service } = params;
+  const { service } = await params;
   
   // Check if service exists in our map
   if (!serviceComponentMap[service]) {
@@ -88,9 +122,12 @@ export default async function ServiceDetailPage({
   // Get the component dynamically
   const ServiceComponent = await getServiceComponent(service);
 
+
   if (!ServiceComponent) {
     return <ServiceError />;
   }
+
+
 
   return (
     <Suspense fallback={<ServiceLoading />}>
