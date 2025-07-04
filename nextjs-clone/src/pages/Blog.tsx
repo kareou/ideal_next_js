@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { use, useEffect, useState } from "react";
 import Navigation from "../components/Navigation";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -10,130 +11,136 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import axios from "axios";
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "IRS Form 3949-A Explained",
-      excerpt:
-        "IRS Form 3949-A, Information Referral, is a tax form used to inform the IRS about alleged tax fraud or",
-      author: "IdealTax Team",
-      date: "October 30, 2023",
-      category: "Tax Forms",
-      slug: "/irs-form-3949-a",
-    },
-    {
-      id: 2,
-      title: "What Is A Qualifying Dependent?",
-      excerpt:
-        "A qualifying dependent is defined by the Internal Revenue Service as a child under the age of 19, a full-time",
-      author: "Tax Experts",
-      date: "October 30, 2023",
-      category: "Tax Tips",
-      slug: "/qualifying-dependent",
-    },
-    {
-      id: 3,
-      title: "Why Was No Federal Taxes Withheld From Paycheck?",
-      excerpt:
-        "Taxpayers may notice they have not been subject to federal income tax withholding if they",
-      author: "Payroll Specialists",
-      date: "October 27, 2023",
-      category: "Payroll Tax",
-      slug: "/no-federal-taxes-withheld",
-    },
-    {
-      id: 4,
-      title: "IRS Forms 1099 VS W9: What's The Difference?",
-      excerpt:
-        "Independent contractors and businesses that hire freelancers must understand the difference between 1099 forms and W9 forms",
-      author: "Form Specialists",
-      date: "October 27, 2023",
-      category: "Tax Forms",
-      slug: "/irs-forms-1099-vs-w9",
-    },
-    {
-      id: 5,
-      title: "IRS Accepted Return But Not Approved Explained",
-      excerpt:
-        'The tax return filing status, "IRS Accepted Return But Not Approved," means that the IRS received',
-      author: "Filing Experts",
-      date: "October 19, 2023",
-      category: "Tax Filing",
-      slug: "/irs-accepted-return-not-approved",
-    },
-    {
-      id: 6,
-      title: "Tax Lien Foreclosure Explained",
-      excerpt:
-        "Tax foreclosures describe when an individual who purchased a tax lien certificate initiates a judicial foreclosure proceeding against the",
-      author: "Legal Team",
-      date: "October 19, 2023",
-      category: "Tax Liens",
-      slug: "/tax-lien-foreclosure",
-    },
-    {
-      id: 7,
-      title: "Taxes on Stocks Explained",
-      excerpt:
-        "Taxes on stocks must be paid when an individual earns dividends as a shareholder or sells stocks for a",
-      author: "Investment Tax Team",
-      date: "October 18, 2023",
-      category: "Investment Tax",
-      slug: "/taxes-on-stocks",
-    },
-    {
-      id: 8,
-      title: "Form 1040 Explained",
-      excerpt:
-        "IRS Form 1040, U.S. Individual Income Tax Return, is the tax document individuals use to report their annual income and",
-      author: "Filing Experts",
-      date: "October 18, 2023",
-      category: "Tax Forms",
-      slug: "/form-1040",
-    },
-    {
-      id: 9,
-      title: "IRS Form 4852 Explained",
-      excerpt:
-        "IRS Form 4852 is a tax form that can be filed by employees when they do not receive or",
-      author: "Form Specialists",
-      date: "October 18, 2023",
-      category: "Tax Forms",
-      slug: "/irs-form-4852",
-    },
-    {
-      id: 10,
-      title: "Crypto Taxes Explained",
-      excerpt:
-        "Crypto taxes are an IRS tax that must be paid when an individual earns a profit through",
-      author: "Crypto Tax Team",
-      date: "September 15, 2023",
-      category: "Crypto Tax",
-      slug: "/crypto-taxes",
-    },
-    {
-      id: 11,
-      title: "IRS Form 8949 Explained",
-      excerpt:
-        "IRS Form 8949, Sales and Other Dispositions of Capital Assets, is a tax form used to",
-      author: "Capital Gains Team",
-      date: "September 15, 2023",
-      category: "Tax Forms",
-      slug: "/irs-form-8949",
-    },
-    {
-      id: 12,
-      title: "Capital Gains Tax Explained",
-      excerpt:
-        "Selling your capital assets may be an excellent strategy to make some extra money, but be careful that you are aware",
-      author: "Investment Tax Team",
-      date: "September 15, 2023",
-      category: "Investment Tax",
-      slug: "/capital-gains-tax",
-    },
-  ];
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [hasPreviousPage, setHasPreviousPage] = useState(false);
+  // const blogPosts = [
+  //   {
+  //     id: 1,
+  //     title: "IRS Form 3949-A Explained",
+  //     excerpt:
+  //       "IRS Form 3949-A, Information Referral, is a tax form used to inform the IRS about alleged tax fraud or",
+  //     author: "IdealTax Team",
+  //     date: "October 30, 2023",
+  //     category: "Tax Forms",
+  //     slug: "/irs-form-3949-a",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "What Is A Qualifying Dependent?",
+  //     excerpt:
+  //       "A qualifying dependent is defined by the Internal Revenue Service as a child under the age of 19, a full-time",
+  //     author: "Tax Experts",
+  //     date: "October 30, 2023",
+  //     category: "Tax Tips",
+  //     slug: "/qualifying-dependent",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Why Was No Federal Taxes Withheld From Paycheck?",
+  //     excerpt:
+  //       "Taxpayers may notice they have not been subject to federal income tax withholding if they",
+  //     author: "Payroll Specialists",
+  //     date: "October 27, 2023",
+  //     category: "Payroll Tax",
+  //     slug: "/no-federal-taxes-withheld",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "IRS Forms 1099 VS W9: What's The Difference?",
+  //     excerpt:
+  //       "Independent contractors and businesses that hire freelancers must understand the difference between 1099 forms and W9 forms",
+  //     author: "Form Specialists",
+  //     date: "October 27, 2023",
+  //     category: "Tax Forms",
+  //     slug: "/irs-forms-1099-vs-w9",
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "IRS Accepted Return But Not Approved Explained",
+  //     excerpt:
+  //       'The tax return filing status, "IRS Accepted Return But Not Approved," means that the IRS received',
+  //     author: "Filing Experts",
+  //     date: "October 19, 2023",
+  //     category: "Tax Filing",
+  //     slug: "/irs-accepted-return-not-approved",
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "Tax Lien Foreclosure Explained",
+  //     excerpt:
+  //       "Tax foreclosures describe when an individual who purchased a tax lien certificate initiates a judicial foreclosure proceeding against the",
+  //     author: "Legal Team",
+  //     date: "October 19, 2023",
+  //     category: "Tax Liens",
+  //     slug: "/tax-lien-foreclosure",
+  //   },
+  //   {
+  //     id: 7,
+  //     title: "Taxes on Stocks Explained",
+  //     excerpt:
+  //       "Taxes on stocks must be paid when an individual earns dividends as a shareholder or sells stocks for a",
+  //     author: "Investment Tax Team",
+  //     date: "October 18, 2023",
+  //     category: "Investment Tax",
+  //     slug: "/taxes-on-stocks",
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "Form 1040 Explained",
+  //     excerpt:
+  //       "IRS Form 1040, U.S. Individual Income Tax Return, is the tax document individuals use to report their annual income and",
+  //     author: "Filing Experts",
+  //     date: "October 18, 2023",
+  //     category: "Tax Forms",
+  //     slug: "/form-1040",
+  //   },
+  //   {
+  //     id: 9,
+  //     title: "IRS Form 4852 Explained",
+  //     excerpt:
+  //       "IRS Form 4852 is a tax form that can be filed by employees when they do not receive or",
+  //     author: "Form Specialists",
+  //     date: "October 18, 2023",
+  //     category: "Tax Forms",
+  //     slug: "/irs-form-4852",
+  //   },
+  //   {
+  //     id: 10,
+  //     title: "Crypto Taxes Explained",
+  //     excerpt:
+  //       "Crypto taxes are an IRS tax that must be paid when an individual earns a profit through",
+  //     author: "Crypto Tax Team",
+  //     date: "September 15, 2023",
+  //     category: "Crypto Tax",
+  //     slug: "/crypto-taxes",
+  //   },
+  //   {
+  //     id: 11,
+  //     title: "IRS Form 8949 Explained",
+  //     excerpt:
+  //       "IRS Form 8949, Sales and Other Dispositions of Capital Assets, is a tax form used to",
+  //     author: "Capital Gains Team",
+  //     date: "September 15, 2023",
+  //     category: "Tax Forms",
+  //     slug: "/irs-form-8949",
+  //   },
+  //   {
+  //     id: 12,
+  //     title: "Capital Gains Tax Explained",
+  //     excerpt:
+  //       "Selling your capital assets may be an excellent strategy to make some extra money, but be careful that you are aware",
+  //     author: "Investment Tax Team",
+  //     date: "September 15, 2023",
+  //     category: "Investment Tax",
+  //     slug: "/capital-gains-tax",
+  //   },
+  // ];
 
   const categories = [
     "All",
@@ -145,6 +152,24 @@ const Blog = () => {
     "Investment Tax",
     "Crypto Tax",
   ];
+
+  useEffect(() => {
+    const fetchBlogPosts = async () => {
+      try {
+        const response = await axios.get(`/api/blogs?page=${currentPage}&limit=12`);
+        console.log("Fetched blog posts:", response.data.blogs);
+        setBlogPosts(response.data.blogs);
+        setCurrentPage(response.data.pagination.currentPage);
+        setTotalPages(response.data.pagination.totalPages);
+        setHasNextPage(response.data.pagination.hasNextPage);
+        setHasPreviousPage(response.data.pagination.hasPreviousPage);
+      } catch (error) {
+        console.error("Error fetching blog posts:", error);
+      }
+    };
+
+    fetchBlogPosts();
+  }, [currentPage]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -212,58 +237,66 @@ const Blog = () => {
                     </div>
                   </div>
 
-                  {post.slug ? (
                     <Link
-                      href={post.slug}
+                      href={`/blog/${post.id}`}
                       className="flex items-center text-brand-teal hover:text-brand-blue transition-colors font-medium"
                     >
-                      Read More
+                      Read Morfde
                       <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
-                  ) : (
-                    <button className="flex items-center text-brand-teal hover:text-brand-blue transition-colors font-medium">
-                      Read More
-                      <ArrowRight className="w-4 h-4 ml-1" />
-                    </button>
-                  )}
+
                 </div>
               </article>
             ))}
           </div>
 
-          {/* Pagination */}
           <div className="mt-12">
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
                   <PaginationPrevious
-                    href="/blog"
-                    className="pointer-events-none opacity-50"
+                    onClick={() => {
+                      if (hasPreviousPage) {
+                        setCurrentPage(currentPage - 1);
+                      }
+                    }}
+                    className={
+                      !hasPreviousPage
+                        ? "pointer-events-none opacity-50"
+                        : "text-brand-teal hover:text-brand-blue"
+                    }
                   />
                 </PaginationItem>
 
-                <PaginationItem>
-                  <PaginationLink href="/blog" isActive>
-                    1
-                  </PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="/blog/2">2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="/blog/3">3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="/blog/4">4</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationLink href="/blog/5">5</PaginationLink>
-                </PaginationItem>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (pageNumber) => (
+                    <PaginationItem key={pageNumber}>
+                      <PaginationLink
+                        href={`/blog/${pageNumber}`}
+                        className={`${
+                          pageNumber === currentPage
+                            ? "bg-brand-teal text-white"
+                            : "text-brand-teal hover:bg-brand-blue hover:text-white"
+                        } px-4 py-2 rounded-full transition-colors`}
+                      >
+                        {pageNumber}
+                      </PaginationLink>
+                    </PaginationItem>
+                  )
+                )}
 
                 <PaginationItem>
                   <PaginationNext
-                    href="/blog/2"
-                    className="text-brand-teal hover:text-brand-blue"
+                    onClick={() => {
+                      if (hasNextPage) {
+                        setCurrentPage(currentPage + 1);
+                      }
+                    }}
+                    className={
+                      !hasNextPage
+                        ? "pointer-events-none opacity-50"
+                        : "text-brand-teal hover:text-brand-blue"
+                    }
                   />
                 </PaginationItem>
               </PaginationContent>

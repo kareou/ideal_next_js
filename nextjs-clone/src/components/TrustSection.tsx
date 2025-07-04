@@ -1,12 +1,13 @@
 
 import React from 'react';
+import Image from 'next/image';
 
 const TrustSection = () => {
   const partners = [
-    { name: "Better Business Bureau", logo: "BBB", rating: "A+" },
-    { name: "IRS", logo: "IRS", info: "Authorized" },
-    { name: "NAEA", logo: "NAEA", info: "Member" },
-    { name: "Best Company", logo: "BEST", info: "Certified" }
+    { name: "Better Business Bureau", logo: "/lovable-uploads/Better-Business-Bureau.png", rating: "A+" },
+    { name: "IRS", logo: "/lovable-uploads/IRS.png", info: "Authorized" },
+    { name: "NAEA", logo: "/lovable-uploads/NAEA.png", info: "Member" },
+    { name: "Best Company", logo: "/lovable-uploads/best_company.jpg", info: "Certified" }
   ];
 
   return (
@@ -37,7 +38,13 @@ const TrustSection = () => {
                 {/* Logo/Badge */}
                 <div className="w-16 h-16 bg-gradient-to-br from-mint-50 to-deep-blue-50 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
                   <span className="text-xl font-bold text-gray-700">
-                    {partner.logo}
+                    {/* {partner.logo} */}
+                    <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={50}
+                    height={50}
+                    />
                   </span>
                 </div>
                 

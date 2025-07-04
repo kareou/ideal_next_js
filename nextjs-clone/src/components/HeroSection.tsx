@@ -52,7 +52,7 @@ const HeroSection = () => {
             <div className="flex justify-center lg:justify-end animate-fade-in delay-500">
               <div className="relative">
                 <img 
-                  src="/lovable-uploads/804c9d59-ed3b-455f-a962-9120ff7055e3.png" 
+                  src="/lovable-uploads/01bdc051-1397-4a38-a397-276163adfccc.png" 
                   alt="Mobile phone mockup"
                   className="w-80 h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
                 />
