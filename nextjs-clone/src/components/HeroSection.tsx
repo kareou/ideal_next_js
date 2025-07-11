@@ -1,5 +1,7 @@
 
 import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const HeroSection = () => {
   return (
@@ -39,22 +41,25 @@ const HeroSection = () => {
 
               {/* CTA Button */}
               <div className="animate-fade-in delay-700">
-                <a
-                  href="https://start.idealtax.com"
+                <Link
+                  href="/survey"
                   className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 >
                   Find out if you qualify in 2 minutes
-                </a>
+                </Link>
               </div>
             </div>
 
             {/* Right Column - Phone Image */}
             <div className="flex justify-center lg:justify-end animate-fade-in delay-500">
               <div className="relative">
-                <img 
-                  src="/lovable-uploads/01bdc051-1397-4a38-a397-276163adfccc.png" 
+                <Image
+                  src="/lovable-uploads/01bdc051-1397-4a38-a397-276163adfccc.png"
                   alt="Mobile phone mockup"
+                  width={320}
+                  height={480}
                   className="w-80 h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                  unoptimized
                 />
                 {/* Glow effect behind phone */}
                 <div className="absolute inset-0 bg-gradient-to-r from-brand-teal/20 to-brand-blue/20 blur-3xl -z-10 scale-110"></div>

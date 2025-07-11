@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import Link from "next/link";
 
 const ContactUs = () => {
   const contactMethods = [
@@ -46,19 +47,21 @@ const ContactUs = () => {
               first step toward financial freedom.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
+              <Link
+              href="tel:8775182860"
+                // size="lg"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               >
                 Call Now: (877) 518-2860
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
+              </Link>
+              <Link
+                href="/survey"
+                // variant="outline"
+                // size="lg"
+                className="border-2  border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
               >
                 Get Free Consultation
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -191,12 +194,12 @@ const ContactUs = () => {
               us now for immediate assistance and start your journey to
               financial freedom.
             </p>
-            <Button
-              size="lg"
+            <Link
+              href="tel:8775182860"
               className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
             >
               Call (877) 518-2860 Now
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

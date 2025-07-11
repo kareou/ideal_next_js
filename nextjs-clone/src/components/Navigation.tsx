@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -55,10 +56,13 @@ const Navigation = () => {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <div className="bg-gradient-to-r from-brand-teal to-brand-blue p-2 rounded-lg">
-                <img 
-                  src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png" 
-                  alt="IdealTax Logo" 
+                <Image
+                  src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png"
+                  alt="IdealTax Logo"
+                  width={24}
+                  height={24}
                   className="h-6 w-auto"
+                  unoptimized
                 />
               </div>
             </Link>
@@ -116,12 +120,12 @@ const Navigation = () => {
               </Link>
               
               {/* CTA Button */}
-              <a
-                href="https://start.idealtax.com"
+              <Link
+                href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               >
                 Get Started
-              </a>
+              </Link>
             </div>
           </div>
         </div>

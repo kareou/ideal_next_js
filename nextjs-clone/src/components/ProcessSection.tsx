@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Link from 'next/link';
 
 const ProcessSection = () => {
   return (
@@ -13,12 +14,12 @@ const ProcessSection = () => {
                 The Ideal Process
               </h2>
               <div>
-                <a
-                  href="https://start.idealtax.com"
+                <Link
+                  href="/survey"
                   className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
                 >
                   Qualify for a program
-                </a>
+                </Link>
               </div>
             </div>
 

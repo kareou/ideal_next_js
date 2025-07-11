@@ -15,6 +15,13 @@ import { useToast } from "@/hooks/use-toast";
 import { Plus, Edit, Trash2, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState, convertToRaw, ContentState } from "draft-js";
+import draftToHtml from "draftjs-to-html";
+import { Dropdown } from "react-day-picker";
+import htmlToDraft from "html-to-draftjs";
+import Image from 'next/image';
 
 interface BlogPost {
   id: number;
@@ -31,6 +38,7 @@ const AdminDashboard = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -38,6 +46,7 @@ const AdminDashboard = () => {
     author: "",
     category: "",
   });
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   // const navigate = useNavigate();
   const router = useRouter();
   const { toast } = useToast();
@@ -58,7 +67,6 @@ const AdminDashboard = () => {
       }
     };
     getBlogPosts();
-
   }, []);
 
   const handleLogout = async () => {
@@ -89,6 +97,16 @@ const AdminDashboard = () => {
       author: post.author,
       category: post.category || "",
     });
+    const html = post.content || "";
+    const blocksFromHtml = htmlToDraft(html);
+    const { contentBlocks, entityMap } = blocksFromHtml;
+    const contentState = ContentState.createFromBlockArray(
+      contentBlocks,
+      entityMap
+    );
+    console.log("Content State:", contentState);
+    const editorState = EditorState.createWithContent(contentState);
+    setEditorState(editorState);
   };
 
   const handleDeletePost = async (id: number) => {
@@ -162,10 +180,13 @@ const AdminDashboard = () => {
         <div className="flex justify-between items-center mb-8">
           <div className="flex items-center space-x-4">
             <div className="bg-gradient-to-r from-brand-teal to-brand-blue p-3 rounded-xl">
-              <img
+              <Image
                 src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png"
                 alt="IdealTax Logo"
+                width={32}
+                height={32}
                 className="h-8 w-auto"
+                unoptimized
               />
             </div>
             <div>
@@ -282,14 +303,14 @@ const AdminDashboard = () => {
                       className="mt-1 border-gray-300 focus:border-brand-teal focus:ring-brand-teal"
                     />
                   </div>
-                  <div className="md:col-span-2">
+                  <div className="md:col-span-2  w-full">
                     <Label
                       htmlFor="content"
                       className="text-gray-700 font-medium"
                     >
                       Content
                     </Label>
-                    <textarea
+                    {/* <textarea
                       id="content"
                       value={formData.content}
                       onChange={(e) =>
@@ -297,6 +318,57 @@ const AdminDashboard = () => {
                       }
                       placeholder="Full blog content"
                       className="mt-1 border-gray-300 focus:border-brand-teal focus:ring-brand-teal w-full min-h-[120px] rounded-md p-2"
+                    /> */}
+                    <Editor
+                      editorState={editorState}
+                      wrapperClassName="editor-wrapper"
+                      editorClassName="min-h-[200px] w-[100%] prose p-4 text-base bg-white"
+                      toolbarClassName="editor-toolbar"
+                      onEditorStateChange={(state) => {
+                        setEditorState(state);
+
+                        const rawContent = convertToRaw(
+                          state.getCurrentContent()
+                        );
+                        const html = draftToHtml(rawContent);
+                        setFormData({ ...formData, content: html });
+                      }}
+                      toolbar={{
+                        options: [
+                          "inline",
+                          "blockType",
+                          // "fontSize",
+                          "list",
+                          "textAlign",
+                        ],
+                        inline: { options: ["bold", "italic", "underline"] },
+                        blockType: {
+                          inDropdown: false,
+                          options: [
+                            "Normal",
+                            "H1",
+                            "H2",
+                            "H3",
+                            "H4",
+                            "H5",
+                            "H6",
+                            "Blockquote",
+                          ],
+                        },
+                        textAlign: {
+                          options: ["left", "center", "right", "justify"],
+                        },
+                        list: {
+                          options: ["unordered", "ordered"],
+                        },
+                        // fontSize: {
+                        //   options: [
+                        //     8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60,
+                        //     72, 96,
+                        //   ],
+                        // },
+                      }}
+                      placeholder="Write your blog content here..."
                     />
                   </div>
                 </div>

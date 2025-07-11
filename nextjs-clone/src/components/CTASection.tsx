@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Link from 'next/link';
 
 const CTASection = () => {
   return (
@@ -11,12 +12,12 @@ const CTASection = () => {
           </h2>
           
           <div>
-            <a
-              href="https://start.idealtax.com"
+            <Link
+              href="/survey"
               className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-12 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
             >
               Qualify now
-            </a>
+            </Link>
           </div>
         </div>
       </div>

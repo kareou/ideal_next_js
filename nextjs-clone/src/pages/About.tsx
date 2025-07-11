@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Users, Award, Shield } from "lucide-react";
+import Image from 'next/image';
 
 const About = () => {
   const stats = [
@@ -52,10 +53,13 @@ const About = () => {
             <div className="bg-gradient-to-br from-mint-50 to-deep-blue-50 rounded-2xl p-8">
               <div className="text-center mb-6">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     src="/lovable-uploads/d3abf245-55a4-4475-80e5-4f2cc24413ef.png"
                     alt="Faris Khatib - CEO"
+                    width={128}
+                    height={128}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -79,10 +83,13 @@ const About = () => {
             <div className="bg-gradient-to-br from-deep-blue-50 to-mint-50 rounded-2xl p-8">
               <div className="text-center mb-6">
                 <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
-                  <img
+                  <Image
                     src="/lovable-uploads/6519c4ea-b868-4581-be6d-f4a96e2399e4.png"
                     alt="Preciosa Vidal - Servicing Director"
+                    width={128}
+                    height={128}
                     className="w-full h-full object-cover"
+                    unoptimized
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">

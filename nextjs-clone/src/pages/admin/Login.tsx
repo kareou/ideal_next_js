@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import Image from 'next/image';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -44,10 +45,13 @@ const AdminLogin = () => {
         <CardHeader className="text-center bg-gradient-to-r from-brand-teal/10 to-brand-blue/10 rounded-t-lg">
           <div className="flex justify-center mb-4">
             <div className="bg-gradient-to-r from-brand-teal to-brand-blue p-3 rounded-xl">
-              <img 
-                src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png" 
-                alt="IdealTax Logo" 
+              <Image
+                src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png"
+                alt="IdealTax Logo"
+                width={32}
+                height={32}
                 className="h-8 w-auto"
+                unoptimized
               />
             </div>
           </div>

@@ -3,6 +3,8 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Star, Quote, CheckCircle } from "lucide-react";
+import Link from "next/link";
+import Image from 'next/image';
 
 const Reviews = () => {
   const trustpilotReviews = [
@@ -273,10 +275,13 @@ const Reviews = () => {
               {review.rating}/5
             </span>
           </div>
-          <img
+          <Image
             src={getPlatformLogo(platform)}
-            alt={platform}
+            alt={platform + ' logo'}
+            width={40}
+            height={40}
             className="h-6 object-contain"
+            unoptimized
           />
         </div>
         <Quote className="w-8 h-8 text-brand-teal mb-4" />
@@ -317,19 +322,19 @@ const Reviews = () => {
               </span>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
+              <Link
+                href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               >
                 Get Your Success Story
-              </Button>
-              <Button
+              </Link>
+              <Link
                 variant="outline"
-                size="lg"
+                href="tel:8775182860"
                 className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -356,10 +361,13 @@ const Reviews = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
-              <img
+              <Image
                 src="/lovable-uploads/8fc7ce39-0634-4bb1-a33b-bedadbf45ba9.png"
                 alt="Trustpilot"
+                width={48}
+                height={48}
                 className="h-12 object-contain"
+                unoptimized
               />
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -384,10 +392,13 @@ const Reviews = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
-              <img
+              <Image
                 src="/lovable-uploads/94e75b00-ab1b-4ef1-a8e8-821863a6bc8d.png"
                 alt="Google Reviews"
+                width={48}
+                height={48}
                 className="h-12 object-contain"
+                unoptimized
               />
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -411,10 +422,13 @@ const Reviews = () => {
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-6">
-              <img
+              <Image
                 src="/lovable-uploads/3a1ad613-2130-4549-8bca-0d4dee22f1f4.png"
                 alt="Better Business Bureau"
+                width={48}
+                height={48}
                 className="h-12 object-contain"
+                unoptimized
               />
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -445,12 +459,12 @@ const Reviews = () => {
               Join thousands of satisfied clients who have achieved tax relief
               with IdealTax. Your success story could be next.
             </p>
-            <Button
-              size="lg"
+            <Link
+              href="/survey"
               className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
             >
               Start Your Journey Today
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

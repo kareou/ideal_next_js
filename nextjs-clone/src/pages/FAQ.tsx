@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 const FAQ = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
@@ -109,12 +110,13 @@ const FAQ = () => {
               Our tax professionals are here to help. Contact us today for
               personalized answers to your tax questions.
             </p>
-            <Button
+            <Link
+              href="/contact-us"
               size="lg"
               className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
             >
               Contact Us Today
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

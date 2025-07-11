@@ -2,12 +2,39 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft, User, Calendar } from "lucide-react";
 import axios from "axios";
+import { Metadata } from "next";
 
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/blogs/${params.id}`);
+    const blogPost = response.data;
+
+
+    return {
+      title: blogPost.title,
+      description: blogPost.excerpt || "Read our latest blog post on important tax topics.",
+      openGraph: {
+        title: blogPost.title,
+        description: blogPost.excerpt || "",
+        type: "article",
+      },
+
+    };
+  } catch (error) {
+    console.error("Metadata generation failed:", error);
+    return {
+      title: "Blog Post",
+      description: "Read our latest article on tax insights and compliance.",
+    };
+  }
+}
 
 async function page({ params }: { params: { id: string } }) {
   let blogPost = null;
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${params.id}`);
+    const response = await axios.get(
+      `http://localhost:3000/api/blogs/${params.id}`
+    );
     if (response.status !== 200) {
       throw new Error("Failed to fetch blog post");
     }
@@ -67,16 +94,18 @@ async function page({ params }: { params: { id: string } }) {
       <div className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto prose prose-lg">
-            {blogPost ? blogPost.content : "Loading..."}
+            {blogPost && (
+              <div dangerouslySetInnerHTML={{ __html: blogPost.content }} />
+            )}
 
             <div className="bg-brand-teal/10 p-6 rounded-lg mt-12">
               <h3 className="text-xl font-bold text-gray-800 mb-4">
                 Need Help with {blogPost ? blogPost.title : "issues"} ?
               </h3>
               <p className="text-gray-600 mb-4">
-                Whether you need to issue {blogPost ? blogPost.title : "issues"} or have questions about
-                it, our tax professionals can help ensure
-                compliance.
+                Whether you need to issue {blogPost ? blogPost.title : "issues"}{" "}
+                or have questions about it, our tax professionals can help
+                ensure compliance.
               </p>
               <Link
                 href="/free-tax-consultation"
