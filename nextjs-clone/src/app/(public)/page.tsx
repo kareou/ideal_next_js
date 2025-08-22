@@ -1,11 +1,12 @@
-import HeroSection from "../../components/HeroSection";
-import ProcessSection from "../../components/ProcessSection";
-import ServicesSection from "../../components/ServicesSection";
-import TrustSection from "../../components/TrustSection";
-import CompanySection from "../../components/CompanySection";
-import TeamSection from "../../components/TeamSection";
-import TestimonialsSection from "../../components/TestimonialsSection";
-import CTASection from "../../components/CTASection";
+import Box from "../../components/MainLanderComponents/HeaderContacts";
+import HeroSection from "../../components/MainLanderComponents/HeroSection";
+import Process from "../../components/MainLanderComponents/CsrComponents/OurProcessSectionClient";
+import TakeCare from "../../components/MainLanderComponents/EasyTaxReliefSection";
+import Ratings from "../../components/MainLanderComponents/RatingsSection";
+import Footer from "../../components/MainLanderComponents/Footer";
+import Testimonals from "../../components/MainLanderComponents/CsrComponents/TestimonalSectionClient";
+import OurCompanySection from "../../components/MainLanderComponents/CsrComponents/OurCompanyClient";
+import ExpertTeam from "../../components/MainLanderComponents/CsrComponents/OurExpertSectionClient";
 import { Metadata } from "next";
 
 
@@ -17,15 +18,19 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      <HeroSection />
-      <ProcessSection />
-      <ServicesSection />
-      <TrustSection />
-      <CompanySection />
-      <TeamSection />
-      <TestimonialsSection />
-      <CTASection />
-    </div>
+    <>
+   
+        <Box />
+        <HeroSection/>
+        <Process/>
+        <TakeCare/>
+        <OurCompanySection/>
+        <ExpertTeam/>
+        <Testimonals/>
+        <Ratings/>
+        <Footer/>
+    </>
   );
 }
+
+
