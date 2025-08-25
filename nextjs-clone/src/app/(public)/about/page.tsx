@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { CTASection } from "@/components";
 import { Metadata } from "next";
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "About - Ideal Tax",
@@ -33,19 +34,26 @@ const About = () => {
               satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Get Started Today
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
-              >
-                Call (877) 518-2860
-              </Button>
+                          <Link href="/survey">
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+  >
+    Get Started Today
+  </Button>
+</Link>
+      <div className="flex justify-center">
+  <Button
+    asChild
+    size="lg"
+    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+  >
+    <a href="tel:+18775182860">Call (877) 518-2860</a>
+  </Button>
+</div>
+
+
+
             </div>
           </div>
         </div>

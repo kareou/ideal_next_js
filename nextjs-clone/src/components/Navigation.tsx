@@ -54,7 +54,7 @@ const Navigation = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
+            {/* <Link href="/" className="flex items-center">
               <div className="bg-gradient-to-r from-brand-teal to-brand-blue p-2 rounded-lg">
                 <Image
                   src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png"
@@ -65,7 +65,20 @@ const Navigation = () => {
                   unoptimized
                 />
               </div>
-            </Link>
+            </Link> */}
+
+             <Link href="/" className="flex items-center">
+                <Image
+                  src="/logo.png"
+                  alt="IdealTax Logo"
+                  width={34}
+                  height={34}
+                  className="h-8 w-auto"
+                  unoptimized
+                />
+              
+            </Link> 
+
 
             {/* Menu */}
             <div className="hidden md:flex items-center space-x-8">

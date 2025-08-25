@@ -3,6 +3,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Button } from '@/components/ui/button';
+import Link from "next/link";
 import { CheckCircle, Phone, Clock, Users, Calendar, DollarSign, FileText, Shield } from 'lucide-react';
 
 const FreeTaxConsultation = () => {
@@ -41,21 +42,21 @@ const FreeTaxConsultation = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-              Free Tax <span className="text-teal-600">Consultation</span>
+              Free Tax <span className="text-brand-teal">Consultation</span>
             </h1>
             <p className="text-xl text-gray-700 mb-4">
               Are you ready to meet with a licensed tax professional,
             </p>
-            <p className="text-2xl font-bold text-teal-600 mb-4">
+            <p className="text-2xl font-bold text-brand-teal mb-4">
               COMPLETELY FREE OF CHARGE,
             </p>
             <p className="text-xl text-gray-700 mb-8">
               to ask them all of your burning questions about taxes?
             </p>
-            <div className="bg-teal-600 text-white py-4 px-8 rounded-lg inline-block mb-8">
+            <a href="tel:+18775182860" className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105 text-white py-4 px-8 rounded-lg inline-block mb-8">
               <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
-              <p className="text-2xl font-bold">(833) 321-1332</p>
-            </div>
+              <p className="text-2xl font-bold">(877) 518-2860</p>
+            </a>
           </div>
         </div>
       </section>
@@ -167,10 +168,10 @@ const FreeTaxConsultation = () => {
       <section className="py-16 bg-gradient-to-r from-teal-600 to-blue-600">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white text-teal-600 py-4 px-8 rounded-lg inline-block mb-8">
+            <a href="tel:+18775182860" className="bg-gradient-to-r from-brand-teal to-brand-blue text-white hover:from-brand-blue hover:to-brand-teal rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105  py-4 px-8 rounded-lg inline-block mb-8">
               <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
-              <p className="text-2xl font-bold">(833) 321-1332</p>
-            </div>
+              <p className="text-2xl font-bold">(877) 518-2860</p>
+            </a>
           </div>
         </div>
       </section>
@@ -216,10 +217,10 @@ const FreeTaxConsultation = () => {
               <p className="text-lg text-gray-700 mb-8">
                 You can take all of the stress away from the tax season by hiring the professionals at Ideal Tax to prepare and file your tax return on your behalf. Whether you need help with filing an individual tax return or a tax return for your business or company, our tax preparers are experienced at optimizing filing outcomes for a variety of tax situations.
               </p>
-              <div className="bg-teal-600 text-white py-4 px-8 rounded-lg inline-block">
-                <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
-                <p className="text-2xl font-bold">(833) 321-1332</p>
-              </div>
+              <a href="tel:+18775182860" className="bg-gradient-to-r from-brand-teal to-brand-blue text-white hover:from-brand-blue hover:to-brand-teal rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105  py-4 px-8 rounded-lg inline-block mb-8">
+              <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
+              <p className="text-2xl font-bold">(877) 518-2860</p>
+            </a>
             </div>
           </div>
         </div>
@@ -286,12 +287,15 @@ const FreeTaxConsultation = () => {
             <p className="text-xl text-white/90 mb-8">
               If you are interested in hiring a tax debt relief company to file your tax return during this tax season, taking the first step of scheduling a free tax consultation will ensure the tax preparation services you are inquiring about would be an appropriate investment for your tax situation.
             </p>
-            <Button 
-              size="lg" 
-              className="bg-white text-teal-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-            >
-              Schedule Your Free Consultation Today
-            </Button>
+            <Button
+  asChild
+  size="lg"
+  className="bg-white text-teal-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+>
+  <Link href="/survey">
+    Schedule Your Free Consultation Today
+  </Link>
+</Button>
           </div>
         </div>
       </section>

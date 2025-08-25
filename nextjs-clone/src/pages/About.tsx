@@ -3,6 +3,8 @@ import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, Users, Award, Shield } from "lucide-react";
 import Image from 'next/image';
+import Link from "next/link"
+
 
 const About = () => {
   const stats = [
@@ -27,19 +29,21 @@ const About = () => {
               satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Get Started Today
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
-              >
-                Call (877) 518-2860
-              </Button>
+              <Link href="/survey">
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+  >
+    Get Started Today
+  </Button>
+</Link>
+             <a
+  href="tel:+18775182860"
+  className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300 inline-block text-center"
+>
+  Call (877) 518-2860
+</a>
+
             </div>
           </div>
         </div>

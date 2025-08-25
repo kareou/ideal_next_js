@@ -57,14 +57,7 @@ const IdealTaxProtectionPlan = () => {
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
             {/* IdealTax Logo */}
-            <div className="flex justify-center items-center mb-8">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-brand-teal to-brand-blue rounded"></div>
-                <span className="text-2xl font-bold text-gray-800">
-                  IdealTax
-                </span>
-              </div>
-            </div>
+           
 
             <h1 className="text-4xl md:text-5xl font-bold text-brand-teal mb-8">
               Get Protected and Stay Protected Today!
@@ -93,7 +86,7 @@ const IdealTaxProtectionPlan = () => {
             </p>
 
             <Link
-              href="/contact"
+              href="/contact-us"
               className="bg-black hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded transition-colors duration-300 inline-block"
             >
               Contact Us

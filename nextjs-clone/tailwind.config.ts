@@ -63,20 +63,20 @@ export default {
                     ring: 'hsl(var(--sidebar-ring))'
                 },
                 // Brand colors
-                'brand-teal': '#03CDA4',
+                'brand-teal': '#0D1C3B',
                 'brand-blue': '#1552CB',
                 // Custom pastel palette with brand colors
                 mint: {
-                    50: '#f0fdf9',
-                    100: '#ccfbef',
-                    200: '#99f6e0',
-                    300: '#5eead4',
-                    400: '#2dd4bf',
-                    500: '#03CDA4',
-                    600: '#0891b2',
-                    700: '#0e7490',
-                    800: '#155e75',
-                    900: '#164e63'
+                    50:  '#f5f7fa',
+  100: '#e6ebf3',
+  200: '#c2c9db',
+  300: '#99a5bf',
+  400: '#556089',
+  500: '#2e3a63',
+  600: '#1d294f',
+  700: '#162041',
+  800: '#0f1831',
+  900: '#0D1C3B'
                 },
                 'deep-blue': {
                     50: '#eff6ff',

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle, Users, Briefcase, Heart } from "lucide-react";
+import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 
 const Careers = () => {
@@ -216,12 +217,15 @@ const Careers = () => {
               Take the next step in your career and become part of our mission
               to help taxpayers achieve financial freedom.
             </p>
-            <Button
-              size="lg"
-              className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-            >
-              Apply Today
-            </Button>
+           <Button
+  asChild
+  size="lg"
+  className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+>
+  <Link href="/survey">
+    Apply Today
+  </Link>
+</Button>
           </div>
         </div>
       </section>

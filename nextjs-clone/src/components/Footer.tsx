@@ -1,8 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
+import { MapPin, Phone, Mail } from "lucide-react";
+
 import { Linkedin } from 'lucide-react';
 
 const Footer = () => {
+  const socials = [
+  { href: "https://www.facebook.com/idealtaxsolution", file: "facebook.svg", bg: "bg-brand-teal/10", hover: "hover:bg-brand-teal/20", color: "text-brand-teal" },
+  { href: "https://x.com/idealtax_", file: "twitter.svg", bg: "bg-brand-blue/10", hover: "hover:bg-brand-blue/20", color: "text-brand-blue" },
+  { href: "https://www.instagram.com/idealtax_/", file: "instagram.svg", bg: "bg-brand-teal/10", hover: "hover:bg-brand-teal/20", color: "text-brand-teal" },
+  { href: "https://www.linkedin.com/company/idealtax/", file: "linkedin.svg", bg: "bg-brand-blue/10", hover: "hover:bg-brand-blue/20", color: "text-brand-blue" },
+];
+
   return (
     <footer className="bg-gradient-to-b from-gray-50 to-white">
       {/* Upper Footer */}
@@ -14,42 +24,26 @@ const Footer = () => {
           
           {/* Social Icons */}
           <div className="flex justify-center space-x-6">
-            <a 
-              href="https://www.facebook.com/idealtaxsolution" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-brand-teal/10 hover:bg-brand-teal/20 rounded-full flex items-center justify-center transition-colors"
-            >
-              <span className="text-brand-teal text-xl">f</span>
-            </a>
-            <a 
-              href="https://x.com/idealtax_" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-brand-blue/10 hover:bg-brand-blue/20 rounded-full flex items-center justify-center transition-colors"
-            >
-              <span className="text-brand-blue text-xl">𝕏</span>
-            </a>
-            <a 
-              href="https://www.instagram.com/idealtax_/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-brand-teal/10 hover:bg-brand-teal/20 rounded-full flex items-center justify-center transition-colors"
-            >
-              <span className="text-brand-teal text-xl">📷</span>
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/idealtax/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-brand-blue/10 hover:bg-brand-blue/20 rounded-full flex items-center justify-center transition-colors"
-            >
-              <Linkedin className="text-brand-blue w-5 h-5" />
-            </a>
-            <a href="#" className="w-12 h-12 bg-brand-blue/10 hover:bg-brand-blue/20 rounded-full flex items-center justify-center transition-colors">
-              <span className="text-brand-blue text-xl">📺</span>
-            </a>
-          </div>
+  {socials.map((s, i) => (
+    <Link
+      key={i}
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${s.bg} ${s.hover} w-12 h-12 rounded-full flex items-center justify-center transition-colors`}
+    >
+      <div className="w-6 h-6 relative">
+        <Image
+          src={`/socials/${s.file}`}
+          alt={s.file.split(".")[0]}
+          fill
+          className="object-contain"
+        />
+      </div>
+    </Link>
+  ))}
+</div>
+
         </div>
       </div>
 
@@ -82,44 +76,47 @@ const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div>
-              <h4 className="font-bold text-gray-800 mb-4">Contact Information</h4>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <div className="w-6 h-6 bg-brand-teal/10 rounded-full flex items-center justify-center mr-3 mt-1">
-                    <span className="text-brand-teal text-sm">📍</span>
-                  </div>
-                  <div className="text-gray-600">
-                    240 Progress Suite 250<br />
-                    Irvine, CA 92618
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-brand-blue/10 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-brand-blue text-sm">📞</span>
-                  </div>
-                  <a href="tel:877-518-2860" className="text-gray-600 hover:text-brand-blue transition-colors">
-                    877-518-2860
-                  </a>
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-brand-teal/10 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-brand-teal text-sm">✉️</span>
-                  </div>
-                  <a href="mailto:info@idealtax.com" className="text-gray-600 hover:text-brand-teal transition-colors">
-                    info@idealtax.com
-                  </a>
-                </div>
-              </div>
-            </div>
+          <div>
+  <h4 className="font-bold text-gray-800 mb-4">Contact Information</h4>
+  <div className="space-y-3">
+    {/* Address */}
+    <div className="flex items-start">
+      <div className="w-6 h-6 bg-brand-teal/10 rounded-full flex items-center justify-center mr-3 mt-1">
+        <MapPin className="w-3.5 h-3.5 text-brand-teal" />
+      </div>
+      <div className="text-gray-600">
+        240 Progress Suite 250<br />
+        Irvine, CA 92618
+      </div>
+    </div>
+
+    {/* Phone */}
+    <div className="flex items-center">
+      <div className="w-6 h-6 bg-brand-blue/10 rounded-full flex items-center justify-center mr-3">
+        <Phone className="w-3.5 h-3.5 text-brand-blue" />
+      </div>
+      <a href="tel:877-518-2860" className="text-gray-600 hover:text-brand-blue transition-colors">
+        877-518-2860
+      </a>
+    </div>
+
+    {/* Email */}
+    <div className="flex items-center">
+      <div className="w-6 h-6 bg-brand-teal/10 rounded-full flex items-center justify-center mr-3">
+        <Mail className="w-3.5 h-3.5 text-brand-teal" />
+      </div>
+      <a href="mailto:info@idealtax.com" className="text-gray-600 hover:text-brand-teal transition-colors">
+        info@idealtax.com
+      </a>
+    </div>
+  </div>
+</div>
           </div>
 
           {/* Copyright */}
           <div className="border-t border-gray-200 mt-12 pt-8 text-center">
             <p className="text-gray-600">
-              © 2024 Ideal Tax. All rights reserved. Licensed in 48 states.
+              © 2025 Ideal Tax. All rights reserved. Licensed in 48 states.
             </p>
           </div>
         </div>

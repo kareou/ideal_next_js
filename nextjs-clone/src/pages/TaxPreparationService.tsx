@@ -23,10 +23,10 @@ const TaxPreparationService = () => {
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
               Ideal Tax provides comprehensive tax preparation services with an individualized approach
             </h1>
-            <div className="bg-teal-600 text-white py-4 px-8 rounded-lg inline-block mb-8">
+             <a href="tel:+18775182860" className="bg-gradient-to-r from-brand-teal to-brand-blue text-white hover:from-brand-blue hover:to-brand-teal rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105  py-4 px-8 rounded-lg inline-block mb-8">
               <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
-              <p className="text-2xl font-bold">(833) 321-1273</p>
-            </div>
+              <p className="text-2xl font-bold">(877) 518-2860</p>
+            </a>
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               Tax preparation looks different for everyone – that's why professional help can ensure you get the most out of filing your tax return
             </p>
@@ -93,10 +93,10 @@ const TaxPreparationService = () => {
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Our Tax Team guarantees the highest accuracy while getting the best results
             </h2>
-            <div className="bg-white text-teal-600 py-4 px-8 rounded-lg inline-block mb-8">
+             <a href="tel:+18775182860" className="bg-gradient-to-r from-brand-teal to-brand-blue text-white hover:from-brand-blue hover:to-brand-teal rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105  py-4 px-8 rounded-lg inline-block mb-8">
               <p className="text-lg font-semibold">SPEAK TO OUR TAX EXPERTS</p>
-              <p className="text-2xl font-bold">(833) 321-1273</p>
-            </div>
+              <p className="text-2xl font-bold">(877) 518-2860</p>
+            </a>
             <p className="text-xl text-white/90 mb-8">
               We offer comprehensive tax preparation services to prevent you from going through the daunting process of filing a tax return
             </p>

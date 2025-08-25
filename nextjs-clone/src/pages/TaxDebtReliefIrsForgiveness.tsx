@@ -258,7 +258,7 @@ const TaxDebtReliefIrsForgiveness = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-brand-blue py-4 px-8 rounded-full transition-all duration-300"
+                className="border-2 border-white text-brand-teal hover:bg-white hover:text-brand-blue py-7 px-8 rounded-full transition-all duration-300"
               >
                 Call Now: (877) 518-2860
               </Button>

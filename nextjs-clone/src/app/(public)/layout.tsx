@@ -18,6 +18,6 @@ export default function RootLayout({
       {!isHome && <Navigation />}
       {children}
       {!isHome && <Footer />}
-    </div>
+    </div>  
   );
 }

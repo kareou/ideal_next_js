@@ -364,8 +364,8 @@ const Reviews = () => {
               <Image
                 src="/lovable-uploads/8fc7ce39-0634-4bb1-a33b-bedadbf45ba9.png"
                 alt="Trustpilot"
-                width={48}
-                height={48}
+                width={250}
+                height={250}
                 className="h-12 object-contain"
                 unoptimized
               />
