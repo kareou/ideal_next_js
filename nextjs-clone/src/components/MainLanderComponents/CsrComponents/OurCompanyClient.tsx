@@ -82,11 +82,11 @@ export default function OurCompanyClient() {
           </div>
 
           <div className="mt-16 flex flex-col lg:flex-row items-center lg:items-stretch gap-12">
-            <div className="grid grid-cols-2 gap-6 flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
               {badges.map((badge, i) => (
                 <div
                   key={i}
-                  className="relative rounded-xl border border-gray-200 p-6 text-center hover:shadow-lg transition-shadow duration-200 flex flex-col justify-center items-center"
+                  className="relative rounded-xl border border-gray-200 p-6 text-center hover:shadow-lg transition-shadow duration-200 flex flex-col  justify-center items-center"
                   data-aos="zoom-in"
                   data-aos-delay={i * 100}
                 >
@@ -106,6 +106,7 @@ export default function OurCompanyClient() {
                 </div>
               ))}
             </div>
+
 
             <div
               className="flex-1 flex justify-center lg:justify-end items-center relative"

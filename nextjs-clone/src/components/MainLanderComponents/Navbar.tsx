@@ -145,7 +145,14 @@ export default function Navbar() {
           onClick={() => setOpen(!open)}
           className="text-gray-700 focus:outline-none"
         >
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <div className="p-2 rounded-full bg-white shadow-md flex items-center justify-center cursor-pointer">
+  {open ? (
+    <X className="w-6 h-6 text-gray-800" />
+  ) : (
+    <Menu className="w-6 h-6 text-gray-800" />
+  )}
+</div>
+
         </button>
       </div>
 

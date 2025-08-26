@@ -18,72 +18,85 @@ const HeroSection: React.FC = () => {
 
         <div className="py-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 md:space-y-8 ml-0 md:ml-[60px]">
-              <div>
-                <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-[80px] font-bold text-gray-900 leading-tight">
-                  Tax Relief
-                </h1>
-                <h2 className="text-6xl sm:text-6xl md:text-6xl lg:text-[80px] font-bold text-gray-900 leading-tight">
-                  Made{" "}
-                  <span className="relative">
-                    easy
-                    <div className="absolute -bottom-2 left-0 right-0 h-2 bg-green-400 rounded-full transform -rotate-1"></div>
-                  </span>
-                </h2>
-              </div>
+            <div className="space-y-6 md:space-y-8 flex flex-col items-center text-center md:items-start md:text-left md:ml-[60px]">
 
-              <div className="space-y-1 text-sm sm:text-[14px] text-gray-600 max-w-lg">
-                <p>
-                  Unlock the potential of professional tax resolution for your
-                  financial future.
-                </p>
-                <p>
-                  Transform your tax problems, eliminate debt stress, and drive
-                  financial freedom.
-                </p>
-              </div>
+  <div>
+    <h1 className="text-6xl sm:text-6xl md:text-6xl lg:text-[80px] font-bold text-gray-900 leading-tight">
+      Tax Relief
+    </h1>
+    <h2 className="text-6xl sm:text-6xl md:text-6xl lg:text-[80px] font-bold text-gray-900 leading-tight">
+      Made{" "}
+      <span className="relative">
+        easy
+        <div className="absolute -bottom-2 left-0 right-0 h-2 bg-green-400 rounded-full transform -rotate-1"></div>
+      </span>
+    </h2>
+  </div>
 
-             <Link
+  <div className="space-y-1 text-sm sm:text-[14px] text-gray-600 max-w-lg">
+    <p>
+      Unlock the potential of professional tax resolution for your financial future.
+    </p>
+    <p>
+      Transform your tax problems, eliminate debt stress, and drive financial freedom.
+    </p>
+  </div>
+
+    <Link
       href="/survey"
       className="inline-flex items-center space-x-2 bg-[#3059E4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-blue-700 transition-colors group shadow-md"
     >
       <span>Get Started</span>
       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
     </Link>
+  
 
-              <div className="flex items-center space-x-4">
-                <div className="flex -space-x-2">
-                  {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
-                    <div
-                      key={i}
-                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative ${
-                        i === 0 ? "bg-blue-400" :
-                        i === 1 ? "bg-green-400" :
-                        i === 2 ? "bg-purple-400" : "bg-red-400"
-                      }`}
-                    >
-                      <Image src={`/${src}`} alt={`Avatar ${i + 1}`} fill className="object-cover" />
-                    </div>
-                  ))}
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#e6eefd] rounded-full border-2 border-white flex items-center justify-center">
-                    <span className="text-xs font-bold text-gray-800">+10k</span>
-                  </div>
-                </div>
-                <span className="text-[#1C1F21] font-medium text-sm sm:text-base">
-                  Join more than 10,000 happy clients
-                </span>
+  {/* Avatars */}
+  <div className="flex items-center space-x-4">
+    <div className="flex -space-x-2">
+      {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
+        <div
+          key={i}
+          className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative ${
+            i === 0 ? "bg-blue-400" :
+            i === 1 ? "bg-green-400" :
+            i === 2 ? "bg-purple-400" : "bg-red-400"
+          }`}
+        >
+          <Image src={`/${src}`} alt={`Avatar ${i + 1}`} fill className="object-cover" />
+        </div>
+      ))}
+      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#e6eefd] rounded-full border-2 border-white flex items-center justify-center">
+        <span className="text-xs font-bold text-gray-800">+10k</span>
+      </div>
+    </div>
+    <span className="text-[#1C1F21] font-medium text-sm sm:text-base">
+      Join more than 10,000 happy clients
+    </span>
+  </div>
+
+</div>
+
+
+           <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-end justify-end hidden lg:flex">
+                <Image
+                  src="/mcbook.png"
+                  alt="Laptop"
+                  width={791}      
+                  height={400}     
+                  className="object-contain mr-[-32px]"
+                />  
               </div>
-            </div>
 
-            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-end justify-end hidden lg:flex">
-              <Image
-                src="/mcbook.png"
-                alt="Laptop"
-                width={791}      
-                height={400}     
-                className="object-contain mr-[-32px]"
-              />  
-            </div>
+              <div className="relative w-full h-auto sm:h-auto md:h-auto lg:hidden flex items-center justify-center">
+                <Image
+                  src="/mcbookmobile.png"
+                  alt="Laptop"
+                  width={791}      
+                  height={400}     
+                  className="object-contain mb-[-160px]"
+                />  
+              </div>
           </div>
         </div> 
       </div>

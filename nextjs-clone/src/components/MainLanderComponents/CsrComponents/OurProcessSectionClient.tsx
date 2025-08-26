@@ -50,7 +50,7 @@ const OurProcessSectionClient: React.FC = () => {
   ];
 
   return (
-    <div className="main_con_pr w-full flex justify-center flex-col min-h-[65vh] items-center space-y-10">
+<div className="main_con_pr w-full flex justify-center flex-col min-h-[65vh] items-center space-y-10 mt-[160px] mb-[30px] lg:mt-0">
      <motion.div
   key={Math.random()} 
   className="first_line_container w-[90%] text-center"
@@ -66,36 +66,37 @@ const OurProcessSectionClient: React.FC = () => {
   </p>
 </motion.div>
 
-      <div className="cards_container flex justify-between w-[90%] gap-[2%]">
-        {steps.map((step, i) => (
-          <motion.div
-            key={i}
-            className="process_card space-y-3 w-[49%] rounded-[20px] bg-[#F6F7F9] hover:bg-[#205BEE] px-5 py-5 transition-all duration-500 ease-in-out cursor-pointer group shadow-sm"
-            custom={i}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-          >
-            <div className="w-12 h-12 bg-[#205BEE] rounded-full flex items-center justify-center group-hover:bg-[#A1BAF8] transition-colors duration-300">
-              <svg
-                className="w-6 h-6 text-blue-600"
-                fill="none"
-                stroke="white"
-                viewBox="0 0 24 24"
-              >
-                {step.icon}
-              </svg>
-            </div>
-            <p className="text-[20px] font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">
-              {step.title}
-            </p>
-            <p className="text-[14px] text-gray-500 group-hover:text-white transition-colors duration-300">
-              {step.desc}
-            </p>
-          </motion.div>
-        ))}
+     <div className="cards_container flex flex-col sm:flex-row justify-between w-[90%] gap-6">
+  {steps.map((step, i) => (
+    <motion.div
+      key={i}
+      className="process_card space-y-3 w-full sm:w-[49%] rounded-[20px] bg-[#F6F7F9] hover:bg-[#205BEE] px-5 py-5 transition-all duration-500 ease-in-out cursor-pointer group shadow-sm"
+      custom={i}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+    >
+      <div className="w-12 h-12 bg-[#205BEE] rounded-full flex items-center justify-center group-hover:bg-[#A1BAF8] transition-colors duration-300">
+        <svg
+          className="w-6 h-6 text-blue-600"
+          fill="none"
+          stroke="white"
+          viewBox="0 0 24 24"
+        >
+          {step.icon}
+        </svg>
       </div>
+      <p className="text-[20px] font-semibold text-gray-900 group-hover:text-white transition-colors duration-300">
+        {step.title}
+      </p>
+      <p className="text-[14px] text-gray-500 group-hover:text-white transition-colors duration-300">
+        {step.desc}
+      </p>
+    </motion.div>
+  ))}
+</div>
+
     </div>
   );
 };
