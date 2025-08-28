@@ -10,9 +10,7 @@ export default function Box() {
    <div className="subContainer w-full flex justify-center">
       <div className="w-[99%] rounded-[20px] mt-2 px-4 py-3 bg-[#0d1c3b] text-white">
         
-        {/* --- Mobile layout (dropdown) --- */}
         <div className="flex flex-col md:hidden">
-          {/* Header bar */}
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <FontAwesomeIcon icon={faPhone} width={16} className="text-white" />
@@ -37,7 +35,6 @@ export default function Box() {
             </button>
           </div>
 
-          {/* Dropdown content */}
           <div
             className={`transition-all overflow-hidden ${
               open ? "max-h-40 mt-3" : "max-h-0"
@@ -63,7 +60,6 @@ export default function Box() {
           </div>
         </div>
 
-        {/* --- Desktop layout (always visible) --- */}
         <div className="hidden md:flex items-center gap-6 text-sm">
           <div className="flex items-center gap-2">
             <FontAwesomeIcon icon={faPhone} width={14} className="text-white" />

@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import Navigation from "../../components/Navigation";
-import Footer from "../../components/Footer";
+import Navbar from "../../components/MainLanderComponents/Navbar";
+import Box from "../../components/MainLanderComponents/HeaderContacts";
+import Footer from "../../components/MainLanderComponents/Footer";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({
@@ -15,9 +16,11 @@ export default function RootLayout({
 
   return (
     <div>
-      {!isHome && <Navigation />}
+      {!isHome && <Box />}
+      {!isHome && <Navbar />}
       {children}
       {!isHome && <Footer />}
+      
     </div>  
   );
 }

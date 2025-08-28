@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <div className="flex min-h-screen mt-28">
+    <div className="flex min-h-screen">
       {/* Left side - Image/Content */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-brand-blue via-brand-blue to-brand-teal relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>

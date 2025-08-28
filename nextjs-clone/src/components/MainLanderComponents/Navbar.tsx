@@ -51,14 +51,14 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 relative">
+    <nav className="flex items-center justify-between px-6 pt-4 relative">
       <div className="flex items-center space-x-2">
-        <Image src="/logoblack.png" alt="Logo" width={131} height={50} />
+       <a href="/"> <Image src="/logoblack.png" alt="Logo" width={131} height={50} /></a>
       </div>
 
       <div className="hidden lg:flex items-center space-x-2 rounded-full px-2 py-2 shadow-sm bg-white">
         <a
-          href="#"
+          href="/"
           className="px-4 py-2 bg-blue-600 text-white rounded-full font-medium text-sm"
         >
           Home
