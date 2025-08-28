@@ -51,7 +51,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex items-center justify-between px-6 pt-4 relative">
+    <nav className="flex items-center justify-between px-6 pt-4 py-2 relative">
       <div className="flex items-center space-x-2">
        <a href="/"> <Image src="/logoblack.png" alt="Logo" width={131} height={50} /></a>
       </div>
