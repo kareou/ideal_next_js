@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { Star } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight } from "lucide-react"; // ⬅️ import arrows
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -11,8 +11,8 @@ const TestimonialsSlider: React.FC = () => {
     AOS.init({
       duration: 300,
       easing: "ease-in-out",
-      once: false, 
-      mirror: true, 
+      once: false,
+      mirror: true,
     });
   }, []);
 
@@ -71,18 +71,30 @@ const TestimonialsSlider: React.FC = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev >= testimonials.length - visibleCards ? 0 : prev + 1
-      );
+      handleNext();
     }, 4000);
     return () => clearInterval(interval);
-  }, [visibleCards, testimonials.length]);
+  }, [visibleCards]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? testimonials.length - visibleCards : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      prev >= testimonials.length - visibleCards ? 0 : prev + 1
+    );
+  };
 
   const renderStars = (rating: number) =>
     Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
+        className={`w-4 h-4 ${
+          i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+        }`}
       />
     ));
 
@@ -99,18 +111,25 @@ const TestimonialsSlider: React.FC = () => {
         </div>
 
         <div className="relative overflow-hidden">
+          {/* Slider Content */}
           <div
             className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
+            style={{
+              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
+            }}
           >
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
                 className={`flex-shrink-0 px-4 py-5 ${
-                  visibleCards === 1 ? "w-full" : visibleCards === 2 ? "w-1/2" : "w-1/3"
+                  visibleCards === 1
+                    ? "w-full"
+                    : visibleCards === 2
+                    ? "w-1/2"
+                    : "w-1/3"
                 }`}
                 data-aos="fade-up"
-                data-aos-delay={index * 150} // stagger animation
+                data-aos-delay={index * 150}
               >
                 <div className="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow duration-300 h-full flex flex-col justify-between">
                   <div className="flex mb-6">{renderStars(testimonial.rating)}</div>
@@ -139,6 +158,22 @@ const TestimonialsSlider: React.FC = () => {
               </div>
             ))}
           </div>
+
+{/* Left Button */}
+<button
+  onClick={handlePrev}
+  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
+>
+  <ChevronLeft className="w-5 h-5 text-gray-800" />
+</button>
+
+{/* Right Button */}
+<button
+  onClick={handleNext}
+  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
+>
+  <ChevronRight className="w-5 h-5 text-gray-800" />
+</button>
         </div>
       </div>
     </section>
