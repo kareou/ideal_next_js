@@ -4,9 +4,9 @@ import Footer from "../../../components/Footer";
 
 const IrsFreshStart = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-[screen] bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-mint-50 via-white to-deep-blue-50 pt-32">
+<section className="relative h-[50vh] flex items-center justify-center overflow-hidden px-5 bg-gradient-to-br from-mint-50 via-white to-deep-blue-50">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-32 h-32 bg-brand-teal rounded-full blur-xl animate-pulse"></div>
           <div className="absolute top-40 right-20 w-24 h-24 bg-brand-blue rounded-full blur-lg animate-pulse delay-1000"></div>

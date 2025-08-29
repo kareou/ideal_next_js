@@ -75,7 +75,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/irs-fresh-start-program" element={<IrsFreshStart />} />
+          <Route path="/irs-fresh-start-program" element={<IrsFreshStart/>} />
           <Route path="/services" element={<Services />} />
           <Route path="/free-tax-consultation" element={<FreeTaxConsultation />} />
           <Route path="/tax-preparation-service" element={<TaxPreparationService />} />

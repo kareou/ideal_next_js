@@ -63,8 +63,8 @@ export default {
                     ring: 'hsl(var(--sidebar-ring))'
                 },
                 // Brand colors
-                'brand-teal': '#0D1C3B',
-                'brand-blue': '#1552CB',
+                'brand-teal': '#1D4ED8',
+                'brand-blue': '#1D4ED8',
                 // Custom pastel palette with brand colors
                 mint: {
                     50:  '#f5f7fa',
