@@ -1,61 +1,37 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Star, ChevronLeft, ChevronRight } from "lucide-react"; // ⬅️ import arrows
+import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const TestimonialsSlider: React.FC = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 300,
-      easing: "ease-in-out",
-      once: false,
-      mirror: true,
-    });
-  }, []);
-
-  const testimonials = [
-    {
-      id: 1,
-      text: "We pull your IRS transcripts, examine every filing and notice, then assess your financial situation to develop a tailored resolution plan.",
-      author: "Richard Seese",
-      subtitle: "Review on Google",
-      rating: 5,
-    },
-    {
-      id: 2,
-      text: "Outstanding service and expertise. They helped me navigate complex tax issues with professionalism and care. Highly recommended!",
-      author: "Sarah Johnson",
-      subtitle: "Review on Yelp",
-      rating: 5,
-    },
-    {
-      id: 3,
-      text: "Incredible attention to detail and personalized approach. They made what seemed impossible feel manageable and achievable.",
-      author: "Michael Chen",
-      subtitle: "Review on Google",
-      rating: 5,
-    },
-    {
-      id: 4,
-      text: "Professional, reliable, and results-driven. They exceeded my expectations and delivered exactly what they promised.",
-      author: "Emily Rodriguez",
-      subtitle: "Review on TrustPilot",
-      rating: 5,
-    },
-    {
-      id: 5,
-      text: "From start to finish, the experience was seamless. Their team is knowledgeable, responsive, and truly cares about client success.",
-      author: "David Thompson",
-      subtitle: "Review on Google",
-      rating: 5,
-    },
-  ];
-
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
+  const [expanded, setExpanded] = useState<{ [key: number]: boolean }>({});
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    AOS.init({ duration: 300, easing: "ease-in-out", once: false, mirror: true });
+  }, []);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await fetch("/api/reviews");
+        const data = await res.json();
+        if (data.reviews) setTestimonials(data.reviews);
+      } catch (error) {
+        console.error("Error fetching reviews:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchReviews();
+  }, []);
 
   useEffect(() => {
     const updateVisibleCards = () => {
@@ -63,40 +39,53 @@ const TestimonialsSlider: React.FC = () => {
       else if (window.innerWidth < 1200) setVisibleCards(2);
       else setVisibleCards(3);
     };
-
     updateVisibleCards();
     window.addEventListener("resize", updateVisibleCards);
     return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 4000);
+    const interval = setInterval(() => handleNext(), 4000);
     return () => clearInterval(interval);
-  }, [visibleCards]);
+  }, [visibleCards, testimonials]);
 
-  const handlePrev = () => {
+  const handlePrev = () =>
     setCurrentIndex((prev) =>
       prev === 0 ? testimonials.length - visibleCards : prev - 1
     );
-  };
 
-  const handleNext = () => {
+  const handleNext = () =>
     setCurrentIndex((prev) =>
       prev >= testimonials.length - visibleCards ? 0 : prev + 1
     );
-  };
 
   const renderStars = (rating: number) =>
     Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${
-          i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-        }`}
+        className={`w-4 h-4 ${i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"}`}
       />
     ));
+
+  const SkeletonCard = () => (
+    <div className={`flex-shrink-0 px-4 py-5 ${visibleCards === 1 ? "w-full" : visibleCards === 2 ? "w-1/2" : "w-1/3"}`}>
+      <div className="bg-white rounded-2xl p-8 shadow animate-pulse h-80 flex flex-col justify-between">
+        <div className="flex mb-6 space-x-1">{Array.from({ length: 5 }).map((_, i) => (<div key={i} className="w-4 h-4 bg-gray-300 rounded"></div>))}</div>
+        <div className="flex-1 space-y-2 mb-6">
+          <div className="h-4 bg-gray-300 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-300 rounded w-full"></div>
+          <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+        </div>
+        <div className="flex items-center mt-auto">
+          <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+          <div className="space-y-1 flex-1">
+            <div className="h-4 bg-gray-300 rounded w-32"></div>
+            <div className="h-3 bg-gray-300 rounded w-20"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section className="bg-[#E7EEF9] py-16 px-4 my-5" data-aos="fade-up">
@@ -111,69 +100,91 @@ const TestimonialsSlider: React.FC = () => {
         </div>
 
         <div className="relative overflow-hidden">
-          {/* Slider Content */}
           <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{
-              transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
-            }}
+            className="flex items-stretch transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }}
           >
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.id}
-                className={`flex-shrink-0 px-4 py-5 ${
-                  visibleCards === 1
-                    ? "w-full"
-                    : visibleCards === 2
-                    ? "w-1/2"
-                    : "w-1/3"
-                }`}
-                data-aos="fade-up"
-                data-aos-delay={index * 150}
-              >
-                <div className="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow duration-300 h-full flex flex-col justify-between">
-                  <div className="flex mb-6">{renderStars(testimonial.rating)}</div>
+            {loading
+              ? Array.from({ length: visibleCards }).map((_, idx) => <SkeletonCard key={idx} />)
+              : testimonials.map((testimonial, index) => {
+                  const isExpanded = expanded[index] || false;
+                  const reviewText = testimonial.text || "";
 
-                  <p className="text-gray-400 text-base leading-relaxed mb-8 font-medium">
-                    "{testimonial.text}"
-                  </p>
+                  return (
+                    <div
+                      key={index}
+                      ref={(el) => (refs.current[index] = el)}
+                      className={`flex-shrink-0 px-4 py-5 ${visibleCards === 1 ? "w-full" : visibleCards === 2 ? "w-1/2" : "w-1/3"}`}
+                      data-aos="fade-up"
+                      data-aos-delay={index * 150}
+                    >
+                      <div className="bg-white rounded-2xl p-8 hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
+                        <div className="flex mb-6">{renderStars(testimonial.rating)}</div>
 
-                  <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 overflow-hidden relative">
-                      <Image
-                        src="/user.png"
-                        alt={testimonial.author}
-                        fill
-                        className="object-cover"
-                      />
+                        <div
+                          className="text-gray-400 text-base leading-relaxed font-medium mb-4 overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                          style={{
+                            maxHeight: isExpanded ? refs.current[index]?.scrollHeight + 30 : 100,
+                          }}
+                        >
+                          "{reviewText}"
+                        </div>
+
+                        {reviewText.length > 120 && (
+                          <div className="flex justify-end mt-2">
+                            <button
+                              onClick={() =>
+                                setExpanded((prev) => ({
+                                  ...prev,
+                                  [index]: !isExpanded,
+                                }))
+                              }
+                              className="text-blue-600 hover:text-blue-800 text-sm font-semibold transition"
+                            >
+                              {isExpanded ? "Show less" : "Read more"}
+                            </button>
+                          </div>
+                        )}
+
+                        <div className="flex items-center mt-auto">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 overflow-hidden relative">
+                            <Image
+                              src={testimonial.profile_photo_url || "/user.png"}
+                              alt={testimonial.author_name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-[#0A1B47] text-[16px]">
+                              {testimonial.author_name}
+                            </h4>
+                            <p className="text-gray-500 text-sm">Review on Google</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-[#0A1B47] text-[16px]">
-                        {testimonial.author}
-                      </h4>
-                      <p className="text-gray-500 text-sm">{testimonial.subtitle}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+                  );
+                })}
           </div>
 
-{/* Left Button */}
-<button
-  onClick={handlePrev}
-  className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
->
-  <ChevronLeft className="w-5 h-5 text-gray-800" />
-</button>
+          {!loading && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-800" />
+              </button>
 
-{/* Right Button */}
-<button
-  onClick={handleNext}
-  className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
->
-  <ChevronRight className="w-5 h-5 text-gray-800" />
-</button>
+              <button
+                onClick={handleNext}
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white w-10 h-10 flex items-center justify-center rounded-full shadow-md hover:bg-gray-100 transition z-20"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-800" />
+              </button>
+            </>
+          )}
         </div>
       </div>
     </section>
