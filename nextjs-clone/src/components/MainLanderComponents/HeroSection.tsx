@@ -26,9 +26,15 @@ const HeroSection: React.FC = () => {
     </h1>
     <h2 className="text-6xl sm:text-6xl md:text-6xl lg:text-[80px] font-bold text-gray-900 leading-tight">
       Made{" "}
-      <span className="relative">
+      <span className="relative inline-block">
         easy
-        <div className="absolute -bottom-2 left-0 right-0 h-2 bg-green-400 rounded-full transform -rotate-1"></div>
+        <Image
+          src="/vector.png"
+          alt="underline vector"
+          className="absolute -bottom-3 left-0 w-full h-5 object-contain"
+          width={300} 
+          height={20} 
+        />
       </span>
     </h2>
   </div>

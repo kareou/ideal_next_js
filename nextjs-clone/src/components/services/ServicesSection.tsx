@@ -231,7 +231,7 @@ const Services = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white text-white hover:bg-white hover:text-brand-blue py-4 px-8 rounded-full transition-all duration-300"
+                className="border-2 border-white text-brand-blue hover:bg-white hover:text-brand-blue py-4 px-8 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860
               </Button>
