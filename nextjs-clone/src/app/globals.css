@@ -94,3 +94,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+@media (max-width: 1430px) {
+  .text-110-shrink {
+    font-size: 90px!important;
+  }
+}
+@media (max-width: 1215px) {
+  .text-110-shrink {
+    font-size: 70px!important;
+  }
+}
