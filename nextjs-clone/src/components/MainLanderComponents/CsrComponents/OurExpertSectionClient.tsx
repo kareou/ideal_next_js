@@ -71,31 +71,31 @@ const ExpertTeam: React.FC = () => {
   const teamMembers = [
     {
       id: 1,
-      title: "Tax Consultants",
+      title: "Faris: CEO",
       description:
         "Our experienced tax consultants provide initial assessments and guide you through the resolution process with personalized strategies tailored to your unique situation.",
-      bgColor: "/team/test1.png",
+      bgColor: "/hq_idl/faris.png",
     },
     {
       id: 2,
-      title: "Enrolled Agents",
+      title: "Jacky: Sales operations manager",
       description:
         "IRS-licensed professionals who can represent you before the IRS. Our enrolled agents handle complex negotiations and ensure your rights are protected throughout the process.",
-      bgColor: "/team/test2.jpg",
+      bgColor: "/hq_idl/jacky.png",
     },
     {
       id: 3,
-      title: "Case Managers",
+      title: "Michelle: Servicing assistant manager",
       description:
         "Dedicated case managers keep you informed every step of the way, coordinating between different departments and ensuring your case progresses smoothly toward resolution.",
-      bgColor: "/team/test3.png",
+      bgColor: "/hq_idl/michelle.png",
     },
     {
       id: 4,
-      title: "Tax Attorneys",
+      title: `Preci: Servicing Director`,
       description:
         "Our licensed tax attorneys handle the most complex cases, including criminal tax matters, appeals, and high-stakes negotiations with federal and state tax agencies.",
-      bgColor: "/team/test4.png",
+      bgColor: "/hq_idl/preci.png",
     },
   ];
 
@@ -121,7 +121,6 @@ const ExpertTeam: React.FC = () => {
           </div>
         </div>
 
-        {/* Desktop grid >1024px */}
         <div className="hidden lg:grid grid-cols-4 gap-12">
           {teamMembers.map((member, index) => (
             <div

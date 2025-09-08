@@ -40,23 +40,33 @@ export default function OurCompanyClient() {
               </div>
 
               <div
-                className="space-y-4 text-gray-500 text-base md:text-[16px] lg:text-[18px] leading-relaxed"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <p>
-                  Idealtax is a leading tax resolution company with over 15 years of
-                  experience, specializing in helping individuals and businesses resolve
-                  tax issues with the IRS and state agencies. Known for exceptional results
-                  and customer service, the company holds an A+ rating with the Better
-                  Business Bureau and is headquartered in Orange County, California.
-                </p>
-                <p>
-                  Licensed to operate in 48 states, Ideal Tax provides nationwide service.
-                  Their mission is to make tax relief accessible, simple, and effective,
-                  alleviating the stress often associated with tax problems.
-                </p>
-              </div>
+  className="space-y-4 text-gray-500 text-base md:text-[16px] lg:text-[18px] leading-relaxed"
+  data-aos="fade-up"
+  data-aos-delay="100"
+>
+  <div className="hidden sm:block">
+    <p>
+      Idealtax is a leading tax resolution company with over 15 years of
+      experience, specializing in helping individuals and businesses resolve
+      tax issues with the IRS and state agencies. Known for exceptional results
+      and customer service, the company holds an A+ rating with the Better
+      Business Bureau and is headquartered in Orange County, California.
+    </p>
+    <p>
+      Licensed to operate in 48 states, Ideal Tax provides nationwide service.
+      Their mission is to make tax relief accessible, simple, and effective,
+      alleviating the stress often associated with tax problems.
+    </p>
+  </div>
+
+  <div className="block sm:hidden">
+    <p>
+      Idealtax is a leading tax resolution company with over 15 years of
+      experience, helping individuals and businesses resolve tax issues.
+    </p>
+  </div>
+</div>
+
 
               <div className="pt-4" data-aos="fade-up" data-aos-delay="200">
                 <Link
