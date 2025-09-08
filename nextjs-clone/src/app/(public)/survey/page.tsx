@@ -9,12 +9,11 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-[100%]">
       {/* Left side - Image/Content */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-brand-blue via-brand-blue to-brand-teal relative overflow-hidden">
+      {/* <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-brand-blue via-brand-blue to-brand-teal relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
 
-        {/* Decorative elements */}
         <div className="absolute top-20 right-20 w-64 h-64 bg-brand-teal rounded-full opacity-20"></div>
         <div className="absolute bottom-20 left-20 w-32 h-32 bg-mint-400 rounded-full opacity-30"></div>
 
@@ -42,10 +41,10 @@ function page() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Right side - Form */}
-      <div className="w-full lg:w-1/2 bg-white">
+      <div className="w-full lg:w-1/1 bg-white">
         <SurveyForm />
       </div>
     </div>
