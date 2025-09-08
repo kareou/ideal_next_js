@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
         <Navbar />
 
         <div className="py-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-7 items-center">
             <div className="space-y-6 md:space-y-8 flex flex-col items-center text-center md:items-start md:text-left md:ml-[60px]">
 
               {/* Headlines */}
@@ -64,7 +64,7 @@ const HeroSection: React.FC = () => {
               </Link>
 
               {/* Avatars */}
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center hidden space-x-4 lg:flex">
                 <div className="flex -space-x-2">
                   {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
                     <div
@@ -106,9 +106,33 @@ const HeroSection: React.FC = () => {
                 alt="Laptop"
                 width={791}      
                 height={400}     
-                className="object-contain mb-[-160px]"
+                className="object-contain"
               />  
             </div>
+            
+
+             <div className="flex items-center space-x-4 lg:hidden">
+                <div className="flex -space-x-2">
+                  {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
+                    <div
+                      key={i}
+                      className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative ${
+                        i === 0 ? "bg-blue-400" :
+                        i === 1 ? "bg-green-400" :
+                        i === 2 ? "bg-purple-400" : "bg-red-400"
+                      }`}
+                    >
+                      <Image src={`/${src}`} alt={`Avatar ${i + 1}`} fill className="object-cover" />
+                    </div>
+                  ))}
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#e6eefd] rounded-full border-2 border-white flex items-center justify-center">
+                    <span className="text-xs font-bold text-gray-800">+10k</span>
+                  </div>
+                </div>
+                <span className="text-[#1C1F21] font-medium text-sm sm:text-base">
+                  Join more than 10,000 happy clients
+                </span>
+              </div>
 
           </div>
         </div> 

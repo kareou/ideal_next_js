@@ -106,3 +106,8 @@
     font-size: 70px!important;
   }
 }
+@media (max-width: 400px) {
+  .text-110-shrink {
+    font-size: 60px!important;
+  }
+}

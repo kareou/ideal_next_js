@@ -50,10 +50,10 @@ const OurProcessSectionClient: React.FC = () => {
   ];
 
   return (
-<div className="main_con_pr w-full flex justify-center flex-col min-h-[65vh] items-center space-y-10 mt-[160px] mb-[30px] lg:mt-0">
+<div className="main_con_pr w-full flex justify-center flex-col min-h-[65vh] items-center space-y-10 mt-[50px] lg:mt-[0px] mb-[80px]">
      <motion.div
   key={Math.random()} 
-  className="first_line_container w-[90%] text-center"
+  className="first_line_container w-[90%]"
   initial={{ opacity: 0, y: 15 }}
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: false, amount: 0.3 }}
