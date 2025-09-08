@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import MobileBadgeSlider from "./MobileSliderWrapperr";
 
 export default function OurCompanyClient() {
   useEffect(() => {
@@ -81,15 +82,15 @@ export default function OurCompanyClient() {
             </div>
           </div>
 
-          <div className="mt-16 flex flex-col lg:flex-row items-center lg:items-stretch gap-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
-              {badges.map((badge, i) => (
-                <div
-                  key={i}
-                  className="relative rounded-xl border border-gray-200 p-6 text-center hover:shadow-lg transition-shadow duration-200 flex flex-col  justify-center items-center"
-                  data-aos="zoom-in"
-                  data-aos-delay={i * 100}
-                >
+          <div className="mt-16 flex flex-col  lg:flex-row items-center lg:items-stretch gap-12">
+            <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 gap-6 flex-1">
+  {badges.map((badge, i) => (
+    <div
+      key={i}
+      className="relative rounded-xl border border-gray-200 p-6 text-center hover:shadow-lg transition-shadow duration-200 flex flex-col justify-center items-center"
+      data-aos="zoom-in"
+      data-aos-delay={i * 100}
+    >
                   <div className="absolute inset-0 rounded-xl -z-10 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[length:20px_20px]" />
                   <div className="flex justify-center items-center mb-4">
                     <Image
@@ -108,8 +109,11 @@ export default function OurCompanyClient() {
             </div>
 
 
+                <MobileBadgeSlider badges={badges} />
+
+
             <div
-              className="flex-1 flex justify-center lg:justify-end items-center relative"
+              className="flex-1 flex w-[90%] justify-center lg:justify-end items-center relative"
               data-aos="fade-left"
               data-aos-delay="300"
             >
