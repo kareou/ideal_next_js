@@ -71,30 +71,30 @@ const ExpertTeam: React.FC = () => {
   const teamMembers = [
     {
       id: 1,
-      title: "Faris: CEO",
+      title: "Faris Khatib - CEO",
       description:
-        "Our experienced tax consultants provide initial assessments and guide you through the resolution process with personalized strategies tailored to your unique situation.",
+        "Faris sets vision and pace for growth, aligning teams around clear goals. He mentors leaders, refines strategy, and champions a culture of ownership, clarity, and care.",
       bgColor: "/hq_idl/faris.png",
     },
     {
       id: 2,
-      title: "Jacky: Sales operations manager",
+      title: "Jacky - Sales operations manager",
       description:
-        "IRS-licensed professionals who can represent you before the IRS. Our enrolled agents handle complex negotiations and ensure your rights are protected throughout the process.",
+        "Jacky turns pipeline chaos into flow, mapping processes, tooling the CRM, and coaching reps. She forecasts reliably and unlocks repeatable revenues with crisp handoffs.",
       bgColor: "/hq_idl/jacky.png",
     },
     {
       id: 3,
-      title: "Michelle: Servicing assistant manager",
+      title: "Michelle - Servicing assistant manager",
       description:
-        "Dedicated case managers keep you informed every step of the way, coordinating between different departments and ensuring your case progresses smoothly toward resolution.",
+        "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard and helped.",
       bgColor: "/hq_idl/michelle.png",
     },
     {
       id: 4,
-      title: `Preci: Servicing Director`,
+      title: `Preci - Servicing Director`,
       description:
-        "Our licensed tax attorneys handle the most complex cases, including criminal tax matters, appeals, and high-stakes negotiations with federal and state tax agencies.",
+        "Preci directs servicing at scale, defining standards, improving workflows, and raising quality bars. She tackles tough escalations and turns insight into lasting fixes.",
       bgColor: "/hq_idl/preci.png",
     },
   ];
