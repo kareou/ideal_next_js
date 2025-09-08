@@ -5,7 +5,6 @@ import Navbar from "./Navbar";
 import { ArrowRight } from "lucide-react";
 import { Inter } from "next/font/google";
 
-// Import Inter font
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const HeroSection: React.FC = () => {
@@ -24,7 +23,6 @@ const HeroSection: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-7 items-center">
             <div className="space-y-6 md:space-y-8 flex flex-col items-center text-center md:items-start md:text-left md:ml-[60px]">
 
-              {/* Headlines */}
               <div>
                 <h1 className="text-[6xl] sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-bold text-gray-900 leading-tight">
                   Tax Relief
@@ -44,17 +42,16 @@ const HeroSection: React.FC = () => {
                 </h2>
               </div>
 
-              {/* Description */}
-              <div className="space-y-1 text-sm sm:text-[14px] text-gray-600 max-w-xl">
+              <div className="space-y-1 text-sm sm:text-[14px] text-gray-600 max-w-xl ">
                 <p>
                   Unlock the potential of professional tax resolution for your financial future.
                 </p>
-                <p>
+                <p className="hidden sm:block">
                   Transform your tax problems, eliminate debt stress, and drive financial freedom.
                 </p>
               </div>
 
-              {/* Call to Action */}
+
               <Link
                 href="/survey"
                 className="inline-flex items-center space-x-2 bg-[#3059E4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-blue-700 transition-colors group shadow-md"
