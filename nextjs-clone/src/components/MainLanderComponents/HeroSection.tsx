@@ -101,7 +101,7 @@ const HeroSection: React.FC = () => {
               <Image
                 src="/mcbookmobile.png"
                 alt="Laptop"
-                width={791}      
+                width={500}      
                 height={400}     
                 className="object-contain"
               />  
