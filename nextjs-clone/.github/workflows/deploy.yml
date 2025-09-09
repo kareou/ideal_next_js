@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-name: Deploy ideal_next_js (subfolder) to EC2 via SSM
+name: Deploy ideal_next_js
 
 on:
   push:
