@@ -1,0 +1,113 @@
+# .github/workflows/deploy.yml
+name: Deploy ideal_next_js (subfolder) to EC2 via SSM
+
+on:
+  push:
+    branches: [ new-ver ]   # deploy when you push to this branch
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  AWS_REGION: eu-north-1
+  ROLE_ARN: arn:aws:iam::551829622535:role/GitHubActionsDeployRole
+  SUBDIR: nextjs-clone            # <— your app lives here
+  APP_NAME: ideal_next_js         # pm2 app name
+  DEPLOY_TAG_KEY: Deploy
+  DEPLOY_TAG_VAL: Yes
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # (Optional) CI build/lint that runs inside the subfolder
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ${{ env.SUBDIR }}/package-lock.json
+
+      - name: Install & build in subfolder (optional)
+        working-directory: ${{ env.SUBDIR }}
+        run: |
+          npm ci
+          npm run build
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Run the deploy script on EC2 via SSM.
+      # This clones/updates the repo, then installs/builds/starts from the SUBDIR.
+      - name: Deploy on EC2 via SSM
+        run: |
+          CMD=$(cat <<'EOF'
+          set -e
+
+          # --- Settings (keep in sync with workflow env) ---
+          REPO_URL="https://github.com/kareou/ideal_next_js"
+          BRANCH="new-ver"
+          SUBDIR="nextjs-clone"
+          APP_NAME="ideal_next_js"
+          APP_ROOT="/srv/ideal_next_js"     # where code will live on the instance
+          PORT="${PORT:-3000}"              # change if you need another port
+
+          # --- Prepare host ---
+          sudo mkdir -p "$APP_ROOT"
+          cd "$APP_ROOT"
+
+          # git & curl (Amazon Linux example; Ubuntu uses apt)
+          if command -v yum >/dev/null 2>&1; then
+            sudo yum -y install git curl || true
+          elif command -v apt-get >/dev/null 2>&1; then
+            sudo apt-get update -y || true
+            sudo apt-get install -y git curl || true
+          fi
+
+          # First clone if missing
+          if [ ! -d .git ]; then
+            git clone "$REPO_URL" .
+          fi
+
+          git fetch --all
+          git checkout "$BRANCH"
+          git reset --hard "origin/$BRANCH"
+
+          # Node.js (install if missing)
+          if ! command -v node >/dev/null 2>&1; then
+            if command -v yum >/dev/null 2>&1; then
+              curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo -E bash -
+              sudo yum -y install nodejs
+            elif command -v apt-get >/dev/null 2>&1; then
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+          fi
+
+          # --- App install/build from the SUBDIR ---
+          cd "$APP_ROOT/$SUBDIR"
+          # If you need env vars (DATABASE_URL, etc.), write them to .env here
+          # echo "DATABASE_URL=..." | sudo tee -a .env
+
+          npm ci
+          # Prisma (optional): uncomment if you use it
+          # npx prisma generate
+          # npx prisma migrate deploy
+          npm run build
+
+          # --- Start/restart with pm2 from inside SUBDIR ---
+          if ! command -v pm2 >/dev/null 2>&1; then
+            sudo npm i -g pm2
+          fi
+
+          # Ensure the app listens on 0.0.0.0 if behind ALB/SG
+          export PORT
+          pm2 describe "$APP_NAME" >/dev/null 2>&1 \
+            && pm2 restart "$APP_NAME" \
+            || pm2 start npm --
