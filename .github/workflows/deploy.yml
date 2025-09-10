@@ -32,11 +32,11 @@ jobs:
           cache: npm
           cache-dependency-path: ${{ env.SUBDIR }}/package-lock.json
 
-      - name: Install & build in subfolder (optional)
-        working-directory: ${{ env.SUBDIR }}
-        run: |
-          npm ci
-          npm run build
+      # - name: Install & build in subfolder (optional)
+      #   working-directory: ${{ env.SUBDIR }}
+      #   run: |
+      #     npm ci
+      #     npm run build
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -110,9 +110,16 @@ jobs:
           sudo systemctl status "${SERVICE_NAME}" --no-pager
           BASH
           )
-
-          aws ssm send-command \
-          --document-name "AWS-RunShellScript" \
-          --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
-          --comment "Deploy ${APP_NAME}" \
-          --parameters "commands=[$CMD_JSON]"
+          echo "REGION=$AWS_REGION"
+          echo "DEPLOY_TAG_KEY=$DEPLOY_TAG_KEY"
+          echo "DEPLOY_TAG_VAL=$DEPLOY_TAG_VAL"
+          aws ssm describe-instance-information \
+          --region "$AWS_REGION" \
+          --filters Key=Tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL} \
+          --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
+          --output table || true
+          # aws ssm send-command \
+          # --document-name "AWS-RunShellScript" \
+          # --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
+          # --comment "Deploy ${APP_NAME}" \
+          # --parameters "commands=[$CMD_JSON]"
