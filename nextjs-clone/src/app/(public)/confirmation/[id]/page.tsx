@@ -11,8 +11,9 @@ export const metadata: Metadata = {
   title: "Confirmation Page | Ideal Tax",
 };
 
-async function page({ params }: { params: { id: string } }) {
-  const { id } = params;
+async function page({ params }: { params: Promise<{ id: string }> }): Promise<any>  {
+  const resolvedParams = await params;
+  const { id } = resolvedParams;
   let response = null;
   try {
     response = await axios.get(

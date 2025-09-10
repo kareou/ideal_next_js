@@ -4,9 +4,10 @@ import { ArrowLeft, User, Calendar } from "lucide-react";
 import axios from "axios";
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${params.id}`);
+    const resolvedParams = await params;
+    const response = await axios.get(`http://localhost:3000/api/blogs/${resolvedParams.id}`);
     const blogPost = response.data;
 
 
@@ -29,11 +30,12 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   }
 }
 
-async function page({ params }: { params: { id: string } }) {
+async function page({ params }: { params: Promise<{ id: string }> }): Promise<any> {
   let blogPost = null;
   try {
+    const resolvedParams = await params;
     const response = await axios.get(
-      `http://localhost:3000/api/blogs/${params.id}`
+      `http://localhost:3000/api/blogs/${resolvedParams.id}`
     );
     if (response.status !== 200) {
       throw new Error("Failed to fetch blog post");
@@ -41,7 +43,7 @@ async function page({ params }: { params: { id: string } }) {
     console.log("Blog post fetched successfully:", response.data);
     blogPost = response.data;
   } catch (error) {
-    console.error("Error fetching blog post:", error.message);
+    console.error("Error fetching blog post:", error instanceof Error ? error.message : String(error));
   }
 
   return (

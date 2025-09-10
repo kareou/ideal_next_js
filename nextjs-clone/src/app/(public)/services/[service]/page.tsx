@@ -51,8 +51,8 @@ function ServiceError() {
 export default async function ServiceDetailPage({
   params,
 }: {
-  params: { service: string };
-}) {
+  params: Promise<{ service: string }>;
+}): Promise<any>  {
   // Await params
   const { service } = await params;
 
