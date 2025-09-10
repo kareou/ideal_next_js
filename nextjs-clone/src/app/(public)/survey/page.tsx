@@ -1,11 +1,29 @@
 import React from "react";
 import SurveyForm from "@/pages/forms/SurveyForm";
 import { Metadata } from "next";
+import { Suspense } from 'react';
+
 
 export const metadata: Metadata = {
   title: "Solve Your IRS Tax Problems",
 
 };
+
+
+function SurveyLoading() {
+  return (
+    <div className="p-8 lg:p-12 h-full flex flex-col justify-center">
+      <div className="max-w-2xl mx-auto w-full">
+        <div className="animate-pulse">
+          <div className="h-4 bg-gray-200 rounded mb-6"></div>
+          <div className="h-8 bg-gray-200 rounded mb-4"></div>
+          <div className="h-32 bg-gray-200 rounded"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 
 function page() {
   return (
@@ -45,8 +63,10 @@ function page() {
 
       {/* Right side - Form */}
       <div className="w-full lg:w-1/1 bg-white">
-        <SurveyForm />
-      </div>
+   <Suspense fallback={<SurveyLoading />}>
+
+             <SurveyForm />
+          </Suspense>      </div>
     </div>
   );
 }
