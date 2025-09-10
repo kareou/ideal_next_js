@@ -115,7 +115,7 @@ jobs:
           echo "DEPLOY_TAG_VAL=$DEPLOY_TAG_VAL"
           aws ssm describe-instance-information \
           --region "$AWS_REGION" \
-          --filters "Name=tag:Deploy,Values=Yes" \
+          --filters "Name=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
           --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
           --output table || true
           # aws ssm send-command \
