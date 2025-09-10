@@ -1,10 +1,9 @@
 # .github/workflows/deploy.yml
-# Fix deploy IAM policy v1 TEST
 name: Deploy ideal_next_js
 
 on:
   push:
-    branches: [ new-ver ]   # deploy when you push to this branch
+    branches: [ new-ver ]
 
 permissions:
   id-token: write
@@ -13,30 +12,17 @@ permissions:
 env:
   AWS_REGION: eu-north-1
   ROLE_ARN: arn:aws:iam::551829622535:role/githubrepoIdealtax
-  SUBDIR: nextjs-clone            # <— your app lives here
-  APP_NAME: ideal_next_js         # pm2 app name
+  SUBDIR: nextjs-clone
+  APP_NAME: ideal_next_js
   DEPLOY_TAG_KEY: Deploy
   DEPLOY_TAG_VAL: Yes
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
-
-      # (Optional) CI build/lint that runs inside the subfolder
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: ${{ env.SUBDIR }}/package-lock.json
-
-      # - name: Install & build in subfolder (optional)
-      #   working-directory: ${{ env.SUBDIR }}
-      #   run: |
-      #     npm ci
-      #     npm run build
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
@@ -44,10 +30,57 @@ jobs:
           role-to-assume: ${{ env.ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
-      # Run the deploy script on EC2 via SSM.
-      # This clones/updates the repo, then installs/builds/starts from the SUBDIR.
-      - name: Deploy on EC2 via SSM
+      # Find EC2 instances with Deploy=Yes and confirm SSM sees them
+      - name: Discover instance(s) by tag and confirm SSM
+        id: discover
         run: |
+          set -euo pipefail
+          echo "Region: ${AWS_REGION}"
+          echo "Tag: ${DEPLOY_TAG_KEY}=${DEPLOY_TAG_VAL}"
+
+          IDS=$(aws ec2 describe-instances \
+            --region "${AWS_REGION}" \
+            --filters "Name=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" "Name=instance-state-name,Values=running" \
+            --query 'Reservations[].Instances[].InstanceId' \
+            --output text)
+
+          echo "EC2 IDs: ${IDS:-<none>}"
+
+          if [ -n "${IDS}" ]; then
+            echo "SSM-managed nodes among those IDs:"
+            aws ssm describe-instance-information \
+              --region "${AWS_REGION}" \
+              --filters "Key=InstanceIds,Values=${IDS}" \
+              --query 'InstanceInformationList[].{Id:InstanceId,Ping:PingStatus,Tags:Tags}' \
+              --output table
+            # Keep only SSM-managed IDs (Ping online/offline both okay for targeting)
+            SSM_IDS=$(aws ssm describe-instance-information \
+              --region "${AWS_REGION}" \
+              --filters "Key=InstanceIds,Values=${IDS}" \
+              --query 'InstanceInformationList[].InstanceId' \
+              --output text)
+          else
+            SSM_IDS=""
+          fi
+
+          echo "SSM IDs: ${SSM_IDS:-<none>}"
+          echo "ids=${SSM_IDS}" >> "$GITHUB_OUTPUT"
+
+          if [ -z "${SSM_IDS}" ]; then
+            echo "::error::No SSM-managed instances found for tag ${DEPLOY_TAG_KEY}=${DEPLOY_TAG_VAL} in ${AWS_REGION}."
+            exit 1
+          fi
+
+      # Send the deploy script to those instances via SSM
+      - name: Send SSM deploy command
+        id: send_cmd
+        env:
+          INST_IDS: ${{ steps.discover.outputs.ids }}
+        run: |
+          set -euo pipefail
+          echo "Target instance IDs: ${INST_IDS}"
+
+          # Build the remote script as JSON (safe quoting)
           CMD_JSON=$(jq -Rs . <<'BASH'
           set -euo pipefail
 
@@ -57,8 +90,6 @@ jobs:
           APP_ROOT="/srv/ideal_next_js"
           SERVICE_NAME="ideal_next_js"
           PORT="${PORT:-3000}"
-
-          # Use ubuntu user for EC2 instances
           APP_USER="ubuntu"
 
           sudo mkdir -p "$APP_ROOT"
@@ -82,7 +113,11 @@ jobs:
           sudo -u "$APP_USER" npm ci
           sudo -u "$APP_USER" npm run build
 
-          # Setup systemd service
+          # (Optional) Prisma
+          # sudo -u "$APP_USER" npx prisma generate || true
+          # sudo -u "$APP_USER" npx prisma migrate deploy || true
+
+          # Create/refresh systemd unit
           SERVICE_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
           sudo tee "$SERVICE_PATH" >/dev/null <<EOF
           [Unit]
@@ -110,61 +145,71 @@ jobs:
           sudo systemctl status "${SERVICE_NAME}" --no-pager
           BASH
           )
-          echo "REGION=$AWS_REGION"
-          echo "DEPLOY_TAG_KEY=$DEPLOY_TAG_KEY"
-          echo "DEPLOY_TAG_VAL=$DEPLOY_TAG_VAL"
-          IDS=$(aws ec2 describe-instances \
-            --region eu-north-1 \
-            --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
-            --query 'Reservations[].Instances[].InstanceId' --output text)
 
-          echo "EC2 instances with Deploy=Yes: ${IDS:-<none>}"
-          aws ssm describe-instance-information \
-          --region eu-north-1 \
-          --filters "Key=InstanceIds,Values=${IDS}" \
-          --query 'InstanceInformationList[].{Id:InstanceId,Ping:PingStatus,Tags:Tags}' \
-          --output table
-
-
-          # aws ec2 describe-instances \
-          # --region "$AWS_REGION" \
-          # --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
-          # --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
-          # --output table || true
+          # Send the command and expose CommandId
           CMD_ID=$(aws ssm send-command \
-          --region "$AWS_REGION" \
-          --document-name "AWS-RunShellScript" \
-          --instance-ids i-0674940c6eed5f203 \
-          --comment "Deploy ${APP_NAME}" \
-          --parameters "commands=[$CMD_JSON]" \
-          --query 'Command.CommandId' \
-          --output text)
+            --region "${AWS_REGION}" \
+            --document-name "AWS-RunShellScript" \
+            --instance-ids ${INST_IDS} \
+            --comment "Deploy ${APP_NAME}" \
+            --parameters "commands=[$CMD_JSON]" \
+            --query Command.CommandId --output text)
+
+          echo "CommandId: $CMD_ID"
+          echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
+
+      # Robust waiter: prints stdout/stderr and fails on non-success
       - name: Wait for SSM command to complete & print output
         env:
           REGION: ${{ env.AWS_REGION }}
-          INST_ID: i-0674940c6eed5f203
+          INST_IDS: ${{ steps.discover.outputs.ids }}
           CMD_ID: ${{ steps.send_cmd.outputs.command_id }}
         run: |
-            # If you didn't expose command_id, you can parse it out of the JSON your step prints.
-            # Poll
-            while true; do
-              STATUS=$(aws ssm get-command-invocation \
-                --region "$REGION" \
-                --command-id "$CMD_ID" \
-                --instance-id "$INST_ID" \
-                --query 'Status' --output text 2>/dev/null || echo "Pending")
-              echo "Status: $STATUS"
-              case "$STATUS" in
-                Success|Failed|Cancelled|TimedOut) break ;;
-              esac
-              sleep 5
-            done
+          set -euo pipefail
+          echo "CMD_ID=${CMD_ID}"
+          echo "INST_IDS=${INST_IDS}"
 
-            aws ssm get-command-invocation \
+          # Only handle the first instance id for output (extend to loop if you target many)
+          INST_ID=$(echo "${INST_IDS}" | awk '{print $1}')
+          echo "Inspecting instance: ${INST_ID}"
+
+          sleep 5
+
+          for i in $(seq 1 120); do
+            OUT=$(aws ssm get-command-invocation \
               --region "$REGION" \
               --command-id "$CMD_ID" \
-              --instance-id "$INST_ID" \
-              --query '{Status:Status,StdOut:StandardOutputContent,StdErr:StandardErrorContent}' \
-              --output table
+              --instance-id "$INST_ID" 2>&1 || true)
 
+            if echo "$OUT" | grep -q 'InvocationDoesNotExist'; then
+              echo "Status: not-ready (InvocationDoesNotExist)"
+              sleep 5
+              continue
+            fi
+
+            STATUS=$(echo "$OUT" | jq -r '.Status // empty')
+            if [ -z "$STATUS" ]; then
+              echo "Raw response:"
+              echo "$OUT"
+              sleep 5
+              continue
+            fi
+
+            echo "Status: $STATUS"
+            if [ "$STATUS" = "Pending" ] || [ "$STATUS" = "InProgress" ]; then
+              sleep 5
+              continue
+            fi
+
+            # Terminal state: print outputs
+            echo "$OUT" | jq '{Status, StandardOutputContent, StandardErrorContent}'
             test "$STATUS" = "Success"
+            exit 0
+          done
+
+          echo "::error::Timed out waiting for SSM command to complete."
+          echo "Command summary:"
+          aws ssm list-commands --region "$REGION" --command-id "$CMD_ID" --output table || true
+          echo "Invocations:"
+          aws ssm list-command-invocations --region "$REGION" --command-id "$CMD_ID" --details --output table || true
+          exit 1
