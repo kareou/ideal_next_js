@@ -165,7 +165,7 @@ jobs:
           INST_IDS: ${{ steps.discover.outputs.ids }}
           CMD_ID: ${{ steps.send_cmd.outputs.command_id }}
         run: |
-          set -euo pipefail
+          set -Eeuo pipefail
           echo "CMD_ID=${CMD_ID}"
           echo "INST_IDS=${INST_IDS}"
 
