@@ -74,15 +74,16 @@ jobs:
       # Send the deploy script to those instances via SSM
       - name: Send SSM deploy command
         id: send_cmd
-        env:
-          INST_IDS: ${{ steps.discover.outputs.ids }}
+        env: 
+        INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
           echo "Target instance IDs: ${INST_IDS}"
 
           # Build the remote script as JSON (safe quoting)
           CMD_JSON=$(jq -Rs . <<'BASH'
-          set -euo pipefail
+          #!/usr/bin/env bash
+          set -Eeuo pipefail
 
           REPO_URL="https://github.com/kareou/ideal_next_js"
           BRANCH="new-ver"
@@ -102,7 +103,9 @@ jobs:
           sudo apt-get install -y nodejs git
 
           # Checkout/update code
-          if [ ! -d .git ]; then sudo -u "$APP_USER" git clone "$REPO_URL" .; fi
+          if [ ! -d .git ]; then
+            sudo -u "$APP_USER" git clone "$REPO_URL" .
+          fi
           sudo -u "$APP_USER" git fetch --all
           sudo -u "$APP_USER" git checkout "$BRANCH"
           sudo -u "$APP_USER" git reset --hard "origin/$BRANCH"
@@ -146,14 +149,13 @@ jobs:
           BASH
           )
 
-          # Send the command and expose CommandId
           CMD_ID=$(aws ssm send-command \
-            --region "${AWS_REGION}" \
-            --document-name "AWS-RunShellScript" \
-            --instance-ids ${INST_IDS} \
-            --comment "Deploy ${APP_NAME}" \
-            --parameters "commands=[$CMD_JSON]" \
-            --query Command.CommandId --output text)
+              --region "${AWS_REGION}" \
+              --document-name "AWS-RunShellScript" \
+              --instance-ids ${INST_IDS} \
+              --comment "Deploy ${APP_NAME}" \
+              --parameters "commands=[$CMD_JSON]" \
+              --query Command.CommandId --output text)
 
           echo "CommandId: $CMD_ID"
           echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
