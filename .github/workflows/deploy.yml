@@ -132,7 +132,8 @@ jobs:
           # --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
           # --output table || true
           aws ssm send-command \
+          --region "$AWS_REGION" \
           --document-name "AWS-RunShellScript" \
-          --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
+          --instance-ids i-0674940c6eed5f203 \
           --comment "Deploy ${APP_NAME}" \
           --parameters "commands=[$CMD_JSON]"
