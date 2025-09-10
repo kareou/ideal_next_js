@@ -133,6 +133,6 @@ jobs:
           # --output table || true
           aws ssm send-command \
           --document-name "AWS-RunShellScript" \
-          --targets "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
+          --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
           --comment "Deploy ${APP_NAME}" \
           --parameters "commands=[$CMD_JSON]"
