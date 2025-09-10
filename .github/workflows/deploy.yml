@@ -75,7 +75,7 @@ jobs:
       - name: Send SSM deploy command
         id: send_cmd
         env: 
-        INST_IDS: ${{ steps.discover.outputs.ids }}
+          INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
           echo "Target instance IDs: ${INST_IDS}"
