@@ -47,67 +47,71 @@ jobs:
       # This clones/updates the repo, then installs/builds/starts from the SUBDIR.
       - name: Deploy on EC2 via SSM
         run: |
-          CMD=$(cat <<'EOF'
-          set -e
+          CMD_JSON=$(jq -Rs . <<'BASH'
+          set -euo pipefail
 
-          # --- Settings (keep in sync with workflow env) ---
           REPO_URL="https://github.com/kareou/ideal_next_js"
           BRANCH="new-ver"
           SUBDIR="nextjs-clone"
-          APP_NAME="ideal_next_js"
-          APP_ROOT="/srv/ideal_next_js"     # where code will live on the instance
-          PORT="${PORT:-3000}"              # change if you need another port
+          APP_ROOT="/srv/ideal_next_js"
+          SERVICE_NAME="ideal_next_js"
+          PORT="${PORT:-3000}"
 
-          # --- Prepare host ---
+          # Use ubuntu user for EC2 instances
+          APP_USER="ubuntu"
+
           sudo mkdir -p "$APP_ROOT"
+          sudo chown -R "$APP_USER":"$APP_USER" "$APP_ROOT"
           cd "$APP_ROOT"
 
-          # git & curl (Amazon Linux example; Ubuntu uses apt)
-          if command -v yum >/dev/null 2>&1; then
-            sudo yum -y install git curl || true
-          elif command -v apt-get >/dev/null 2>&1; then
-            sudo apt-get update -y || true
-            sudo apt-get install -y git curl || true
-          fi
+          # Install Node.js and Git
+          curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+          sudo apt-get update
+          sudo apt-get install -y nodejs git
 
-          # First clone if missing
-          if [ ! -d .git ]; then
-            git clone "$REPO_URL" .
-          fi
+          # Checkout/update code
+          if [ ! -d .git ]; then sudo -u "$APP_USER" git clone "$REPO_URL" .; fi
+          sudo -u "$APP_USER" git fetch --all
+          sudo -u "$APP_USER" git checkout "$BRANCH"
+          sudo -u "$APP_USER" git reset --hard "origin/$BRANCH"
 
-          git fetch --all
-          git checkout "$BRANCH"
-          git reset --hard "origin/$BRANCH"
-
-          # Node.js (install if missing)
-          if ! command -v node >/dev/null 2>&1; then
-            if command -v yum >/dev/null 2>&1; then
-              curl -fsSL https://rpm.nodesource.com/setup_20.x | sudo -E bash -
-              sudo yum -y install nodejs
-            elif command -v apt-get >/dev/null 2>&1; then
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-              sudo apt-get install -y nodejs
-            fi
-          fi
-
-          # --- App install/build from the SUBDIR ---
           cd "$APP_ROOT/$SUBDIR"
-          # If you need env vars (DATABASE_URL, etc.), write them to .env here
-          # echo "DATABASE_URL=..." | sudo tee -a .env
 
-          npm ci
-          # Prisma (optional): uncomment if you use it
-          # npx prisma generate
-          # npx prisma migrate deploy
-          npm run build
+          # Install dependencies and build
+          sudo -u "$APP_USER" npm ci
+          sudo -u "$APP_USER" npm run build
 
-          # --- Start/restart with pm2 from inside SUBDIR ---
-          if ! command -v pm2 >/dev/null 2>&1; then
-            sudo npm i -g pm2
-          fi
+          # Setup systemd service
+          SERVICE_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
+          sudo tee "$SERVICE_PATH" >/dev/null <<EOF
+          [Unit]
+          Description=${SERVICE_NAME} Next.js service
+          After=network.target
 
-          # Ensure the app listens on 0.0.0.0 if behind ALB/SG
-          export PORT
-          pm2 describe "$APP_NAME" >/dev/null 2>&1 \
-            && pm2 restart "$APP_NAME" \
-            || pm2 start npm --
+          [Service]
+          Type=simple
+          User=${APP_USER}
+          WorkingDirectory=${APP_ROOT}/${SUBDIR}
+          Environment=NODE_ENV=production
+          Environment=PORT=${PORT}
+          Environment=PATH=/usr/local/bin:/usr/bin:/bin
+          ExecStart=/usr/bin/npm run start
+          Restart=always
+          RestartSec=5
+
+          [Install]
+          WantedBy=multi-user.target
+          EOF
+
+          sudo systemctl daemon-reload
+          sudo systemctl enable "${SERVICE_NAME}"
+          sudo systemctl restart "${SERVICE_NAME}"
+          sudo systemctl status "${SERVICE_NAME}" --no-pager
+          BASH
+          )
+
+          aws ssm send-command \
+        --document-name "AWS-RunShellScript" \
+        --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
+        --comment "Deploy ${APP_NAME}" \
+        --parameters "commands=[$CMD_JSON]"
