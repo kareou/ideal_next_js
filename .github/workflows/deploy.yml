@@ -113,11 +113,17 @@ jobs:
           echo "REGION=$AWS_REGION"
           echo "DEPLOY_TAG_KEY=$DEPLOY_TAG_KEY"
           echo "DEPLOY_TAG_VAL=$DEPLOY_TAG_VAL"
-          aws ssm describe-instances \
-          --region "$AWS_REGION" \
+          aws ec2 describe-instances \
+          --region eu-north-1 \
           --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
-          --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
-          --output table || true
+          --query 'Reservations[].Instances[].InstanceId' \
+          --output text
+
+          # aws ec2 describe-instances \
+          # --region "$AWS_REGION" \
+          # --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
+          # --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
+          # --output table || true
           # aws ssm send-command \
           # --document-name "AWS-RunShellScript" \
           # --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
