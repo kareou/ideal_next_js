@@ -136,8 +136,8 @@ jobs:
           --document-name "AWS-RunShellScript" \
           --instance-ids i-0674940c6eed5f203 \
           --comment "Deploy ${APP_NAME}" \
-          --parameters "commands=[$CMD_JSON]"\
-          --query 'Command.CommandId'\
+          --parameters "commands=[$CMD_JSON]" \
+          --query 'Command.CommandId' \
           --output text)
       - name: Wait for SSM command to complete & print output
         env:
