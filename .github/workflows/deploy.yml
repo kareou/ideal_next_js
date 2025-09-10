@@ -131,9 +131,40 @@ jobs:
           # --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
           # --query 'InstanceInformationList[].{Id:InstanceId,Tags:Tags}' \
           # --output table || true
-          aws ssm send-command \
+          CMD_ID=$(aws ssm send-command \
           --region "$AWS_REGION" \
           --document-name "AWS-RunShellScript" \
           --instance-ids i-0674940c6eed5f203 \
           --comment "Deploy ${APP_NAME}" \
-          --parameters "commands=[$CMD_JSON]"
+          --parameters "commands=[$CMD_JSON]"\
+          --query 'Command.CommandId'\
+          --output text)
+      - name: Wait for SSM command to complete & print output
+        env:
+          REGION: ${{ env.AWS_REGION }}
+          INST_ID: i-0674940c6eed5f203
+          CMD_ID: ${{ steps.send_cmd.outputs.command_id }}
+        run: |
+            # If you didn't expose command_id, you can parse it out of the JSON your step prints.
+            # Poll
+            while true; do
+              STATUS=$(aws ssm get-command-invocation \
+                --region "$REGION" \
+                --command-id "$CMD_ID" \
+                --instance-id "$INST_ID" \
+                --query 'Status' --output text 2>/dev/null || echo "Pending")
+              echo "Status: $STATUS"
+              case "$STATUS" in
+                Success|Failed|Cancelled|TimedOut) break ;;
+              esac
+              sleep 5
+            done
+
+            aws ssm get-command-invocation \
+              --region "$REGION" \
+              --command-id "$CMD_ID" \
+              --instance-id "$INST_ID" \
+              --query '{Status:Status,StdOut:StandardOutputContent,StdErr:StandardErrorContent}' \
+              --output table
+
+            test "$STATUS" = "Success"
