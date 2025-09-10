@@ -177,7 +177,7 @@ jobs:
 
           sleep 5
 
-          for i in $(seq 1 120); do
+          for i in $(seq 1 720); do
             OUT=$(aws ssm get-command-invocation \
               --region "$REGION" \
               --command-id "$CMD_ID" \
