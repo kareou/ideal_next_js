@@ -111,7 +111,7 @@ jobs:
           )
 
           aws ssm send-command \
-        --document-name "AWS-RunShellScript" \
-        --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
-        --comment "Deploy ${APP_NAME}" \
-        --parameters "commands=[$CMD_JSON]"
+          --document-name "AWS-RunShellScript" \
+          --targets "Key=tag:${DEPLOY_TAG_KEY},Values=${DEPLOY_TAG_VAL}" \
+          --comment "Deploy ${APP_NAME}" \
+          --parameters "commands=[$CMD_JSON]"
