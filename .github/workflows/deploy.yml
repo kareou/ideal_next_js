@@ -113,11 +113,18 @@ jobs:
           echo "REGION=$AWS_REGION"
           echo "DEPLOY_TAG_KEY=$DEPLOY_TAG_KEY"
           echo "DEPLOY_TAG_VAL=$DEPLOY_TAG_VAL"
-          aws ec2 describe-instances \
+          IDS=$(aws ec2 describe-instances \
+            --region eu-north-1 \
+            --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
+            --query 'Reservations[].Instances[].InstanceId' --output text)
+
+          echo "EC2 instances with Deploy=Yes: ${IDS:-<none>}"
+          aws ssm describe-instance-information \
           --region eu-north-1 \
-          --filters "Name=tag:Deploy,Values=Yes" "Name=instance-state-name,Values=running" \
-          --query 'Reservations[].Instances[].InstanceId' \
-          --output text
+          --filters "Key=InstanceIds,Values=${IDS}" \
+          --query 'InstanceInformationList[].{Id:InstanceId,Ping:PingStatus,Tags:Tags}' \
+          --output table
+
 
           # aws ec2 describe-instances \
           # --region "$AWS_REGION" \
