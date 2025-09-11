@@ -87,7 +87,7 @@ const ExpertTeam: React.FC = () => {
       id: 3,
       title: "Michelle - Servicing assistant manager",
       description:
-        "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard and helped.",
+        "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard.",
       bgColor: "/hq_idl/michelle.png",
     },
     {
