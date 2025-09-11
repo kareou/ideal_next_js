@@ -1,5 +1,5 @@
 # .github/workflows/deploy.yml
-# TEST 1
+# TEST  1
 name: Deploy ideal_next_js
 
 on:
@@ -105,11 +105,10 @@ jobs:
 
           # Checkout/update code
           if [ ! -d .git ]; then
-            sudo -u "$APP_USER" git clone "$REPO_URL" .
+            sudo -u "$APP_USER" git clone -b new-ver "$REPO_URL" .
           fi
-          sudo -u "$APP_USER" git fetch --all
-          sudo -u "$APP_USER" git checkout "$BRANCH"
-          sudo -u "$APP_USER" git reset --hard "origin/$BRANCH"
+          # sudo -u "$APP_USER" git fetch --all
+          # sudo -u "$APP_USER" git reset --hard "origin/$BRANCH"
 
           cd "$APP_ROOT/$SUBDIR"
 
