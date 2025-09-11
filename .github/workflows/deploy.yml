@@ -210,65 +210,64 @@ jobs:
       #       --output text)
 
       #     echo "CommandId: ${CMD_ID}"
-      #     echo "command_id=${CMD_ID}" >> "$GITHUB_OUTPUT"
       - name: Deploy via SSM
         id: send_cmd
         env:
           REGION: ${{ env.AWS_REGION }}
           INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
-            set -euo pipefail
-            CMD=$(cat <<'BASH'
-            #!/usr/bin/env bash
-            set -euxo pipefail
+          set -euo pipefail
+          CMD=$(cat <<'BASH'
+          #!/usr/bin/env bash
+          set -euxo pipefail
 
-            echo "Starting deployment script..."
+          echo "Starting deployment script..."
 
-            cd /srv/ideal_next_js || { echo "Failed to change directory to /srv/ideal_next_js"; exit 1; }
+          cd /srv/ideal_next_js || { echo "Failed to change directory to /srv/ideal_next_js"; exit 1; }
 
-            echo "Checking if repository exists..."
-            # If this is the first time and repo isn't present:
-            # if [ ! -d .git ]; then
-            #   sudo -u ubuntu git clone --depth 1 -b new-ver https://github.com/kareou/ideal_next_js .
-            # fi
+          echo "Checking if repository exists..."
+          if [ ! -d .git ]; then
+            echo "Repository not found. Cloning..."
+            sudo -u ubuntu git clone --depth 1 -b new-ver https://github.com/kareou/ideal_next_js .
+          fi
 
-            echo "Fetching latest changes from repository..."
-            sudo -u ubuntu git fetch origin new-ver --depth 1 || { echo "Git fetch failed"; exit 1; }
+          echo "Fetching latest changes from repository..."
+          sudo -u ubuntu git fetch origin new-ver --depth 1 || { echo "Git fetch failed"; exit 1; }
 
-            echo "Checking out branch new-ver..."
-            sudo -u ubuntu git checkout -f new-ver || { echo "Git checkout failed"; exit 1; }
+          echo "Checking out branch new-ver..."
+          sudo -u ubuntu git checkout -f new-ver || { echo "Git checkout failed"; exit 1; }
 
-            echo "Resetting to the latest commit..."
-            sudo -u ubuntu git reset --hard origin/new-ver || { echo "Git reset failed"; exit 1; }
+          echo "Resetting to the latest commit..."
+          sudo -u ubuntu git reset --hard origin/new-ver || { echo "Git reset failed"; exit 1; }
 
-            cd /srv/ideal_next_js/nextjs-clone || { echo "Failed to change directory to /srv/ideal_next_js/nextjs-clone"; exit 1; }
+          cd /srv/ideal_next_js/nextjs-clone || { echo "Failed to change directory to /srv/ideal_next_js/nextjs-clone"; exit 1; }
 
-            echo "Installing dependencies..."
-            sudo -u ubuntu npm ci --no-audit --no-fund || { echo "npm ci failed"; exit 1; }
+          echo "Installing dependencies..."
+          sudo -u ubuntu npm ci --no-audit --no-fund || { echo "npm ci failed"; exit 1; }
 
-            echo "Building the application..."
-            sudo -u ubuntu npm run build || { echo "npm build failed"; exit 1; }
+          echo "Building the application..."
+          sudo -u ubuntu npm run build || { echo "npm build failed"; exit 1; }
 
-            echo "Restarting the service..."
-            sudo systemctl restart ideal_next_js || { echo "Service restart failed"; exit 1; }
+          echo "Restarting the service..."
+          sudo systemctl restart ideal_next_js || { echo "Service restart failed"; exit 1; }
 
-            echo "Deployment script completed successfully."
-            BASH
-            )
+          echo "Deployment script completed successfully."
+          BASH
+          )
 
-            # Proper JSON for parameters: {"commands": ["<script>"]}
-            PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
-            echo "Parameters: $PARAM"
-            RESP=$(aws ssm send-command \
-              --region "$REGION" \
-              --document-name "AWS-RunShellScript" \
-              --instance-ids ${INST_IDS} \
-              --parameters "$PARAM" \
-              --output json)
+          # Proper JSON for parameters: {"commands": ["<script>"]}
+          PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
+          echo "Parameters: $PARAM"
+          RESP=$(aws ssm send-command \
+            --region "$REGION" \
+            --document-name "AWS-RunShellScript" \
+            --instance-ids ${INST_IDS} \
+            --parameters "$PARAM" \
+            --output json)
 
-            echo "$RESP" | jq .
-            CMD_ID=$(echo "$RESP" | jq -r '.Command.CommandId')
-            echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
+          echo "$RESP" | jq .
+          CMD_ID=$(echo "$RESP" | jq -r '.Command.CommandId')
+          echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
 
       # Robust waiter: prints stdout/stderr and fails on non-success
       - name: Wait for SSM command to complete & print output
