@@ -144,7 +144,6 @@ const ExpertTeam: React.FC = () => {
           ))}
         </div>
 
-        {/* Carousel below 1024px */}
         <div className="lg:hidden">
           <TeamSlider teamMembers={teamMembers} />
         </div>

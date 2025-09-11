@@ -1,26 +1,66 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { CTASection } from "@/components";
-import { Metadata } from "next";
-import Link from "next/link"
+"use client";
 
-export const metadata: Metadata = {
-  title: "About - Ideal Tax",
-  description:
-    "Our staff of independent Tax Attorneys and Enrolled Agents continue to expand their knowledge so to provide new and innovative ways in helping clients resolve their burdensome tax problems.",
-};
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CTASection } from "@/components";
+
+// Import Swiper React components & styles
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+interface TeamMember {
+  id: number;
+  title: string;
+  description: string;
+  bgColor: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    title: "Faris Khatib - CEO",
+    description:
+      "Faris sets vision and pace for growth, aligning teams around clear goals. He mentors leaders, refines strategy, and champions a culture of ownership, clarity, and care.",
+    bgColor: "/hq_idl/faris.png",
+  },
+  {
+    id: 2,
+    title: "Jacky - Sales operations manager",
+    description:
+      "Jacky turns pipeline chaos into flow, mapping processes, tooling the CRM, and coaching reps. She forecasts reliably and unlocks repeatable revenues with crisp handoffs.",
+    bgColor: "/hq_idl/jacky.png",
+  },
+  {
+    id: 3,
+    title: "Michelle - Servicing assistant manager",
+    description:
+      "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard and helped.",
+    bgColor: "/hq_idl/michelle.png",
+  },
+  {
+    id: 4,
+    title: "Preci - Servicing Director",
+    description:
+      "Preci directs servicing at scale, defining standards, improving workflows, and raising quality bars. She tackles tough escalations and turns insight into lasting fixes.",
+    bgColor: "/hq_idl/preci.png",
+  },
+];
 
 const About = () => {
+
   const stats = [
     { number: "13+", label: "Years of Experience" },
     { number: "10,000+", label: "Clients Helped" },
     { number: "$50M+", label: "Tax Debt Resolved" },
     { number: "95%", label: "Success Rate" },
   ];
-
-  return (
+  return (<>
     <div className="min-h-screen bg-white">
-      {/*  */}
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
         <div className="container mx-auto px-6">
@@ -34,95 +74,100 @@ const About = () => {
               satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                          <Link href="/survey">
-  <Button
-    size="lg"
-    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-  >
-    Get Started Today
-  </Button>
-</Link>
-      <div className="flex justify-center">
-  <Button
-    asChild
-    size="lg"
-    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-  >
-    <a href="tel:+18775182860">Call (877) 518-2860</a>
-  </Button>
-</div>
-
-
-
+              <Link href="/survey">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+                >
+                  Get Started Today
+                </Button>
+              </Link>
+              <div className="flex justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+                >
+                  <a href="tel:+18775182860">Call (877) 518-2860</a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      {/* Team Leadership */}
-      <section className="py-20 bg-white">
+
+      {/* Team Section */}
+      <section className="pt-20 pb-10 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 mb-16">
-            {/* Faris Khatib - CEO */}
-            <div className="bg-gradient-to-br from-mint-50 to-deep-blue-50 rounded-2xl p-8">
-              <div className="text-center mb-6">
-                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
+          {/* Desktop: Grid */}
+          <div className="hidden lg:grid grid-cols-4 gap-12 mb-16">
+            {teamMembers.map((member, index) => (
+              <div
+                key={member.id}
+                className="text-center bg-[#F9FAFA] px-6 py-10 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                data-aos="fade-up"
+                data-aos-delay={index * 150}
+              >
+                <div className="w-28 h-28 rounded-full overflow-hidden relative mx-auto mb-6">
                   <Image
-                    src="/lovable-uploads/d3abf245-55a4-4475-80e5-4f2cc24413ef.png"
-                    alt="Faris Khatib - CEO"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover"
+                    src={member.bgColor}
+                    alt={member.title}
+                    fill
+                    sizes="112px"
+                    className="object-cover"
                   />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Faris Khatib
+                <h3 className="text-xl font-semibold text-blue-600 mb-4">
+                  {member.title}
                 </h3>
-                <p className="text-brand-teal font-semibold text-lg">CEO</p>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                With over a decade of expertise in nurturing and managing tax
-                resolution firms, Faris contributes a wealth of knowledge in the
-                industry. Playing a pivotal role as a founding member of Ideal
-                Tax, his primary objective is to deliver optimal client service
-                coupled with the finest tax relief solutions available. Faris
-                holds the belief that the essential factor in ensuring complete
-                client satisfaction with the services rendered lies in the
-                thorough ongoing training of our employees.
-              </p>
-            </div>
-            {/* Preciosa Vidal - Servicing Director */}
-            <div className="bg-gradient-to-br from-deep-blue-50 to-mint-50 rounded-2xl p-8">
-              <div className="text-center mb-6">
-                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
-                  <Image
-                    src="/lovable-uploads/6519c4ea-b868-4581-be6d-f4a96e2399e4.png"
-                    alt="Preciosa Vidal - Servicing Director"
-                    width={128}
-                    height={128}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  Preciosa Vidal
-                </h3>
-                <p className="text-brand-blue font-semibold text-lg">
-                  Servicing Director
+                <p className="text-gray-500 text-base leading-relaxed">
+                  {member.description}
                 </p>
               </div>
-              <p className="text-gray-700 leading-relaxed">
-                Preciosa possesses a wealth of experience exceeding over 15
-                years in the realm of tax consultancy, serving as both a
-                seasoned Tax Preparer and Enrolled Agent. In her role, she takes
-                charge of supervising all tax investigations on behalf of our
-                clients. Collaborating closely with her team of Tax
-                Investigation Specialist, she leads the charge of examining and
-                evaluating financial records and IRS transcripts, aiming to
-                discern the optimal course of action for resolving our clients'
-                tax issues.
-              </p>
-            </div>
+            ))}
           </div>
-          {/* Our Team Description */}
+
+          {/* Mobile: Swiper */}
+          <div className="lg:hidden">
+            <Swiper
+              modules={[Navigation, Pagination, Autoplay]}
+              spaceBetween={16}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              // navigation
+              autoplay={{ delay: 3000, disableOnInteraction: false }}
+              loop
+            >
+              {teamMembers.map((member) => (
+                <SwiperSlide key={member.id}>
+                  <div className="text-center bg-[#F9FAFA] px-6 py-10 rounded-lg hover:shadow-lg transition-shadow duration-300">
+                    <div className="w-28 h-28 rounded-full overflow-hidden relative mx-auto mb-6">
+                      <Image
+                        src={member.bgColor}
+                        alt={member.title}
+                        fill
+                        sizes="112px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <h3 className="text-xl font-semibold text-blue-600 mb-4">
+                      {member.title}
+                    </h3>
+                    <p className="text-gray-500 text-base leading-relaxed">
+                      {member.description}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </section>
+
+      
+    </div>
+    <section className="pb-20 bg-white">
+        <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               Our Professional Team
@@ -148,9 +193,8 @@ const About = () => {
             </p>
           </div>
         </div>
-      </section>
-      {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-br from-mint-50 to-deep-blue-50">
+      </section>          
+    <section className="py-20 bg-gradient-to-br from-mint-50 to-deep-blue-50">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -173,8 +217,7 @@ const About = () => {
           </div>
         </div>
       </section>
-      <CTASection />
-    </div>
+      <CTASection /></>
   );
 };
 
