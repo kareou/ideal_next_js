@@ -212,6 +212,7 @@ jobs:
       #     echo "CommandId: ${CMD_ID}"
       #     echo "command_id=${CMD_ID}" >> "$GITHUB_OUTPUT"
       - name: Smoke-test SSM (hello)
+        id: send_cmd
         env:
           REGION: ${{ env.AWS_REGION }}
           INST_IDS: ${{ steps.discover.outputs.ids }}
