@@ -218,52 +218,41 @@ jobs:
           INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
-
-              # Build the script that will run on the EC2 instance
-              read -r -d '' CMD <<'BASH'
+          read -r -d '' CMD <<'BASH'
           #!/usr/bin/env bash
           set -euxo pipefail
 
           cd /srv/ideal_next_js
 
-          # (Optional) first-time safety:
-          # if [ ! -d .git ]; then
-          #   sudo -u ubuntu git clone --depth 1 -b new-ver https://github.com/kareou/ideal_next_js .
-          # fi
+            # If this is the first time and repo isn't present:
+            # if [ ! -d .git ]; then
+            #   sudo -u ubuntu git clone --depth 1 -b new-ver https://github.com/kareou/ideal_next_js .
+            # fi
 
-          sudo -u ubuntu git fetch origin new-ver --depth 1
-          sudo -u ubuntu git checkout -f new-ver || true
-          sudo -u ubuntu git reset --hard origin/new-ver
+            sudo -u ubuntu git fetch origin new-ver --depth 1
+            sudo -u ubuntu git checkout -f new-ver || true
+            sudo -u ubuntu git reset --hard origin/new-ver
 
-          cd /srv/ideal_next_js/nextjs-clone
-          sudo -u ubuntu npm ci --no-audit --no-fund
-          sudo -u ubuntu npm run build
+            cd /srv/ideal_next_js/nextjs-clone
+            sudo -u ubuntu npm ci --no-audit --no-fund
+            sudo -u ubuntu npm run build
 
-          sudo systemctl restart ideal_next_js
-          BASH
+            sudo systemctl restart ideal_next_js
+            BASH
 
-              # Proper JSON for --parameters (commands must be an array)
-              PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
-
-              # Send the command and capture the CommandId robustly
-              RESP=$(aws ssm send-command \
-                --region "$REGION" \
-                --document-name "AWS-RunShellScript" \
-                --instance-ids ${INST_IDS} \
-                --parameters "$PARAM" \
-                --output json)
+            # Proper JSON for parameters: {"commands": ["<script>"]}
+            PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
+            echo "Parameters: $PARAM"
+            RESP=$(aws ssm send-command \
+              --region "$REGION" \
+              --document-name "AWS-RunShellScript" \
+              --instance-ids ${INST_IDS} \
+              --parameters "$PARAM" \
+              --output json)
 
               echo "$RESP" | jq .
-
               CMD_ID=$(echo "$RESP" | jq -r '.Command.CommandId')
-              if [ -z "$CMD_ID" ] || [ "$CMD_ID" = "null" ]; then
-                echo "::error::Failed to get CommandId from send-command response."
-                exit 1
-              fi
-
               echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
-
-
 
       # Robust waiter: prints stdout/stderr and fails on non-success
       - name: Wait for SSM command to complete & print output
