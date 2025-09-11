@@ -218,7 +218,7 @@ jobs:
           INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
-          read -r -d '' CMD <<'BASH'
+          read -r -d  '' CMD <<'BASH'
             #!/usr/bin/env bash
             set -euxo pipefail
 
@@ -238,21 +238,21 @@ jobs:
             sudo -u ubuntu npm run build
 
             sudo systemctl restart ideal_next_js
-          BASH
+            BASH
+            
+            # Proper JSON for parameters: {"commands": ["<script>"]}
+            PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
+            echo "Parameters: $PARAM"
+            RESP=$(aws ssm send-command \
+              --region "$REGION" \
+              --document-name "AWS-RunShellScript" \
+              --instance-ids ${INST_IDS} \
+              --parameters "$PARAM" \
+              --output json)
 
-          # Proper JSON for parameters: {"commands": ["<script>"]}
-          PARAM=$(jq -cn --arg s "$CMD" '{commands: [$s]}')
-          echo "Parameters: $PARAM"
-          RESP=$(aws ssm send-command \
-            --region "$REGION" \
-            --document-name "AWS-RunShellScript" \
-            --instance-ids ${INST_IDS} \
-            --parameters "$PARAM" \
-            --output json)
-
-          echo "$RESP" | jq .
-          CMD_ID=$(echo "$RESP" | jq -r '.Command.CommandId')
-          echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
+            echo "$RESP" | jq .
+            CMD_ID=$(echo "$RESP" | jq -r '.Command.CommandId')
+            echo "command_id=$CMD_ID" >> "$GITHUB_OUTPUT"
 
       # Robust waiter: prints stdout/stderr and fails on non-success
       - name: Wait for SSM command to complete & print output
