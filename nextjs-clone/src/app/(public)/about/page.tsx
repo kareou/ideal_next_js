@@ -61,7 +61,6 @@ const About = () => {
   ];
   return (<>
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
       <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -127,7 +126,6 @@ const About = () => {
             ))}
           </div>
 
-          {/* Mobile: Swiper */}
           <div className="lg:hidden">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
