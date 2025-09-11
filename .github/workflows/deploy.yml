@@ -218,8 +218,7 @@ jobs:
           INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
-          read -r -d '' CMD << 'ENDOFCMD'
-          #!/usr/bin/env bash
+          CMD='#!/usr/bin/env bash
           set -euxo pipefail
           
           cd /srv/ideal_next_js
@@ -228,17 +227,16 @@ jobs:
           sudo -u ubuntu git reset --hard origin/new-ver
           
           cd /srv/ideal_next_js/nextjs-clone
-          sudo -u ubuntu npm install
-          sudo -u ubuntu npm run build
+          sudo -u ubuntu bash -lc "npm ci --no-audit"
+          sudo -u ubuntu bash -lc "npm run build"
           
-          sudo systemctl restart ideal_next_js
-          ENDOFCMD
+          sudo systemctl restart ideal_next_js'
 
           CMD_ID=$(aws ssm send-command \
             --region "${REGION}" \
             --document-name "AWS-RunShellScript" \
             --instance-ids ${INST_IDS} \
-            --parameters commands="$(printf '%s' "$CMD" | jq -Rs '.')" \
+            --parameters commands="${CMD}" \
             --query Command.CommandId \
             --output text)
 
