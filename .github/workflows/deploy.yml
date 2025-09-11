@@ -218,7 +218,8 @@ jobs:
           INST_IDS: ${{ steps.discover.outputs.ids }}
         run: |
           set -euo pipefail
-          CMD='#!/usr/bin/env bash
+          read -r -d '' CMD << 'ENDOFCMD'
+          #!/usr/bin/env bash
           set -euxo pipefail
           
           cd /srv/ideal_next_js
@@ -231,7 +232,7 @@ jobs:
           sudo -u ubuntu npm run build
           
           sudo systemctl restart ideal_next_js
-          '
+          ENDOFCMD
 
           CMD_ID=$(aws ssm send-command \
             --region "${REGION}" \
