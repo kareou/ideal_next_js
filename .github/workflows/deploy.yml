@@ -234,7 +234,7 @@ jobs:
             # fi
 
             # Write .env for Next.js (must exist BEFORE build)
-            ENV_PATH="$APP_ROOT/$SUBDIR/.env"
+            ENV_PATH="/srv/ideal_next_js/nextjs-clone/.env"
             cat > "$ENV_PATH" <<EOF
             DATABASE_URL=$(getp /ideal/env/DATABASE_URL)
             AUTH_SECRET=$(getp /ideal/env/AUTH_SECRET)
