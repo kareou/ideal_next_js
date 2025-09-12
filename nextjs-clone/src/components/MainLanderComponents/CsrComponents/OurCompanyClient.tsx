@@ -70,7 +70,7 @@ export default function OurCompanyClient() {
 
               <div className="pt-4" data-aos="fade-up" data-aos-delay="200">
                 <Link
-                  href="/qualifying-dependent"
+                  href="/survey"
                   className="inline-flex bg-[#3059E4] hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-colors duration-200 items-center space-x-2 shadow-md w-auto justify-center"
                 >
                   <span>Qualify for a program</span>

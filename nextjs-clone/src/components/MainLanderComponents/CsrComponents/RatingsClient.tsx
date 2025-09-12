@@ -35,7 +35,7 @@ export default function Ratings() {
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-12 sm:gap-24 mb-16">
           <div className="text-center sm:border-r sm:border-gray-200 sm:pr-12 mb-8 sm:mb-0"  >
-            <div className="text-4xl sm:text-[60px] font-bold text-[#3059E4] mb-5">+15</div>
+            <div className="text-4xl sm:text-[60px] font-bold text-[#3059E4] mb-5">15+</div>
             <div className="text-sm sm:text-[18px] text-gray-900">Years of experience</div>
           </div>
 
@@ -61,7 +61,7 @@ export default function Ratings() {
           </div>
 
           <Link
-            href="/free-tax-consultation"
+            href="/survey"
             className="mt-4 md:mt-0 flex w-full md:w-auto items-center justify-center md:justify-start space-x-2 bg-[#3059E4] text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors group shadow-md text-center"
           >
             <span>Get Your Free Consultation</span>

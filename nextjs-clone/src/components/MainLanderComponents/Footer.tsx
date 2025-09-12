@@ -37,14 +37,14 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-[#5874EA]" />
                 <span>
-                  ltr240 Progress Suite 250
+                  240 Progress Suite 250
                   <br />
                   Irvine, CA 92618
                 </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-[#5874EA]" />
-                <span>info@idealtax.com</span>
+                <span>customercare@idealtax.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-[#5874EA]" />

@@ -20,36 +20,39 @@ interface TeamMember {
   bgColor: string;
 }
 
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    title: "Faris Khatib - CEO",
-    description:
-      "Faris sets vision and pace for growth, aligning teams around clear goals. He mentors leaders, refines strategy, and champions a culture of ownership, clarity, and care.",
-    bgColor: "/hq_idl/faris.png",
-  },
-  {
-    id: 2,
-    title: "Jacky - Sales operations manager",
-    description:
-      "Jacky turns pipeline chaos into flow, mapping processes, tooling the CRM, and coaching reps. She forecasts reliably and unlocks repeatable revenues with crisp handoffs.",
-    bgColor: "/hq_idl/jacky.png",
-  },
-  {
-    id: 3,
-    title: "Michelle - Servicing assistant manager",
-    description:
-      "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard and helped.",
-    bgColor: "/hq_idl/michelle.png",
-  },
-  {
-    id: 4,
-    title: "Preci - Servicing Director",
-    description:
-      "Preci directs servicing at scale, defining standards, improving workflows, and raising quality bars. She tackles tough escalations and turns insight into lasting fixes.",
-    bgColor: "/hq_idl/preci.png",
-  },
-];
+const teamMembers = [
+    {
+      id: 1,
+      title: "Faris Khatib",
+      subTitle : "Chief Executive Officer",
+      description:
+        "Faris sets vision and pace for growth, aligning teams around clear goals. He mentors leaders, refines strategy, and champions a culture of ownership, clarity, and care.",
+      bgColor: "/hq_idl/faris.png",
+    },
+    {
+      id: 2,
+      title: "Jaquelyn Stenbakken",
+      subTitle : "Sales Operations Manager",
+      description:
+        "Jacky turns pipeline chaos into flow, mapping processes, tooling the CRM, and coaching reps. She forecasts reliably and unlocks repeatable revenues with crisp handoffs.",
+      bgColor: "/hq_idl/jacky.png",
+    },
+    {
+      id: 3,
+      title: "Michelle Martinez",
+      subTitle : "Servicing Assistant Manager",
+      description:
+        "Michelle keeps service humming: triaging requests, tracking SLAs, and closing loops. She bridges teams, clarifies next steps, and ensures clients feel heard.",
+      bgColor: "/hq_idl/michelle.png",
+    },
+    {
+      id: 4,
+      title: `Preciosa Vidal`,
+      subTitle : "Servicing Director",
+      description:"Preci directs servicing at scale, defining standards, improving workflows, and raising quality bars. She tackles tough escalations and turns insight into lasting fixes.",
+      bgColor: "/hq_idl/preci.png",
+    },
+  ];
 
 const About = () => {
 
@@ -116,12 +119,9 @@ const About = () => {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-4">
-                  {member.title}
-                </h3>
-                <p className="text-gray-500 text-base leading-relaxed">
-                  {member.description}
-                </p>
+               <h3 className="text-[18px] font-semibold text-blue-600 mb-2">{member.title}</h3>
+              <p className="text-[15px] text-blue-500 mb-4">{member.subTitle}</p>
+              <p className="text-gray-500 text-base leading-relaxed">{member.description}</p>
               </div>
             ))}
           </div>
@@ -148,12 +148,9 @@ const About = () => {
                         className="object-cover"
                       />
                     </div>
-                    <h3 className="text-xl font-semibold text-blue-600 mb-4">
-                      {member.title}
-                    </h3>
-                    <p className="text-gray-500 text-base leading-relaxed">
-                      {member.description}
-                    </p>
+                   <h3 className="text-[18px] font-semibold text-blue-600 mb-2">{member.title}</h3>
+              <p className="text-[15px] text-blue-500 mb-4">{member.subTitle}</p>
+              <p className="text-gray-500 text-base leading-relaxed">{member.description}</p>
                   </div>
                 </SwiperSlide>
               ))}

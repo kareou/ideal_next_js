@@ -107,7 +107,7 @@ const ExpertTeam: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20" data-aos="fade-up">
           <p className="text-blue-600 font-semibold text-sm tracking-wider uppercase mb-4">
-            FIELDS EXPERTS
+            TAX EXPERTS
           </p>
           <h2 className="text-[40px] md:text-5xl font-bold text-gray-900 mb-5">Our Expert Team</h2>
           <p className="text-gray-500 text-base md:text-xl max-w-4xl mx-auto leading-relaxed mb-12">
