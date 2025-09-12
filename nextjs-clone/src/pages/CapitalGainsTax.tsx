@@ -167,7 +167,7 @@ const CapitalGainsTax = () => {
                 strategies to minimize your tax liability.
               </p>
               <Link
-                href="/free-tax-consultation"
+                href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
               >
                 Get Free Consultation

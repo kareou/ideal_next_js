@@ -8,7 +8,7 @@ const FAQSection = () => {
   const faqs = [
     {
       question: "How Do You Qualify For IRS Tax Debt Forgiveness?",
-      answer: "If you find yourself looking for tax debt forgiveness, the best thing to do is to reach out to the tax professionals at Ideal Tax Solution today. We can evaluate your specific situation and determine which debt relief programs you may qualify for based on your financial circumstances."
+      answer: "If you find yourself looking for tax debt forgiveness, the best thing to do is to reach out to the tax professionals at Ideal Tax today. We can evaluate your specific situation and determine which debt relief programs you may qualify for based on your financial circumstances."
     },
     {
       question: "How Much Will The IRS Usually Settle For?",

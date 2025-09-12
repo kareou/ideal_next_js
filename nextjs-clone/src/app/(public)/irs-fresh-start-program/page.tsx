@@ -1,6 +1,7 @@
 "use client";
 import Navigation from "../../../components/Navigation";
 import Footer from "../../../components/Footer";
+import Link from "next/link";
 
 const IrsFreshStart = () => {
   return (
@@ -27,12 +28,12 @@ const IrsFreshStart = () => {
               >
                 Call Now
               </a>
-              <a
-                href="https://start.idealtax.com"
-                className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                Start Online Now
-              </a>
+              <Link
+  href="/survey"
+  className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+>
+  Start Online Now
+</Link>
             </div>
           </div>
         </div>
@@ -324,12 +325,12 @@ const IrsFreshStart = () => {
               >
                 Call Now
               </a>
-              <a
-                href="https://start.idealtax.com"
-                className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                Start Online Now
-              </a>
+             <Link
+  href="/survey"
+  className="inline-block bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+>
+  Start Online Now
+</Link>
             </div>
           </div>
         </div>

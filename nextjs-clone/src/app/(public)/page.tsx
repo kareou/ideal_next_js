@@ -23,12 +23,10 @@ export default function Home() {
   return (
     <>
    
-        {/* <Box1 /> */}
         <div className="hidden md:block">
           <Box1 />
         </div>
 
-        {/* Show FloatingContact only on mobile */}
         <div className="block md:hidden">
           <FloatingContact />
         </div>

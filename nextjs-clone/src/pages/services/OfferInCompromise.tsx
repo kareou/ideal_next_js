@@ -383,17 +383,17 @@ const OfferInCompromise = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/free-tax-consultation"
+                href="/survey"
                   className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block text-center"
                 >
                   Get Free Tax Consultation
                 </Link>
                 <a
-                  href="tel:888-224-3004"
+                  href="tel:877-518-2860"
                   className="flex items-center justify-center bg-white text-brand-blue border-2 border-brand-blue hover:bg-brand-blue hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  Call (888) 224-3004
+                  Call (877) 518-2860
                 </a>
               </div>
             </div>
@@ -409,7 +409,7 @@ const OfferInCompromise = () => {
                 maximize your chances of IRS acceptance.
               </p>
               <Link
-                href="/free-tax-consultation"
+                href="/survey"
                 className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
               >
                 Check Your OIC Eligibility Today

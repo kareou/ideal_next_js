@@ -133,7 +133,7 @@ const WageGarnishments = () => {
 
             <div className="bg-brand-teal/10 p-6 rounded-lg mb-8">
               <Link
-                href="/free-tax-consultation"
+                href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
               >
                 Stop Garnishment Today
@@ -349,7 +349,7 @@ const WageGarnishments = () => {
                 money. Contact us immediately for wage garnishment relief.
               </p>
               <Link
-                href="/free-tax-consultation"
+                href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
               >
                 Stop Garnishment Today

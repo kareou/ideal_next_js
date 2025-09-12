@@ -81,19 +81,23 @@ const TaxDebtReliefIrsForgiveness = () => {
               We'll simplify this so you can determine if you'll be able to benefit from the IRS Forgiveness program.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Get Free Debt Analysis
-              </Button>
-              <Button 
+              <Link href="/survey" passHref>
+  <Button
+    size="lg"
+    className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal 
+               text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 
+               hover:shadow-lg transform hover:scale-105"
+  >
+    Get Free Debt Analysis
+  </Button>
+</Link>
+            <a href="call:+18775182860">  <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
+                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-10 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860
-              </Button>
+              </Button></a>
             </div>
           </div>
         </div>
@@ -248,21 +252,24 @@ const TaxDebtReliefIrsForgiveness = () => {
               To all taxpayers struggling to pay their debts, the IRS Forgiveness Program is meant for you! 
               Our experts are ready to take your case and work on it day and night until your financial problems disappear.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/free-tax-consultation"
-                className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105 inline-block"
-              >
-                Get Free Consultation
-              </Link>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-2 border-white text-brand-teal hover:bg-white hover:text-brand-blue py-7 px-8 rounded-full transition-all duration-300"
-              >
-                Call Now: (877) 518-2860
-              </Button>
-            </div>
+           <div className="flex flex-col sm:flex-row gap-4 justify-center w-full">
+  <Link
+    href="/survey"
+    className="w-full sm:w-auto text-center bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105 inline-block"
+  >
+    Get Free Consultation
+  </Link>
+  <a href="call:+18775182860" className="w-full sm:w-auto">
+    <Button 
+      variant="outline" 
+      size="lg"
+      className="w-full sm:w-auto border-2 border-white text-brand-teal hover:bg-white hover:text-brand-blue py-7 px-8 rounded-full transition-all duration-300"
+    >
+      Call Now: (877) 518-2860
+    </Button>
+  </a>
+</div>
+
           </div>
         </div>
       </section>

@@ -106,8 +106,7 @@ const Careers = () => {
                   </h3>
                   <div className="space-y-2 mb-6">
                     <p className="text-gray-700">
-                      <span className="font-semibold">Location:</span> IRVINE,
-                      CA
+                      <span className="font-semibold">Location:</span> 240 Progress Suite 250 Irvine, CA 92618
                     </p>
                     <p className="text-gray-700">
                       <span className="font-semibold">Department:</span>{" "}

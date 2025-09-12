@@ -42,7 +42,7 @@ const Reviews = () => {
   },
   {
     author_name: "Solomon Francis",
-    text: "From the start everyone communicated well with me They told me what was going to happened and what I should expect at each faze of the process they made me feel comfortable and that was very important to me. I would recommend Ideal Tax Solutions to anyone 100%.",
+    text: "From the start everyone communicated well with me They told me what was going to happened and what I should expect at each faze of the process they made me feel comfortable and that was very important to me. I would recommend Ideal Tax to anyone 100%.",
     time: 1682899200,
     rating: 5,
   },
@@ -111,7 +111,7 @@ const bbbReviews = [
   },
   {
     author_name: "Rogelio F.",
-    text: "Ideal tax solution do a great job on keeping me in the loop on changes on my case.. always positive personality and kind people .. very knowledgeable.. thank you",
+    text: "Ideal tax do a great job on keeping me in the loop on changes on my case.. always positive personality and kind people .. very knowledgeable.. thank you",
     time: 1679980800,
     rating: 5,
   },
@@ -153,7 +153,7 @@ const bbbReviews = [
   },
   {
     author_name: "Donna",
-    text: "Tax Debt Free! I have to admit that I needed help with resolving my tax debt. I researched the web and finally decided on Ideal Tax to resolve my negligence for years with the IRS. I had several great people within the company to call weekly to give me updates and walk me through things I needed to correct. I would highly recommend this company, they saved me headaches and confusion with trying to figure out on my own how to resolve my issue. I appreciate Ideal Tax Solutions.",
+    text: "Tax Debt Free! I have to admit that I needed help with resolving my tax debt. I researched the web and finally decided on Ideal Tax to resolve my negligence for years with the IRS. I had several great people within the company to call weekly to give me updates and walk me through things I needed to correct. I would highly recommend this company, they saved me headaches and confusion with trying to figure out on my own how to resolve my issue. I appreciate Ideal Tax.",
     time: 1669920000,
     rating: 5,
   },

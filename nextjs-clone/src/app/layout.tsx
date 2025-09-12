@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   openGraph: {
     url: "https://www.idealtax.com",
     type: "website",
-    title: "Tax Debt Attorney Services - Trust the Experts at Ideal Tax",
+    title: "Ideal Tax | Tax Debt Resolution Services",
     description:
-      "At Ideal Tax, we offer a Fresh Start Program that can help you get relief from your IRS tax debt. We have over 1 years of experience and an A+ BBB rating. Contact us for a free consultation.",
+      "Through our process we qualify clients for many tax relief programs to end tax issues once and for all. 15 years in business and an A+ BBB rating. Contact us for a free consultation.",
     images: [
       {
         url: "https://www.idealtax.com/wp-content/uploads/2021/12/Logo_DarkTheme_transparent_small.png",
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@idealtax", // Add your Twitter handle if available
-    title: "Tax Debt Attorney Services - Trust the Experts at Ideal Tax",
+    title: "Ideal Tax | Tax Debt Resolution Services",
     description:
-      "At Ideal Tax, we offer a Fresh Start Program that can help you get relief from your IRS tax debt. We have over 1 years of experience and an A+ BBB rating. Contact us for a free consultation.",
+      "Through our process we qualify clients for many tax relief programs to end tax issues once and for all. 15 years in business and an A+ BBB rating. Contact us for a free consultation.",
     images: [
       "https://www.idealtax.com/wp-content/uploads/2021/12/Logo_DarkTheme_transparent_small.png",
     ],
