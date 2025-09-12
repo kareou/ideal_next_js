@@ -46,14 +46,14 @@ export default function OurCompanyClient() {
 >
   <div className="hidden sm:block">
     <p>
-      Idealtax is a leading tax resolution company with over 15 years of
+      Ideal Tax is a leading tax resolution company with over 15 years of
       experience, specializing in helping individuals and businesses resolve
       tax issues with the IRS and state agencies. Known for exceptional results
       and customer service, the company holds an A+ rating with the Better
       Business Bureau and is headquartered in Orange County, California.
     </p>
     <p>
-      Licensed to operate in 48 states, Ideal Tax provides nationwide service.
+      Licensed to operate in 47 states, Ideal Tax provides nationwide service.
       Their mission is to make tax relief accessible, simple, and effective,
       alleviating the stress often associated with tax problems.
     </p>
