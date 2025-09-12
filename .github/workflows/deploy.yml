@@ -13,7 +13,6 @@ permissions:
 env:
   AWS_REGION: eu-north-1
   ROLE_ARN: arn:aws:iam::551829622535:role/githubrepoIdealtax
-  APP_ROOT: /srv/ideal_next_js
   SUBDIR: nextjs-clone
   APP_NAME: ideal_next_js
   DEPLOY_TAG_KEY: Deploy
@@ -73,145 +72,6 @@ jobs:
             exit 1
           fi
 
-      # Send the deploy script to those instances via SSM
-# replace your current "Send SSM deploy command" step with this:
-      # - name: Send SSM deploy command (pull & rebuild only if needed)
-      #   id: send_cmd
-      #   env:
-      #     REGION: ${{ env.AWS_REGION }}
-      #     INST_IDS: ${{ steps.discover.outputs.ids }}
-      #   run: |
-      #     set -euo pipefail
-      #     echo "Target instance IDs: ${INST_IDS}"
-
-      #     # The bash that will run on each EC2 instance via SSM
-      #     CMD='#!/usr/bin/env bash
-      #     set -euxo pipefail
-
-      #     # -------- settings --------
-      #     APP_USER="ubuntu"
-      #     APP_ROOT="/srv/ideal_next_js"
-      #     SUBDIR="nextjs-clone"
-      #     SERVICE_NAME="ideal_next_js"
-      #     BRANCH="new-ver"
-      #     REPO_URL="https://github.com/kareou/ideal_next_js"
-      #     PORT="${PORT:-3000}"
-      #     export DEBIAN_FRONTEND=noninteractive
-      #     export NEXT_TELEMETRY_DISABLED=1
-
-      #     # -------- prerequisites (only if missing) --------
-      #     if ! command -v git >/dev/null 2>&1; then
-      #       sudo -E apt-get update -y
-      #       sudo -E apt-get install -y git
-      #     fi
-      #     if ! command -v node >/dev/null 2>&1; then
-      #       curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-      #       sudo -E apt-get install -y nodejs
-      #     fi
-
-      #     # -------- ensure layout --------
-      #     sudo mkdir -p "${APP_ROOT}"
-      #     sudo chown -R "${APP_USER}:${APP_USER}" "${APP_ROOT}"
-      #     cd "${APP_ROOT}"
-
-      #     # -------- first clone or incremental fetch --------
-      #     if [ ! -d .git ]; then
-      #       echo "== First deploy: clone =="
-      #       sudo -u "${APP_USER}" git clone --depth 1 -b "${BRANCH}" "${REPO_URL}" .
-      #     else
-      #       echo "== Incremental fetch =="
-      #       sudo -u "${APP_USER}" git remote set-url origin "${REPO_URL}" || true
-      #       sudo -u "${APP_USER}" git fetch --prune origin "${BRANCH}"
-      #     fi
-
-      #     OLD_COMMIT="$(sudo -u ${APP_USER} git rev-parse HEAD || echo "")"
-      #     NEW_COMMIT="$(sudo -u ${APP_USER} git rev-parse origin/${BRANCH})"
-
-      #     if [ -n "${OLD_COMMIT}" ] && [ "${OLD_COMMIT}" = "${NEW_COMMIT}" ]; then
-      #       echo "== No new commits on ${BRANCH}. Done."
-      #       exit 0
-      #     fi
-
-      #     # detect changes scoped to app & lockfile
-      #     CHANGED_APP="false"
-      #     CHANGED_LOCK="false"
-      #     if [ -n "${OLD_COMMIT}" ]; then
-      #       if sudo -u "${APP_USER}" git diff --name-only "${OLD_COMMIT}" "${NEW_COMMIT}" -- "${SUBDIR}" | grep -q .; then
-      #         CHANGED_APP="true"
-      #       fi
-      #       if sudo -u "${APP_USER}" git diff --name-only "${OLD_COMMIT}" "${NEW_COMMIT}" | grep -E -q "(^|/)(package-lock\\.json|npm-shrinkwrap\\.json)$"; then
-      #         CHANGED_LOCK="true"
-      #       fi
-      #     else
-      #       CHANGED_APP="true"
-      #       CHANGED_LOCK="true"
-      #     fi
-
-      #     # move to new code
-      #     sudo -u "${APP_USER}" git checkout -f "${BRANCH}"
-      #     sudo -u "${APP_USER}" git reset --hard "${NEW_COMMIT}"
-
-      #     # install only when lock changed
-      #     cd "${APP_ROOT}/${SUBDIR}"
-      #     if [ "${CHANGED_LOCK}" = "true" ]; then
-      #       echo "== Lockfile changed: npm ci =="
-      #       sudo -u "${APP_USER}" npm ci --no-audit --no-fund
-      #     else
-      #       echo "== Lockfile unchanged: quick install =="
-      #       sudo -u "${APP_USER}" npm install --prefer-offline --no-audit --no-fund
-      #     fi
-
-      #     # build only when app files changed (flip to always-build if you prefer)
-      #     if [ "${CHANGED_APP}" = "true" ]; then
-      #       echo "== App changed: building =="
-      #       sudo -u "${APP_USER}" npm run build
-      #     else
-      #       echo "== App unchanged: skipping build =="
-      #     fi
-
-      #     # ensure systemd unit exists (one-time safeguard)
-      #     SERVICE_PATH="/etc/systemd/system/${SERVICE_NAME}.service"
-      #     if [ ! -f "${SERVICE_PATH}" ]; then
-      #       sudo tee "${SERVICE_PATH}" >/dev/null <<EOF
-      #     [Unit]
-      #     Description=${SERVICE_NAME} Next.js service
-      #     After=network.target
-
-      #     [Service]
-      #     Type=simple
-      #     User=${APP_USER}
-      #     WorkingDirectory=${APP_ROOT}/${SUBDIR}
-      #     Environment=NODE_ENV=production
-      #     Environment=PORT=${PORT}
-      #     Environment=PATH=/usr/local/bin:/usr/bin:/bin
-      #     ExecStart=/usr/bin/npm run start
-      #     Restart=always
-      #     RestartSec=5
-
-      #     [Install]
-      #     WantedBy=multi-user.target
-      #     EOF
-      #       sudo systemctl daemon-reload
-      #       sudo systemctl enable "${SERVICE_NAME}"
-      #     fi
-
-      #     # restart app
-      #     sudo systemctl restart "${SERVICE_NAME}"
-      #     sudo systemctl status "${SERVICE_NAME}" --no-pager || true
-      #     echo "== Deploy complete =="
-      #     '
-
-      #     # Pass as a single string item to SSM
-      #     CMD_ID=$(aws ssm send-command \
-      #       --region "${REGION}" \
-      #       --document-name "AWS-RunShellScript" \
-      #       --instance-ids ${INST_IDS} \
-      #       --parameters commands="$(printf '%s' "$CMD" | jq -Rs '.')" \
-      #       --query Command.CommandId \
-      #       --output text)
-
-      #     echo "CommandId: ${CMD_ID}"
-      #     echo "command_id=${CMD_ID}" >> "$GITHUB_OUTPUT"
       - name: Deploy via SSM
         id: send_cmd
         env:
@@ -232,16 +92,6 @@ jobs:
             # if [ ! -d .git ]; then
             #   sudo -u ubuntu git clone --depth 1 -b new-ver https://github.com/kareou/ideal_next_js .
             # fi
-
-            # Write .env for Next.js (must exist BEFORE build)
-            ENV_PATH="/srv/ideal_next_js/nextjs-clone/.env"
-            cat > "$ENV_PATH" <<EOF
-            DATABASE_URL=$(getp /ideal/env/DATABASE_URL)
-            AUTH_SECRET=$(getp /ideal/env/AUTH_SECRET)
-            NEXT_PUBLIC_EMAIL_EP=$(getp /ideal/env/NEXT_PUBLIC_EMAIL_EP)
-            EOF
-            sudo chown "$APP_USER:$APP_USER" "$ENV_PATH"
-            sudo chmod 600 "$ENV_PATH"
 
             echo "Fetching latest changes from repository..."
             sudo -u ubuntu git fetch origin new-ver --depth 1 || { echo "Git fetch failed"; exit 1; }
