@@ -21,7 +21,7 @@ const ContactUs = () => {
     {
       icon: <MapPin className="w-8 h-8 text-brand-teal" />,
       title: "Office",
-      details: "Nationwide Service",
+      details: "240 Progress Suite 250 Irvine, CA 92618",
       description: "Serving clients across the United States",
     },
     {

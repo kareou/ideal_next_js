@@ -42,9 +42,9 @@ const SalesAndRefunds = () => {
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Clients agree to respond promptly and fully, within ten (10)
-                  days, of Ideal Tax Solution request for information or
-                  documents. If Client fails to respond to Ideal Tax Solution's
-                  requests for information or documents, Ideal Tax Solution may,
+                  days, of Ideal Tax request for information or
+                  documents. If Client fails to respond to Ideal Tax's
+                  requests for information or documents, Ideal Tax may,
                   at its sole discretion, terminate any representation or
                   services due the Client's failure to comply to terms of the
                   signed Agreement.
@@ -57,8 +57,8 @@ const SalesAndRefunds = () => {
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Clients, by signing our Service Agreement, agree to pay Ideal
-                  Tax Solution fees for its services as indicated herein for the
-                  representation or services provided by Ideal Tax Solution. The
+                  Tax fees for its services as indicated herein for the
+                  representation or services provided by Ideal Tax. The
                   Fixed Fee applies to all services or representations. Clients
                   agree that the Total Fixed Fee is fully earned upon execution
                   of this Agreement.
@@ -81,11 +81,11 @@ const SalesAndRefunds = () => {
                   Service Commitment
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Ideal Tax Solution, upon execution of the signed Agreement,
+                  Ideal Tax, upon execution of the signed Agreement,
                   agrees to provide the services, or representation, agreed upon
                   under Agreement subject only to the terms and conditions of
                   the Agreement. The services or representations to be provided
-                  by Ideal Tax Solution are listed in the Agreement provided to
+                  by Ideal Tax are listed in the Agreement provided to
                   Clients.
                 </p>
               </div>

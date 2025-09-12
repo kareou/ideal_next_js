@@ -89,7 +89,7 @@ const HeroSection: React.FC = () => {
             {/* Images */}
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-end justify-end hidden lg:flex">
               <Image
-                src="/mcbookv2.png"
+                src="/imgmcbook.png"
                 alt="Laptop"
                 width={791}      
                 height={400}     
