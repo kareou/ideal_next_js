@@ -89,14 +89,15 @@ const HeroSection: React.FC = () => {
             {/* Images */}
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-end justify-end hidden lg:flex">
               <Image
-                src="/imgmcbook.png"
+                src="/mcbookmoc.png"
                 alt="Laptop"
-                width={791}      
+                width={800}      
                 height={400}     
+                unoptimized
                 className="object-contain mr-[-32px]"
               />  
             </div>
-
+           
             <div className="relative w-full h-auto sm:h-auto md:h-auto lg:hidden flex items-center justify-center">
               <Image
                 src="/mcbookmobile.png"
