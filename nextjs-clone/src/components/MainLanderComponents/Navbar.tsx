@@ -124,12 +124,12 @@ export default function Navbar() {
   FAQs
 </Link>
 
-<Link
+{/* <Link
   href="/blog"
   className="text-gray-700 hover:text-gray-900 text-sm px-4 py-2 rounded-full hover:bg-gray-50 transition-colors duration-200"
 >
   Blog
-</Link>
+</Link> */}
       </div>
 
       <Link
@@ -217,11 +217,11 @@ export default function Navbar() {
           >
             FAQs
           </Link>
-          <Link href="blog"
+          {/* <Link href="blog"
             className="text-gray-700 text-sm px-6 py-2 hover:bg-gray-50 rounded-full"
           >
             Blog
-          </Link>
+          </Link> */}
            <Link
       href="/survey"
       className="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition-colors text-sm mt-2 text-center"
