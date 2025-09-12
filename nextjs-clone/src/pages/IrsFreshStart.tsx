@@ -23,7 +23,7 @@ const IrsFreshStart = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in delay-500">
               <a
-                href="tel:877-518-2860"
+                href="tel:+18775182860"
                 className="inline-block bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-teal hover:to-brand-blue text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 Call Now
@@ -320,7 +320,7 @@ const IrsFreshStart = () => {
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:877-518-2860"
+                href="tel:+18775182860"
                 className="inline-block bg-gradient-to-r from-brand-blue to-brand-teal hover:from-brand-teal hover:to-brand-blue text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
               >
                 Call Now

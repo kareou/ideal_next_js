@@ -48,7 +48,7 @@ const ContactUs = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-              href="tel:8775182860"
+              href="tel:+18775182860"
                 // size="lg"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               >
@@ -195,7 +195,7 @@ const ContactUs = () => {
               financial freedom.
             </p>
             <Link
-              href="tel:8775182860"
+              href="tel:+18775182860"
               className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
             >
               Call (877) 518-2860 Now

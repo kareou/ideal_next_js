@@ -42,7 +42,7 @@ export default function Box1() {
             }`}
           >
             <div className="flex flex-col gap-3 text-sm">
-                <a href="tel:8775182860">
+                <a href="tel:+18775182860">
               <div className="flex items-center gap-2">
                 <FontAwesomeIcon
                   icon={faPhone}
@@ -70,7 +70,7 @@ export default function Box1() {
 
         {/* Desktop View */}
         <div className="hidden md:flex items-center gap-6 text-sm">
-            <a href="tel:8775182860">
+            <a href="tel:+18775182860">
           <div className="flex items-center gap-2">
             <FontAwesomeIcon icon={faPhone} width={14} className="text-white" />
             1 (877) 518-2860

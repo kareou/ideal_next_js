@@ -281,7 +281,7 @@ const formattedDate = formatGoogleReviewTime();
               </Link>
               <Link
                 variant="outline"
-                href="tel:8775182860"
+                href="tel:+18775182860"
                 className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860

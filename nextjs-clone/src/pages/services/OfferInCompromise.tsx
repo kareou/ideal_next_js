@@ -389,7 +389,7 @@ const OfferInCompromise = () => {
                   Get Free Tax Consultation
                 </Link>
                 <a
-                  href="tel:877-518-2860"
+                  href="tel:+18775182860"
                   className="flex items-center justify-center bg-white text-brand-blue border-2 border-brand-blue hover:bg-brand-blue hover:text-white font-semibold py-3 px-6 rounded-full transition-all duration-300"
                 >
                   <Phone className="w-4 h-4 mr-2" />

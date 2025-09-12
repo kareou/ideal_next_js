@@ -91,7 +91,7 @@ const TaxDebtReliefIrsForgiveness = () => {
     Get Free Debt Analysis
   </Button>
 </Link>
-            <a href="call:+18775182860">  <Button 
+            <a href="tel:+18775182860">  <Button 
                 variant="outline" 
                 size="lg"
                 className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-10 rounded-full transition-all duration-300"
@@ -259,7 +259,7 @@ const TaxDebtReliefIrsForgiveness = () => {
   >
     Get Free Consultation
   </Link>
-  <a href="call:+18775182860" className="w-full sm:w-auto">
+  <a href="tel:+18775182860" className="w-full sm:w-auto">
     <Button 
       variant="outline" 
       size="lg"
