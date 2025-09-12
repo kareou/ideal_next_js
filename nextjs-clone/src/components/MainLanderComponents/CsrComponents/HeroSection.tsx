@@ -30,7 +30,7 @@ const HeroSection: React.FC = () => {
                 <h2 className="text-6xl sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-bold text-gray-900 leading-tight">
                   Made{" "}
                   <span className="relative inline-block">
-                    easy
+                    Easy
                     <Image
                       src="/vector.png"
                       alt="underline vector"
@@ -89,7 +89,7 @@ const HeroSection: React.FC = () => {
             {/* Images */}
             <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] flex items-end justify-end hidden lg:flex">
               <Image
-                src="/mcbook.png"
+                src="/mcbookv2.png"
                 alt="Laptop"
                 width={791}      
                 height={400}     

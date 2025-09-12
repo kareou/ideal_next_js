@@ -47,6 +47,18 @@ const TakeCareClient = () => {
             className="object-cover rounded-[20px]"
           />
         </div>
+
+        {/* <div className="flex align-center justify-center">
+
+            <Image
+            src="/buisenessppl.jpg"
+            alt="bzns"
+            width={500}
+            height={500}
+          />
+
+        </div> */}
+
       </div>
     </div>
   );

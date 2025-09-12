@@ -1,5 +1,6 @@
 import React from "react";
-import Box from "../../components/MainLanderComponents/HeaderContacts";
+import FloatingContact from "../../components/MainLanderComponents/HeaderContacts";
+import Box1 from "../../components/MainLanderComponents/HeroContactBox";
 import HeroComp from "../../components/MainLanderComponents/HearComp";
 import Process from "../../components/MainLanderComponents/OurProcessSection";
 import TakeCare from "../../components/MainLanderComponents/EasyTaxReliefSection";
@@ -13,8 +14,8 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Tax Debt Attorney Services - Trust the Experts at Ideal Tax",
-  description: "At Ideal Tax, we offer a Fresh Start Program that can help you get relief from your IRS tax debt. We have over 1 years of experience and an A+ BBB rating. Contact us for a free consultation.",
+  title: "Ideal Tax | Tax Debt Resolution Services",
+  description: "Through our process we qualify clients for many tax relief programs to end tax issues once and for all. 15 years in business and an A+ BBB rating. Contact us for a free consultation.",
 
 };
 
@@ -22,7 +23,15 @@ export default function Home() {
   return (
     <>
    
-        <Box />
+        {/* <Box1 /> */}
+        <div className="hidden md:block">
+          <Box1 />
+        </div>
+
+        {/* Show FloatingContact only on mobile */}
+        <div className="block md:hidden">
+          <FloatingContact />
+        </div>
         <HeroComp/>
         <Process/>
         <TakeCare/>
