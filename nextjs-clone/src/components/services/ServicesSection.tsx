@@ -121,19 +121,22 @@ const Services = () => {
               professional tax resolution services to help you overcome any tax challenge.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Get Free Consultation
-              </Button>
+              <Link href="/survey" className="inline-block">
+    <Button
+      size="lg"
+      className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+    >
+      Get Free Consultation
+    </Button>
+  </Link>
+              <a href="tel:+18775182860">
               <Button 
                 variant="outline" 
                 size="lg"
                 className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860
-              </Button>
+              </Button></a>
             </div>
           </div>
         </div>
@@ -222,19 +225,22 @@ const Services = () => {
               and discover how we can help you achieve tax relief.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
-              >
-                Start Online Now
-              </Button>
+              <Link href="/survey" className="inline-block">
+  <Button
+    size="lg"
+    className="bg-white text-brand-blue hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+  >
+    Start Online Now
+  </Button>
+</Link>
+               <a href="tel:+18775182860">
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-white text-brand-blue hover:bg-white hover:text-brand-blue py-4 px-8 rounded-full transition-all duration-300"
+                className="border-2 border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white py-4 px-8 rounded-full transition-all duration-300"
               >
                 Call (877) 518-2860
-              </Button>
+              </Button></a>
             </div>
           </div>
         </div>
