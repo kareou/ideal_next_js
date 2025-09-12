@@ -128,9 +128,9 @@ const Navigation = () => {
               <Link href="/faq" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
                 FAQs
               </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
+              {/* <Link href="/blog" className="text-gray-700 hover:text-brand-blue transition-colors font-medium">
                 Blog
-              </Link>
+              </Link> */}
               
               {/* CTA Button */}
               <Link
