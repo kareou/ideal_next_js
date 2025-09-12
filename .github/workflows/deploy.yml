@@ -109,9 +109,9 @@ jobs:
 
             echo "Building the application..."
             sudo -u ubuntu npm run build || { echo "npm build failed"; exit 1; }
-
-            echo "Restarting the service..."
-            sudo systemctl restart ideal_next_js || { echo "Service restart failed"; exit 1; }
+            
+            echo "Starting the app with PM2.."
+            sudo -u ubuntu pm2 startOrRestart ecosystem.config.js || { echo "PM2 startOrRestart failed"; exit 1; }
 
             echo "Deployment script completed successfully."
             BASH
