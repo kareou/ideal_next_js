@@ -8,14 +8,11 @@ import TestimonalReviews from "../components/MainLanderComponents/CsrComponents/
 import { Button } from "@/components/ui/button";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 import Image from 'next/image';
 
 const Reviews = () => {
-  useEffect(() => {
-    AOS.init({ duration: 300, easing: "ease-in-out", once: false, mirror: true });
-  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <section className=" pt-32 pb-20">
@@ -143,7 +140,7 @@ const Reviews = () => {
     <TestimonalReviews/>
 
 
-      <section className="py-16 bg-white w-full flex justify-center" data-aos="fade-up" data-aos-delay={200}>
+      <section className="py-16 bg-white w-full flex justify-center">
       <div className="max-w-[90%] w-full mx-auto px-5 sm:px-6 lg:px-8 text-center">
         <div className="mb-8" >
           <div className="inline-flex items-center justify-center w-[100%] mx-auto">
@@ -199,7 +196,7 @@ const Reviews = () => {
       </div>
     </section>
 
-      <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue"  data-aos="fade-up" data-aos-delay={100}>
+      <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue"  >
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
