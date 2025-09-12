@@ -27,7 +27,7 @@ const ContactUs = () => {
     {
       icon: <Clock className="w-8 h-8 text-brand-teal" />,
       title: "Hours",
-      details: "Mon-Fri: 8AM-8PM EST",
+      details: "Mon-Fri: 8AM-6PM PST",
       description: "Extended hours for your convenience",
     },
   ];

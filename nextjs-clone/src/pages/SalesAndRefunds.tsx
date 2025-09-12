@@ -105,7 +105,7 @@ const SalesAndRefunds = () => {
                     <strong>Email:</strong> customercare@idealtax.com
                   </p>
                   <p className="text-gray-700">
-                    <strong>Hours:</strong> Monday-Friday, 9AM-6PM PST
+                    <strong>Hours:</strong> Monday-Friday, 8AM-6PM PST
                   </p>
                 </div>
               </div>
