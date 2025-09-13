@@ -36,17 +36,17 @@ const TakeCareClient = () => {
           navigate through your tax challenges with proven solutions.
         </p>
         <div
-          data-aos="fade-up"
-          data-aos-delay="300"
-          className="img_container relative w-[90%] h-[400px] mx-auto"
-        >
-          <Image
-            src="/takecare.jpg"
-            alt="Take Care"
-            fill
-            className="object-cover rounded-[20px]"
-          />
-        </div>
+  data-aos="fade-up"
+  data-aos-delay="300"
+  className="img_container relative w-[90%] h-[300px] sm:h-[400px] mx-auto"
+>
+  <Image
+    src="/takecare.jpg"
+    alt="Take Care"
+    fill
+    className="object-cover rounded-[20px]"
+  />
+</div>
 
         {/* <div className="flex align-center justify-center">
 
