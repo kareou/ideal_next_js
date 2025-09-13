@@ -61,7 +61,7 @@ export default function OurCompanyClient() {
 
   <div className="block sm:hidden">
     <p>
-      Idealtax is a leading tax resolution company with over 15 years of
+      Ideal Tax is a leading tax resolution company with over 15 years of
       experience, helping individuals and businesses resolve tax issues.
     </p>
   </div>
