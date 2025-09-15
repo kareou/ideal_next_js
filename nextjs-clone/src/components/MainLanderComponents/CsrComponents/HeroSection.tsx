@@ -104,6 +104,7 @@ const HeroSection: React.FC = () => {
                 alt="Laptop"
                 width={500}      
                 height={400}     
+                unoptimized
                 className="object-contain"
               />  
             </div>
