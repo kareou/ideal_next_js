@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate  } from "react-router-dom";
 import Index from "./pages/Index";
 import IrsFreshStart from "./pages/IrsFreshStart";
 import Services from "./pages/Services";
@@ -75,6 +75,51 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          {/* START ROUTES TO UPDATE */ }
+          <Route path="/form-940" element={<Navigate to="/" replace />} />
+          <Route path="/form-941" element={<Navigate to="/" replace />} />
+          <Route path="/mw507" element={<Navigate to="/" replace />} />
+          <Route path="/w9-form" element={<Navigate to="/" replace />} />
+          <Route path="/fica-taxes" element={<Navigate to="/" replace />} />
+          <Route path="/author/victoriaward" element={<Navigate to="/" replace />} />
+          <Route path="/g4-form" element={<Navigate to="/" replace />} />
+          <Route path="/adoption-credit" element={<Navigate to="/" replace />} />
+          <Route path="/tax-levy" element={<Navigate to="/" replace />} />
+          <Route path="/irs-scams" element={<Navigate to="/" replace />} />
+          <Route path="/robinhood-taxes" element={<Navigate to="/" replace />} />
+          <Route path="/payroll-deductions" element={<Navigate to="/" replace />} />
+          <Route path="/contact-us3" element={<Navigate to="/" replace />} />
+          <Route path="/147c-letter" element={<Navigate to="/" replace />} />
+          <Route path="/schedule-appointment" element={<Navigate to="/" replace />} />
+          <Route path="/employment-taxes-pastors" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-1310" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-720" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-56" element={<Navigate to="/" replace />} />
+          <Route path="/irs-code-766" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-6166" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-8919" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-8821" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-843" element={<Navigate to="/" replace />} />
+          <Route path="/congratulations-from-giovanni" element={<Navigate to="/" replace />} />
+          <Route path="/category/tax-preparation" element={<Navigate to="/" replace />} />
+          <Route path="/category" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-2555" element={<Navigate to="/" replace />} />
+          <Route path="/pre-tax-deduction" element={<Navigate to="/" replace />} />
+          <Route path="/taxes-on-stocks" element={<Navigate to="/" replace />} />
+          <Route path="/legal-order-lts" element={<Navigate to="/" replace />} />
+          <Route path="/audited-found-guilty" element={<Navigate to="/" replace />} />
+          <Route path="/category/*" element={<Navigate to="/" replace />} />
+          <Route path="/irs-audit-attorney" element={<Navigate to="/" replace />} />
+          <Route path="/570-irs-code" element={<Navigate to="/" replace />} />
+          <Route path="/biggest-tax-refund" element={<Navigate to="/" replace />} />
+          <Route path="/legal-order-lts" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-5564" element={<Navigate to="/" replace />} />
+          <Route path="/irs-form-2210" element={<Navigate to="/" replace />} />
+          <Route path="/w2-vs-w4" element={<Navigate to="/" replace />} />
+          <Route path="/846-irs-code" element={<Navigate to="/" replace />} />
+          <Route path="/tax-relief-attorney" element={<Navigate to="/" replace />} />
+          <Route path="/tax-settlement-services" element={<Navigate to="/" replace />} />
+          {/* END ROUTES TO UPDATE */ }
           <Route path="/irs-fresh-start-program" element={<IrsFreshStart/>} />
           <Route path="/services" element={<Services />} />
           <Route path="/free-tax-consultation" element={<FreeTaxConsultation />} />
@@ -100,16 +145,16 @@ const App = () => (
           <Route path="/irs-forms-1099-vs-w9" element={<IrsForms1099VsW9 />} />
           <Route path="/irs-accepted-return-not-approved" element={<IrsAcceptedReturnNotApproved />} />
           <Route path="/tax-lien-foreclosure" element={<TaxLienForeclosure />} />
-          <Route path="/taxes-on-stocks" element={<TaxesOnStocks />} />
+          {/* <Route path="/taxes-on-stocks" element={<TaxesOnStocks />} /> */}
           <Route path="/form-1040" element={<Form1040 />} />
-          <Route path="/irs-form-4852" element={<IrsForm4852 />} />
+          {/* <Route path="/irs-form-4852" element={<IrsForm4852 />} /> */}
           <Route path="/crypto-taxes" element={<CryptoTaxes />} />
-          <Route path="/irs-form-8949" element={<IrsForm8949 />} />
+          {/* <Route path="/irs-form-8949" element={<IrsForm8949 />} /> */}
           <Route path="/capital-gains-tax" element={<CapitalGainsTax />} />
           <Route path="/nft-tax-guide" element={<NftTaxGuide />} />
           <Route path="/win-loss-statement-taxes" element={<WinLossStatementTaxes />} />
           <Route path="/irs-form-4361" element={<IrsForm4361 />} />
-          <Route path="/w9-form" element={<W9Form />} />
+          {/* <Route path="/w9-form" element={<W9Form />} /> */}
           <Route path="/irs-w4-form-explained" element={<IrsW4Form />} />
           <Route path="/w-2-form" element={<W2Form />} />
           <Route path="/irs-1099-form" element={<Irs1099Form />} />
