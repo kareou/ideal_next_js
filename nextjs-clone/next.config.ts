@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
         { source: "/report-someone-irs", destination: "/", permanent: false },
         { source: "/faq/how-much-will-the-irs-usually-settle-for", destination: "/", permanent: false },
         { source: "/how-the-corona-virus-can-impact-your-taxes", destination: "/", permanent: false },
-        { source: "/tax-debt-relief-irs-forgiveness-program", destination: "/", permanent: false },
+        // { source: "/tax-debt-relief-irs-forgiveness-program", destination: "/", permanent: false },
         { source: "/what-does-as-of-date-mean-transcript", destination: "/", permanent: false },
         { source: "/avoid-tax-penalties-irs-fresh-start-program", destination: "/", permanent: false },
         { source: "/american-opportunity-tax-credit-eases-tuition-strain", destination: "/", permanent: false },
