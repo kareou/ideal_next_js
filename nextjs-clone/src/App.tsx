@@ -124,7 +124,7 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/free-tax-consultation" element={<FreeTaxConsultation />} />
           <Route path="/tax-preparation-service" element={<TaxPreparationService />} />
-          <Route path="/tax-debt-relief-irs-forgiveness-programv0" element={<TaxDebtRelief />} />
+          <Route path="/tax-debt-relief-irs-forgiveness-program" element={<TaxDebtRelief />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact-us" element={<ContactUs />} />
