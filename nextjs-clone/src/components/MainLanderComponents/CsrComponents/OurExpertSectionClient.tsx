@@ -37,7 +37,8 @@ const TeamSlider: React.FC<{ teamMembers: typeof teamMembers }> = ({ teamMembers
                   className="object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-blue-600 mb-4">{member.title}</h3>
+              <h3 className="text-[18px] font-semibold text-blue-600 mb-2">{member.title}</h3>
+              <p className="text-[15px] text-blue-500 mb-4">{member.subTitle}</p>
               <p className="text-gray-500 text-base leading-relaxed">{member.description}</p>
             </div>
           ))}

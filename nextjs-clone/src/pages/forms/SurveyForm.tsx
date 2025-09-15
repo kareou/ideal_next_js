@@ -813,14 +813,16 @@ const SurveyForm = () => {
               Prefer to speak with someone directly?
             </p>
             <div className="flex justify-center gap-4">
+              <a href="tel:+18775182860">
               <Button variant="outline" className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 Call Now
-              </Button>
+              </Button></a>
+              <a href="mailto:customercare@idealtax.com">
               <Button variant="outline" className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 Email Us
-              </Button>
+              </Button></a>
             </div>
           </div>
         </CardContent>

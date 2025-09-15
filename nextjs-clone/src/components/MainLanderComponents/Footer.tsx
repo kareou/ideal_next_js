@@ -42,10 +42,12 @@ const Footer = () => {
                   Irvine, CA 92618
                 </span>
               </div>
+              
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-[#5874EA]" />
                 <span>customercare@idealtax.com</span>
               </div>
+              
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-[#5874EA]" />
                 <span>877-518-2860</span>
