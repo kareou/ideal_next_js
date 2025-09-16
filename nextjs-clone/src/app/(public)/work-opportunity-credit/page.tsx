@@ -1,11 +1,5 @@
-"use client";
-import React from "react";
-import Navigation from "../../../components/Navigation";
-import { Calendar, User, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import WorkOpportunityCredit from "@/pages/WorkOpportunityCredit"
 
-const WorkOpportunityCredit = () => {
-  // ...existing WorkOpportunityCredit.tsx code, replace <Link href=...> with <Link href=...>...
-};
+const Page = () => <WorkOpportunityCredit />
 
-export default WorkOpportunityCredit;
+export default Page;

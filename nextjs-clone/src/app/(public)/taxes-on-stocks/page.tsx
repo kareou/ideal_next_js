@@ -1,11 +1,14 @@
-"use client";
-import React from "react";
-import Navigation from "../../../components/Navigation";
-import { Calendar, User, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { Metadata } from "next";
+import TaxesOnStocks from "@/pages/TaxesOnStocks";
 
-const TaxesOnStocks = () => {
-  // ...existing TaxesOnStocks.tsx code, replace <Link href=...> with <Link href=...>...
+
+export const metadata: Metadata = {
+  title: "Taxes On Stocks - Ideal Tax",
+  description:
+    "Learn how stocks are taxed, including capital gains, dividends, and IRS rules. Ideal Tax helps you minimize tax liability and maximize your returns with expert stock tax strategies.",
 };
 
-export default TaxesOnStocks;
+const Page = () => <TaxesOnStocks />;
+
+
+export default Page; 

@@ -12,11 +12,11 @@ const WinLossStatementTaxes = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <Link
-              href="/blog"
+              href="/"
               className="inline-flex items-center text-brand-teal hover:text-brand-blue transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Blog
+              Back to Home
             </Link>
             <div className="mb-6">
               <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-sm font-medium">
@@ -33,7 +33,7 @@ const WinLossStatementTaxes = () => {
               </div>
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-2" />
-                August 28, 2023
+                August 28, 2025
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ const WinLossStatementTaxes = () => {
               </p>
               <Link
                 href="/survey"
-                className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
+                className="no-underline bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:shadow-lg inline-block"
               >
                 Get Free Consultation
               </Link>

@@ -145,16 +145,16 @@ const App = () => (
           <Route path="/irs-forms-1099-vs-w9" element={<IrsForms1099VsW9 />} />
           <Route path="/irs-accepted-return-not-approved" element={<IrsAcceptedReturnNotApproved />} />
           <Route path="/tax-lien-foreclosure" element={<TaxLienForeclosure />} />
-          {/* <Route path="/taxes-on-stocks" element={<TaxesOnStocks />} /> */}
+          <Route path="/taxes-on-stocks" element={<TaxesOnStocks />} />
           <Route path="/form-1040" element={<Form1040 />} />
-          {/* <Route path="/irs-form-4852" element={<IrsForm4852 />} /> */}
+          <Route path="/irs-form-4852" element={<IrsForm4852 />} />
           <Route path="/crypto-taxes" element={<CryptoTaxes />} />
-          {/* <Route path="/irs-form-8949" element={<IrsForm8949 />} /> */}
+          <Route path="/irs-form-8949" element={<IrsForm8949 />} />
           <Route path="/capital-gains-tax" element={<CapitalGainsTax />} />
           <Route path="/nft-tax-guide" element={<NftTaxGuide />} />
           <Route path="/win-loss-statement-taxes" element={<WinLossStatementTaxes />} />
           <Route path="/irs-form-4361" element={<IrsForm4361 />} />
-          {/* <Route path="/w9-form" element={<W9Form />} /> */}
+          <Route path="/w9-form" element={<W9Form />} />
           <Route path="/irs-w4-form-explained" element={<IrsW4Form />} />
           <Route path="/w-2-form" element={<W2Form />} />
           <Route path="/irs-1099-form" element={<Irs1099Form />} />

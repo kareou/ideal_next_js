@@ -1,11 +1,5 @@
-"use client";
-import React from "react";
-import Navigation from "../../../components/Navigation";
-import { Calendar, User, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import IrsForm4852 from "@/pages/IrsForm4852"; 
 
-const IrsForm4852 = () => {
-  // ...existing IrsForm4852.tsx code, replace <Link href=...> with <Link href=...>...
-};
+const Page = () => <IrsForm4852 />;
 
-export default IrsForm4852;
+export default Page;

@@ -1,11 +1,6 @@
-"use client";
-import React from "react";
-import Navigation from "../../../components/Navigation";
-import { Calendar, User, ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import WinLossStatementTaxes from "@/pages/WinLossStatementTaxes"; 
 
-const WinLossStatementTaxes = () => {
-  // ...existing WinLossStatementTaxes.tsx code, replace <Link href=...> with <Link href=...>...
-};
 
-export default WinLossStatementTaxes;
+const Page = () => <WinLossStatementTaxes />
+
+export default Page;
