@@ -13,7 +13,7 @@ const Confirmation = ({ data }: { data: any }) => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header with decorative elements */}
-      <div className="relative bg-gradient-to-br from-brand-blue via-brand-blue to-brand-teal overflow-hidden py-8 mt-28">
+      <div className="relative bg-gradient-to-br from-brand-blue via-brand-blue to-brand-teal overflow-hidden py-8 ">
         <div className="absolute inset-0 bg-black/10"></div>
 
         {/* Decorative geometric shapes */}
@@ -30,7 +30,7 @@ const Confirmation = ({ data }: { data: any }) => {
             <h1 className="text-2xl font-bold">IRS Forgiveness</h1>
             <div className="text-right">
               <p className="text-sm">Get your free consultation now</p>
-              <p className="text-lg font-semibold">1(844) 583-0752</p>
+              <p className="text-lg font-semibold">(877) 518-2860</p>
             </div>
           </div>
         </div>
@@ -93,10 +93,10 @@ const Confirmation = ({ data }: { data: any }) => {
             <p className="text-gray-700 leading-relaxed">
               Questions? Call us at{" "}
               <a
-                href="tel:1(844)583-0752"
+                href="tel:+18775182860"
                 className="text-brand-blue hover:text-brand-teal font-semibold underline"
               >
-                1(844) 583-0752
+                (877) 518-2860
               </a>
             </p>
           </div>
