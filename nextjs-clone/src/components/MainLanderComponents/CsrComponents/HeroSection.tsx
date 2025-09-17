@@ -24,10 +24,10 @@ const HeroSection: React.FC = () => {
             <div className="space-y-6 md:space-y-8 flex flex-col items-center text-center md:items-start md:text-left md:ml-[60px]">
 
               <div>
-                <h1 className="text-[6xl] sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-bold text-gray-900 leading-tight">
+                <h1 className="text-[6xl] sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-[500] text-gray-900 leading-tight">
                   Tax Relief
                 </h1>
-                <h2 className="text-6xl sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-bold text-gray-900 leading-tight">
+                <h2 className="text-6xl sm:text-6xl md:text-6xl text-110-shrink lg:text-[110px] font-[500] text-gray-900 leading-tight">
                   Made{" "}
                   <span className="relative inline-block">
                     Easy

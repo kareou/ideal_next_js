@@ -45,7 +45,7 @@ const Confirmation = ({ data }: { data: any }) => {
               Your Application has been received!
             </h2>
             <p className="text-xl text-gray-700 leading-relaxed">
-              Good News sfsfd! Based on our preliminary assessment, you are
+              Good News! Based on our preliminary assessment, you are
               likely a good candidate for IRS relief.
             </p>
           </div>
