@@ -153,7 +153,7 @@ const WageGarnishments = () => {
             </p>
 
             <p className="text-gray-600 mb-8 leading-relaxed">
-              Different types will have different requirements and stipulations
+              Different debts have different requirements and stipulations
               around the percentage of your wages they can take, and the timing
               will vary depending on how much debt is owed. Your state laws will
               also impact the wage garnishment process; some states may offer
@@ -247,7 +247,7 @@ const WageGarnishments = () => {
             <p className="text-gray-600 mb-6 leading-relaxed">
               Other debt types such as unpaid credit card bills, medical bills,
               or personal loans will require a court order before a creditor
-              pursue wage garnishment. This process takes a bit longer because
+              pursues wage garnishment. This process takes a bit longer because
               the creditor must first sue you in court. Only if you lose the
               lawsuit can the court grant a money judgment against you and allow
               your creditor to garnish your wages.

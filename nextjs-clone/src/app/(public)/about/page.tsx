@@ -170,21 +170,14 @@ const About = () => {
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Our Servicing Team is composed of self-motivated, energetic,
               caring, and compassionate customer service professionals. They
-              work hard each day to ensure that our clients are being
-              communicated with and are receiving the best representation before
-              the IRS.
+              work hard each day to ensure that we keep clients informed and provide the best representation before the IRS..
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Our staff of independent Tax Attorneys and Enrolled Agents
-              continue to expand their knowledge so to provide new and
-              innovative ways in helping clients resolve their burdensome tax
-              problems. IT also embraces the differences and uniqueness between
-              our clients and their needs, and we work hard to develop an
-              individualized relationship with each of our clients.
-            </p>
+  Our independent tax attorneys and enrolled agents continually expand their knowledge to provide innovative ways to help clients resolve their burdensome tax problems. We also embrace the differences and uniqueness of our clients and their needs, working hard to develop an individualized relationship with each client.
+</p>
+
             <p className="text-lg text-gray-700 leading-relaxed">
-              We also offer professional tax preparation for clients who already
-              have retained us for other services.
+              We also offer professional tax preparation for clients who have already retained us for other services.
             </p>
           </div>
         </div>

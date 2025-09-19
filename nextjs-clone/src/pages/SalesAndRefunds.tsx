@@ -30,7 +30,7 @@ const SalesAndRefunds = () => {
                   Refund and Cancellation Policy
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Any Client seeking a refund or cancellation of their contract
+                  Any client seeking a refund or cancellation of their contract
                   must do so in writing within 48 hours of the signing of their
                   contract.
                 </p>
@@ -42,11 +42,11 @@ const SalesAndRefunds = () => {
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
                   Clients agree to respond promptly and fully, within ten (10)
-                  days, of Ideal Tax request for information or
+                  days, to Ideal Tax’s requests. for information or
                   documents. If Client fails to respond to Ideal Tax's
                   requests for information or documents, Ideal Tax may,
                   at its sole discretion, terminate any representation or
-                  services due the Client's failure to comply to terms of the
+                  services due to the client’s failure to comply with the terms of the
                   signed Agreement.
                 </p>
               </div>
@@ -70,8 +70,7 @@ const SalesAndRefunds = () => {
                   Credit Card Payment Policy
                 </h2>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  Client agree that if paying by Credit Card, NOT to seek a
-                  refund or chargeback of the Fee charged to the Credit Card
+                  Clients agree that if paying by credit card, they will not dispute or charge back fees or chargeback of the Fee charged to the Credit Card
                   under any circumstances.
                 </p>
               </div>

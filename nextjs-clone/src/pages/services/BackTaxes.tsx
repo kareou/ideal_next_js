@@ -121,7 +121,7 @@ const BackTaxes = () => {
             <p className="text-lg text-gray-700 mb-8">
               In our content about back taxes, we cover all the steps, and a
               clear description of everything you need to know about back taxes,
-              tax collection, and the government-installed tax relief programs
+              tax collection, and the government‑backed tax‑relief programs
               that can help people manage their tax debt.
             </p>
 

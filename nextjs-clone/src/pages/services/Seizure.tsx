@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 const Seizure = () => {
   const keyTakeaways = [
-    "The IRS can seize property to pay tax debts with just 10 days notice after issuing a demand for payment",
+    "The IRS can seize property to pay tax debts with just ten days notice. after issuing a demand for payment",
     "Asset seizure and asset forfeiture are different processes with distinct legal meanings",
     "Certain types of property are exempt from IRS seizure, including basic necessities and tools of trade",
     "Three types of forfeiture exist: administrative, criminal, and civil forfeiture",
@@ -137,7 +137,7 @@ const Seizure = () => {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Asset Seizure vs. Asset Forfeiture: What is the Difference?
+              Asset Seizure vs. Asset Forfeiture: What is the difference?
             </h2>
             <p className="mb-6 text-gray-700">
               Some people, even experts, use the terms asset seizure and asset

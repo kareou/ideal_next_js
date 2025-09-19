@@ -168,10 +168,9 @@ const CurrentlyNonCollectible = () => {
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
               When facing economic hardship, you can apply to be listed as
-              currently not-collectible by consulting a tax attorney or by
+              Currently Non‑Collectible by consulting a tax attorney or by
               contacting the IRS directly using Form 433F, Collection
-              Information Statement. You should ask the IRS for an updated tax
-              balance, which will include interest and penalties.
+              Information Statement. You should request an updated tax balance from the IRS, which will include interest and penalties.
             </p>
 
             <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 mb-8">
@@ -194,7 +193,7 @@ const CurrentlyNonCollectible = () => {
             </div>
 
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Documentation Needed to File Currently Not-Collectible
+              Documentation Needed to File Currently Non‑Collectible
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
               To meet CNC eligibility requirements, the following financial
@@ -261,7 +260,7 @@ const CurrentlyNonCollectible = () => {
             </div>
 
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              Who is Eligible for Currently Not-Collectible Status?
+              Who is Eligible for Currently Non‑Collectible Status?
             </h2>
             <p className="text-gray-600 mb-6 leading-relaxed">
               If you owe taxes and cannot pay monthly payments, you are eligible

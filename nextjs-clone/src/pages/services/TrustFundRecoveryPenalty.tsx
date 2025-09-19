@@ -244,8 +244,7 @@ const TrustFundRecoveryPenalty = () => {
               <p className="mb-6 text-gray-700">
                 Compared to other types of IRS fines and penalties that can be
                 added to the total tax liability owed for that tax year, the
-                Trust Fund Recovery Penalty does more than increasing the tax
-                balance due. This penalty has the ability to assign
+                Trust Fund Recovery Penalty does more than increase the tax balance due. This penalty has the ability to assign
                 responsibility to an individual or group of people who
                 "willfully" failed to pay what was owed in taxes.
               </p>
@@ -342,8 +341,7 @@ const TrustFundRecoveryPenalty = () => {
                 The IRS also looks at how willing the responsible person is to
                 pay trust fund taxes. To be asserted the TFRP, the responsible
                 party must have both been aware of the outstanding taxes and
-                either intentionally disregarded the responsibility or willfully
-                fails to pay the responsibility due to ignorance.
+                either intentionally disregarded the responsibility or willfully fails to pay.
               </p>
             </section>
 
@@ -388,8 +386,7 @@ const TrustFundRecoveryPenalty = () => {
               <p className="mb-6 text-gray-700">
                 When a company is being investigated for the accumulation of
                 unpaid taxes that have been withheld from their employees, an
-                IRS revenue officer will evaluate the potentially responsible
-                person to be held personally liable for the tax issue. During
+                IRS revenue officer will evaluate the potentially responsible persons to be held personally liable for the tax issue. During
                 the investigation process, corporate officers will request
                 thorough financial documentation and information from the
                 company to determine which potentially responsible persons have

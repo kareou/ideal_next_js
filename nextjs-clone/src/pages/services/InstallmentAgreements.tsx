@@ -157,7 +157,7 @@ const InstallmentAgreements = () => {
             <p className="text-gray-600 mb-6 leading-relaxed">
               An IRS installment agreement is a payment plan that allows
               individuals and businesses to pay their tax debt over time through
-              manageable monthly payments. This debt forgiveness option helps
+              manageable monthly payments. This option helps
               you navigate the collection process while avoiding more severe
               consequences like asset seizure.
             </p>

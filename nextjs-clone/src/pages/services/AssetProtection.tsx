@@ -70,7 +70,7 @@ const AssetProtection = () => {
         "An S corporation is similar in structure to a C corp, except that it can make a tax-exempt special IRS tax choice to allow corporate profits to pass through the company and be taxed at the shareholder level.",
     },
     {
-      title: "Limited Liability Corporations",
+      title: "Limited Liability Companies (LLCs)",
       icon: Shield,
       description:
         "This entity was created due to the additional formalities that were imposed on S-corporations, providing flexibility while maintaining liability protection.",
@@ -129,10 +129,7 @@ const AssetProtection = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Asset Protection, also known as Debtor-creditor Law, is a
-              collection of legal techniques and a body of law that focuses on
-              protecting assets from individuals and businesses from civil money
-              judgments. Asset protection planning is designed to protect assets
+              “Asset protection (also called debtor–creditor law) protects the assets of individuals and businesses from civil money judgments. Asset protection planning is designed to protect assets
               from creditors, without perjury and tax avoidance.
             </p>
 

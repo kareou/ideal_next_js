@@ -16,7 +16,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Ideal Tax Protection Plan - Ideal Tax",
   description:
-    "Protection Plan Get Protected and Stay Protected Today! Get in touch with an expert today. Ideal Tax has the experience and knowledge to handle the most serious of tax audits. Our expert Tax Attorneys and Enrolled Agents will negotiate with the IRS on your behalf and ensure that your taxpayer rights are protected and that",
+    "Protection Plan Get Protected and Stay Protected Today! Get in touch with an expert today. Ideal Tax has the experience and knowledge to handle the most serious tax audits. Our expert Tax Attorneys and Enrolled Agents will negotiate with the IRS on your behalf and ensure that your taxpayer rights are protected and that",
 };
 
 const IdealTaxProtectionPlan = () => {
@@ -77,9 +77,7 @@ const IdealTaxProtectionPlan = () => {
             <p className="text-lg text-white/90 mb-8 leading-relaxed">
               Ideal Tax has the experience and knowledge to handle the most
               serious of tax audits. Our expert Tax Attorneys and Enrolled
-              Agents will negotiate with the IRS on your behalf and ensure that
-              your taxpayer rights are protected and that the IRS auditor is
-              playing on a level field. Call us today to discuss the IRS Fresh
+              Agents will negotiate with the IRS on your behalf and ensure your taxpayer rights are protected and the process is fair. Call us today to discuss the IRS Fresh
               Start Program and IRS forgiveness program options and how we can
               develop a strategy that will allow you to address the audit and
               resolve tax relief options with better than acceptable results.

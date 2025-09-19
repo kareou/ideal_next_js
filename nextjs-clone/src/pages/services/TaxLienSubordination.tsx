@@ -99,8 +99,7 @@ const TaxLienSubordination = () => {
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-gray-700 mb-8">
               Admittedly, taxes are supposed to serve the greater good, so most
-              people are not completely against paying them. But, what happens
-              when you cannot afford your taxes or your taxes do not get paid
+              people are not completely against paying them. But what happens when you can’t afford your taxes or your taxes do not get paid
               resulting in tax debt? When this happens, a lien gets placed
               against your property.
             </p>
@@ -184,7 +183,7 @@ const TaxLienSubordination = () => {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              How to Avoid a Tax Lien? Pay Taxes Owed
+              How do you avoid a tax lien? Pay the taxes you owe.
             </h2>
             <p className="mb-6 text-gray-700">
               A tax lien is a notice from the government that you have a tax

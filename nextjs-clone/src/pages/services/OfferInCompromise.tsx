@@ -151,8 +151,7 @@ const OfferInCompromise = () => {
             <p className="text-gray-600 mb-6 leading-relaxed">
               A person who owes money but can't afford the full amount due to
               financial hardship may be able to offer the IRS a lower, more
-              affordable settlement. This offer could include a lump-sum payment
-              or a series over several months. The IRS offers a forgiveness
+              affordable settlement. This offer could include a lump‑sum payment or a series of payments over several months. The IRS offers a forgiveness
               program for any remaining debt if it accepts the OIC, which
               contrasts with traditional IRS payment plans.
             </p>

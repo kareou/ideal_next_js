@@ -48,7 +48,7 @@ const SMSTermsConditions = () => {
                 <p className="text-gray-700 leading-relaxed mb-4">
                   No purchase is necessary in order to receive texts, nor is
                   consent to any text subscription required to purchase goods or
-                  services. However, your carrier's message & data rates may
+                  services. However, your carrier's message and data rates may
                   apply. Messages for alert subscriptions will recur. The
                   frequency of messages will vary.
                 </p>

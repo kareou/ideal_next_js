@@ -1,332 +1,144 @@
 import React from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import Link from "next/link";
 
 const TermsOfUse = () => {
   return (
     <div className="min-h-screen bg-white">
+      {/* <Navigation /> */}
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-20">
+      <section className="bg-gradient-to-br from-deep-blue-50 to-mint-50 pt-32 pb-24">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
               Terms of <span className="text-brand-teal">Use</span>
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed">
-              Please read these terms carefully before using our services. By
-              using Ideal Tax services, you agree to these terms.
+            <p className="text-lg md:text-xl text-gray-700 mb-2">
+              Last updated: September 19, 2025
+            </p>
+            <p className="text-gray-600 text-base md:text-lg mt-2">
+              Welcome to Ideal Tax Group Inc (“Ideal Tax,” “we,” “us,” or “our”). By using our Site, you agree to these Terms and our Privacy Policy.
             </p>
           </div>
         </div>
       </section>
 
       {/* Terms Content */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto prose prose-lg">
-            <div className="space-y-8">
-              <div>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  The Ideal Tax, LLC application and the associated
-                  Ideal Tax, LLC website available at
-                  www.idealtax.com ("Ideal Tax, LLC") are owned
-                  and operated by Ideal Tax, LLC ("us" "we" or "our").
-                  This Ideal Tax, LLC Terms Of Use (the "Terms Of Use")
-                  is intended to inform you of our policies and practices
-                  regarding the collection, use and disclosure of any
-                  information you submit to us through Ideal Tax, LLC.
-                  This includes "Personal Information," which is information
-                  about you that is personally identifiable such as your name,
-                  e-mail address, user ID number, and other non-public
-                  information that is associated with the foregoing, as well as
-                  "Anonymous Information," which is information that is not
-                  associated with or linked to your Personal Information and
-                  does not permit the identification of individual persons.
-                </p>
-              </div>
+          <div className="max-w-4xl mx-auto space-y-10">
 
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  User Consent
+            {/* Section Template */}
+            {[
+              {
+                title: "1) Who we are & what we do",
+                content: "We help individuals and businesses file tax returns and enroll in IRS or state tax-relief programs (e.g., installment agreements, offers in compromise, penalty relief). Some services require a separate written engagement agreement; visiting the Site or speaking with us does not create a professional client relationship until we accept you as a client in writing."
+              },
+              {
+                title: "2) Eligibility",
+                content: "The Site is for users 18+ located in the United States. You represent you can form a binding contract and will comply with applicable law."
+              },
+              {
+                title: "3) Changes to these Terms",
+                content: "We may update these Terms at any time. Updates are effective on posting, except dispute-resolution changes won’t apply to disputes of which the parties already have actual notice. Your continued use means you accept the changes."
+              },
+              {
+                title: "4) Access; account security; your information",
+                content: "We may withdraw or modify the Site without notice and aren’t liable for any downtime. If you create an account, you must provide accurate, current, and complete information; keep credentials confidential; and notify us of any unauthorized use. We may disable any credentials at our discretion. Your use of the Site is governed by our Privacy Policy."
+              },
+              {
+                title: "5) Permitted use; IP rights",
+                content: "We grant you a limited, revocable license to use the Site for personal, non-commercial purposes. The Site, including content, design, trademarks, and software, is owned by Ideal Tax or its licensors and protected by law. You may not copy, modify, distribute, publicly display, or create derivative works except for limited personal copies as reasonably necessary for viewing and records. All rights not expressly granted are reserved."
+              },
+              {
+                title: "6) Prohibited conduct",
+                content: "You agree not to: (a) violate laws; (b) upload malicious code; (c) scrape or use bots/automated tools without permission; (d) attempt to access non-public areas; (e) impersonate others; (f) send unsolicited promotions; (g) interfere with Site operation; or (h) otherwise act in a way that harms users or the Site."
+              },
+              {
+                title: "7) Content standards",
+                content: "All materials you submit or interact with must comply with law and must not be unlawful, infringing, deceptive, hateful, harassing, or otherwise objectionable; must respect privacy and publicity rights; and must not give the impression they are endorsed by us without authorization."
+              },
+              {
+                title: "8) User content & feedback",
+                content: "If you submit questions, reviews, files, or other content (“User Content”), you grant Ideal Tax a worldwide, non-exclusive, royalty-free license to use, host, reproduce, modify, adapt, publish, and display such content to operate, improve, and market the Site and services. You represent you own or control the rights to your User Content and it’s accurate and lawful."
+              },
+              {
+                title: "9) Informational nature of content",
+                content: "Information on the Site is general and for informational purposes only; it is not tax, legal, accounting, or financial advice and should not be relied upon. Decisions affecting your taxes should be made with a qualified professional based on your particular situation. We do not guarantee completeness or timeliness and disclaim liability for reliance on Site materials."
+              },
+              {
+                title: "10) Third-party links & tools",
+                content: "The Site may link to or integrate third-party websites, tools, or portals. We do not control and are not responsible for third-party content or services; your use is at your own risk and subject to those third parties’ terms and policies."
+              },
+              {
+                title: "11) Marketing communications & SMS consent",
+                content: "If you provide a phone number (including a mobile number) or email, you agree we and our service providers may contact you regarding your inquiry, account, services, and promotions—including using automated dialing systems, prerecorded/artificial voices, and SMS/MMS texts; message/data rates may apply; message frequency varies; reply STOP to cancel and HELP for help; consent is not a condition of purchase. See our Privacy Policy and any posted SMS Terms for details."
+              },
+              {
+                title: "12) Electronic signatures & records (E-SIGN)",
+                content: "By using the Site, creating an account, or clicking to accept, you consent to transact with us electronically and to receive records, disclosures, and notices electronically at the email and/or portal we maintain for you. You can withdraw consent by contacting us (Section 23), but doing so may limit your ability to use certain services."
+              },
+              {
+                title: "13) No guarantee of outcomes",
+                content: "Eligibility for tax-relief programs is determined by the IRS or state authorities. We cannot and do not guarantee any specific result, reduction, or forgiveness amount. Past results do not predict similar outcomes."
+              },
+              {
+                title: "14) Disclaimers",
+                content: "THE SITE IS PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING OR USAGE. We do not warrant that the Site will be uninterrupted, secure, or error-free."
+              },
+              {
+                title: "15) Limitation of liability",
+                content: "TO THE FULLEST EXTENT PERMITTED BY LAW, IDEAL TAX (AND ITS OWNERS, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND AFFILIATES) WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR LOST PROFITS, REVENUE, DATA, OR GOODWILL, ARISING OUT OF OR RELATED TO YOUR USE OF (OR INABILITY TO USE) THE SITE, EVEN IF ADVISED OF THE POSSIBILITY. OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SITE WILL NOT EXCEED THE GREATER OF $100 OR THE AMOUNTS YOU PAID (IF ANY) FOR THE ONLINE FEATURE AT ISSUE IN THE 3 MONTHS BEFORE THE CLAIM. Some jurisdictions do not allow certain limits; where they do not, these limits apply to the maximum extent permitted."
+              },
+              {
+                title: "16) Indemnification",
+                content: "You agree to defend, indemnify, and hold harmless Ideal Tax and its affiliates from and against claims, losses, liabilities, damages, costs, and expenses (including reasonable attorneys’ fees) arising out of or related to: (a) your use of the Site; (b) your User Content; (c) your violation of these Terms; or (d) your violation of law or third-party rights."
+              },
+              {
+                title: "17) Changes to the Site",
+                content: "We may update Site content periodically and are under no obligation to keep materials current."
+              },
+              {
+                title: "18) Limitation on time to bring claims",
+                content: "Any claim arising out of or related to these Terms or the Site must be filed within one (1) year after the claim accrues, or it is permanently barred, to the extent permitted by law."
+              },
+              {
+                title: "19) Governing law; venue",
+                content: "These Terms are governed by the laws of the State of California (without regard to conflicts of law). Subject to Section 20 (arbitration), the exclusive venue for disputes is the state or federal courts located in Orange County, California, and you consent to personal jurisdiction there."
+              },
+              {
+                title: "20) Dispute resolution; binding arbitration; class-action waiver",
+                content: "Read carefully—this affects your rights. You and Ideal Tax agree to resolve any dispute or claim arising out of or relating to these Terms or the Site through final and binding arbitration on an individual basis. Arbitration will be administered by JAMS (or, if JAMS is unavailable, a comparable ADR provider) under applicable rules, with a single arbitrator. The Federal Arbitration Act governs this section. You waive any right to a jury trial or to participate in class, collective, or representative proceedings. If any part of this section is found unenforceable, the remainder remains in effect (except that if class arbitration would be allowed, this section is unenforceable in full). You may opt out by emailing customercare@idealtax.com within 30 days after first accepting these Terms."
+              },
+              {
+                title: "21) International use",
+                content: "We primarily serve U.S. clients. We make no representation the Site is appropriate or available elsewhere; you’re responsible for local compliance."
+              },
+              {
+                title: "22) Miscellaneous",
+                content: "Entire agreement. These Terms (plus policies referenced here and any signed engagement agreement for paid services) form the entire agreement about Site use and supersede prior understandings. Severability. If any provision is invalid, it will be limited to the minimum necessary so the rest remains enforceable. Assignment. You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or asset transfer. No waiver. A failure to enforce is not a waiver. Headings are for convenience only."
+              },
+              {
+                title: "23) Contact us",
+                content: "Ideal Tax Group Inc\n240 Progress Suite 250\nIrvine, CA 92618\nEmail: customercare@idealtax.com\nPhone: 877-518-2860"
+              }
+            ].map((section, index) => (
+              <div key={index} className="space-y-4">
+                <h2 className="text-3xl md:text-3xl font-bold text-gray-900 border-l-4 border-brand-teal pl-4 mb-2">
+                  {section.title}
                 </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  By accessing or otherwise using Ideal Tax, LLC, you
-                  agree to the terms and conditions of this Privacy Policy and
-                  the associated Terms of Service you expressly consent to the
-                  processing of your Personal Information and Anonymous
-                  Information according to this Privacy Policy. Your Personal
-                  Information may be processed by us in the country where it was
-                  collected as well as other countries (including the United
-                  States) where laws regarding processing of Personal
-                  Information may be less stringent than the laws in your
-                  country.
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                  {section.content}
                 </p>
               </div>
+            ))}
 
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Regarding Children
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Children under the age of 13 are not permitted to use Ideal
-                  Tax, LLC and we do not intentionally collect or
-                  maintain Personal Information from those who are under 13
-                  years old. Protecting the privacy of children is very
-                  important to us. Thus, if we obtain actual knowledge that a
-                  user is under 13, we will take steps to remove that user's
-                  Personal Information from our databases. We recommend that
-                  children between the ages of 13 and 18 obtain their parent's
-                  permission before submitting information over the internet. By
-                  using Ideal Tax, LLC, you are representing that you
-                  are at least 18 years old, or that you are at least 13 years
-                  old and have your parents' permission to use Ideal Tax
-                  , LLC.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Collection and Use of Information
-                </h2>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Personal Information
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  In general, we collect Personal Information that you submit to
-                  us voluntarily through Ideal Tax, LLC. We also
-                  collect information that you submit in the process of creating
-                  or editing your account and user profile on Ideal Tax
-                  , LLC. For example, our registration and login process
-                  requires you to provide us with your name, valid email address
-                  and password of your choice. When you personalize your profile
-                  and use the features of Ideal Tax, LLC, we will
-                  collect any information you voluntarily provide, and we may
-                  also request optional information to support your use of Ideal
-                  Tax, LLC, such as your year of birth, gender and
-                  other demographic information.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We collect information in the form of the content that you
-                  submit during your use of Ideal Tax, LLC, such as
-                  photos, comments, ratings and other information you choose to
-                  submit. We may also collect information about you and your
-                  friends, from any social network you may have connected from,
-                  in order to provide you with a more personalized experience.
-                  For instance, we may collect your user ID or profile
-                  information that you have permitted to be displayed through
-                  Ideal Tax, LLC in order to display you as a friend or
-                  in association with your profile and collections.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  When you order our products or services, you will need to
-                  submit your credit card or other payment information so that
-                  our service providers can process your payment for those
-                  products and services. If you choose to sign up to receive
-                  information about products or services that may be of interest
-                  to you, we will collect your email address and all related
-                  information. Additionally, we collect any information that you
-                  voluntarily enter, including Personal Information, into any
-                  postings, comments, or forums within the Ideal Tax,
-                  LLC community.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Personal Information from Other Sources
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We may receive Personal Information about you from other
-                  sources with which you have registered, companies who we have
-                  partnered with (collectively, "Partners") or other third
-                  parties. We may associate this information with the other
-                  Personal Information we have collected about you.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  E-mail and E-mail Addresses
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  If you send an e-mail to us, or fill out our "Feedback" form
-                  through Ideal Tax, LLC, we will collect your e-mail
-                  address and the full content of your e-mail, including
-                  attached files, and other information you provide. We may use
-                  and display your full name and email address when you send an
-                  email notification to a friend through Ideal Tax, LLC
-                  or the social network from which you have connected to Ideal
-                  Tax, LLC (such as in an invitation, or when sharing
-                  your content). Additionally, we use your email address to
-                  contact you on behalf of your friends (such as when someone
-                  sends you a personal message) or notifications from a social
-                  network or other website with whom you have registered to
-                  receive such notifications. We may use this e-mail address to
-                  contact you, for things such as notifications of limited
-                  edition shop sales and other related information. You may
-                  indicate your preference to stop receiving further promotional
-                  communications as further detailed below.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                  Information Collected Via Technology
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  As you use Ideal Tax, LLC, certain information may
-                  also be passively collected and stored on our or our service
-                  providers' server logs, including your Internet protocol
-                  address, browser type, and operating system. We also use
-                  Cookies and navigational data like Uniform Resource Locators
-                  (URL) to gather information regarding the date and time of
-                  your visit and the solutions and information for which you
-                  searched and viewed, or on which of the advertisements
-                  displayed on Ideal Tax, LLC you clicked. This type of
-                  information is collected to make Ideal Tax, LLC and
-                  solutions more useful to you and to tailor the experience with
-                  Ideal Tax, LLC to meet your special interests and
-                  needs.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  "Cookies" are small pieces of information that a website sends
-                  to your computer's hard drive while you are viewing a website.
-                  We may use both session Cookies (which expire once you close
-                  your web browser) and persistent Cookies (which stay on your
-                  computer until you delete them) to provide you with a more
-                  personal and interactive experience with Ideal Tax,
-                  LLC. Persistent Cookies can be removed by following your
-                  Internet browser help file directions. In order to use our
-                  services offered through Ideal Tax, LLC, your web
-                  browser must accept Cookies. If you choose to disable Cookies,
-                  some aspects of Ideal Tax, LLC may not work properly,
-                  and you will not be able to receive our services.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Use and Disclosure of Information
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Except as otherwise stated in this Privacy Policy, we do not
-                  generally sell, trade, rent, or share the Personal Information
-                  that we collect with third parties, unless you ask or
-                  authorize us to do so. In general, Personal Information you
-                  submit to us is used by us to provide you access to Ideal Tax, LLC, to improve Ideal Tax, LLC, to better
-                  tailor the features, performance, and support of Ideal Tax, LLC and to offer you additional information,
-                  opportunities, promotions and functionality from us, our
-                  partners or our advertisers at your request.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We may provide your Personal Information to third-party
-                  service providers who work on behalf of or with us to provide
-                  some of the services and features of Ideal Tax, LLC
-                  and to help us communicate with you. Examples of such services
-                  include sending email, analyzing data, providing marketing
-                  assistance, processing payments (including credit card
-                  payments), and providing customer service. We require our
-                  third-party service providers to promise not to use such
-                  information except as necessary to provide the relevant
-                  services to us.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  The Ability of Others to View Your Information
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Helping you to protect your information is a vital part of our
-                  mission. It is up to you to make sure you are comfortable with
-                  the information you choose to provide us and the information
-                  you choose to publish. You understand that when you use Ideal
-                  Tax, LLC, certain information you post or provide
-                  through Ideal Tax, LLC, such as your name, profile,
-                  comments, posts and ratings, may be shared with other users
-                  and posted on publicly available portions of Ideal Tax, LLC, including without limitation, chatrooms,
-                  bulletin and message boards, along with other public forums.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Third Party Sites and Advertising
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  Ideal Tax, LLC may contain links to other websites.
-                  Please be aware that we are not responsible for the privacy
-                  practices or the content of such other websites. We encourage
-                  our users to read the privacy statements of each and every
-                  website they visit. This Ideal Tax, LLC applies
-                  solely to information collected by us through Ideal Tax, LLC and does not apply to these third-party
-                  websites.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Your Choices Regarding Your Personal Information
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We offer you choices regarding the collection, use, and
-                  sharing of your Personal Information. When you receive
-                  promotional communications from us, you may indicate a
-                  preference to stop receiving further promotional
-                  communications from us and you will have the opportunity to
-                  "opt-out" by following the unsubscribe instructions provided
-                  in the promotional e-mail you receive or by contacting us
-                  directly.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Security
-                </h2>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  We are committed to protecting the security of your Personal
-                  Information. We use a variety of industry-standard security
-                  technologies and procedures to help protect your Personal
-                  Information from unauthorized access, use, or disclosure. Even
-                  though we have taken significant steps to protect your
-                  Personal Information, no company, including us, can fully
-                  eliminate security risks associated with Personal Information.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  Contact and Revisions
-                </h2>
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <p className="text-gray-700 mb-4">
-                    If you have questions or concerns about our Privacy Policy,
-                    please contact us at:{" "}
-                    <a
-                      href="mailto:customercare@idealtax.com"
-                      className="text-brand-teal hover:text-brand-blue"
-                    >
-                      customercare@idealtax.com
-                    </a>
-                  </p>
-                  <p className="text-gray-700">
-                    This Privacy Policy is subject to occasional revision at our
-                    discretion, and if we make any substantial changes in the
-                    way we use your Personal Information, we will post an alert
-                    on this page. If you object to any such changes, you must
-                    cease using Ideal Tax, LLC. Continued use of Ideal
-                    Tax, LLC following notice of any such changes shall
-                    indicate your acknowledgement of such changes and agreement
-                    to be bound by the terms and conditions of such changes.
-                  </p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
+
+      {/* <Footer /> */}
     </div>
   );
 };

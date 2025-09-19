@@ -105,10 +105,9 @@ const TaxAudits = () => {
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               You may have heard of the term "audit" across other areas of your
-              life. Still, when it comes to paying taxes, a tax audit is when
+              life. But when it comes to taxes, a tax audit is when
               the Internal Revenue Service takes a closer look at your tax
-              return and analyzes the accuracy of the details in which you have
-              provided. Usually, the IRS decides to audit an individual when
+              return and analyzes the accuracy of the details you provided. Usually, the IRS decides to audit an individual when
               there are details in your tax return that are out of the ordinary.
             </p>
 
@@ -184,7 +183,7 @@ const TaxAudits = () => {
             </div>
 
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              How to be prepared for an IRS audit
+              How to prepare for an IRS audit.
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
               You can prepare for an IRS audit by being diligent about keeping
@@ -230,7 +229,7 @@ const TaxAudits = () => {
             </div>
 
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Do I need to hire a tax attorney when I receive an IRS audit?
+              Do I need to hire a tax attorney for an IRS audit?
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
               Navigating the nuances of the United States tax law can be

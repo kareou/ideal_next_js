@@ -174,7 +174,7 @@ const BankLevy = () => {
             </p>
 
             <h2 className="text-3xl font-bold text-gray-800 mb-6">
-              What is a Bank Levy and How it Works
+              What Is a Bank Levy and How It Works
             </h2>
 
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
@@ -192,15 +192,13 @@ const BankLevy = () => {
               How do Bank Levies work?
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Bank levies allows creditors to access your bank account funds.
+              Bank levies allow creditors to access your bank account funds.
               Your bank will freeze funds in your account and require the bank
               to send this money to creditors to pay your debt.
             </p>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
-              To request funds from your bank account from a creditor, you must
-              send a request to your bank proving there is a legal judgment
-              against you. Some government creditors like the Internal Revenue
+              A creditor must send your bank a request with proof of a valid judgment. Some government creditors like the Internal Revenue
               Service (IRS) don't require a court judgment.
             </p>
 

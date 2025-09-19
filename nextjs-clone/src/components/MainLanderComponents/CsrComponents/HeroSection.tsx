@@ -47,7 +47,8 @@ const HeroSection: React.FC = () => {
                   Unlock the potential of professional tax resolution for your financial future.
                 </p>
                 <p className="hidden sm:block">
-                  Transform your tax problems, eliminate debt stress, and drive financial freedom.
+                  {/* Transform your tax problems, eliminate debt stress, and drive financial freedom. */}
+                  Resolve your tax problems, eliminate debt stress, and move toward financial freedom.
                 </p>
               </div>
 

@@ -83,10 +83,10 @@ const InnocentSpouseRelief = () => {
   ];
 
   const applicationSteps = [
-    "Qualify for one of the three forms of innocent spouse relief",
-    "Apply for innocent spouse relief using Form 8857",
-    "Comply with the IRS investigation process",
-    "Appeal with the IRS if necessary using Form 12509",
+    "Qualify for one of the three forms of innocent spouse relief.",
+    "Apply for innocent spouse relief using Form 8857.",
+    "Comply with the IRS investigation process.",
+    "Appeal with the IRS if necessary using Form 12509.",
   ];
 
   return (
@@ -170,15 +170,15 @@ const InnocentSpouseRelief = () => {
               <ul className="list-disc list-inside space-y-2 text-gray-700">
                 <li>
                   Your spouse operated a separate business independently from
-                  you
+                  you.
                 </li>
                 <li>
                   You did not personally benefit from the extra money that
-                  resulted from the tax deficiency
+                  resulted from the tax deficiency.
                 </li>
                 <li>
                   You did not share bank accounts or have access to the money
-                  generated from the activity
+                  generated from the activity.
                 </li>
               </ul>
             </div>
@@ -189,7 +189,7 @@ const InnocentSpouseRelief = () => {
             </h2>
             <p className="mb-6">
               Your filing status can impact your tax liability for that tax
-              year. There are five main filing statuses:
+              year. There are five main filing statuses :
             </p>
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {filingStatuses.map((status, index) => (
@@ -263,7 +263,7 @@ const InnocentSpouseRelief = () => {
 
             {/* Application Process */}
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              How To Request Innocent Spouse Relief
+              How To Request Innocent Spouse Relief ?
             </h2>
             <p className="mb-6">
               If you think you may be eligible to request innocent spouse

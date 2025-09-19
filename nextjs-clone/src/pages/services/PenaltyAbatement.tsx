@@ -305,7 +305,7 @@ const PenaltyAbatement = () => {
               It is important to have expert representation on your side for
               this process. Our mediation experts will prepare your request and
               submit it to the IRS on your behalf. We tailor and prepare a
-              customized request that has offered proven results with past
+              customized request that has delivered proven results with past
               clients.
             </p>
 
@@ -329,7 +329,7 @@ const PenaltyAbatement = () => {
                   • Ensure you receive the best possible settlement every time
                 </li>
                 <li>• Navigate the complicated process of tax debt relief</li>
-                <li>• Provide guidance to live tax debt free</li>
+                <li>• Provide guidance to live tax‑debt‑free.</li>
               </ul>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link

@@ -73,9 +73,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <ul className="list-disc pl-6 space-y-2 text-gray-700">
                   <li>
-                    To Personalize User's Experience And To Allow Us To Deliver
-                    The Type Of Content And Product Offerings In Which You Are
-                    Most Interested.
+                    To personalize the user's experience and allow us to deliver the type of content and product offerings in which you are most interested.
                   </li>
                   <li>To Improve Our Website In Order To Better Serve You.</li>
                   <li>
@@ -132,7 +130,7 @@ const PrivacyPolicy = () => {
                   learn the correct way to modify your cookies.
                 </p>
                 <p className="text-gray-700 leading-relaxed mb-4">
-                  If you disable cookies off, some features will be disabled
+                 If you disable cookies, some features will be disabled
                   that make your site experience more efficient and some of our
                   services will not function properly. However, you can still
                   place orders.

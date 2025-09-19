@@ -37,7 +37,7 @@ const OurProcessSectionClient: React.FC = () => {
     },
     {
       title: "Resolution",
-      desc: "Our Tax Preparers file all required returns, and our Tax Professionals negotiate your qualified relief program.",
+      desc: "Our tax preparers file all required returns, and our tax professionals negotiate the best relief program you qualify for.",
       icon: (
         <path
           strokeLinecap="round"
@@ -62,7 +62,8 @@ const OurProcessSectionClient: React.FC = () => {
   <h2 className="text-[#1947BA] font-bold text-[16px]">OUR PROCESS</h2>
   <h1 className="font-semibold text-[36px]">The Ideal Process</h1>
   <p className="text-gray-500 text-[20px]">
-    Refined over 15 years of proven experience in the business
+    {/* Refined over 15 years of proven experience in the business */}
+    Refined over 15 years of proven industry experience.
   </p>
 </motion.div>
 

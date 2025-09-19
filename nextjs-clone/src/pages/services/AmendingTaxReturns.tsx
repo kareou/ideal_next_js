@@ -51,11 +51,11 @@ const AmendingTaxReturns = () => {
   ];
 
   const benefits = [
-    "Claim a federal return – You can take a deduction that you have not taken",
-    "Additional salary and withholding reporting – You might be able to redeem an additional amount",
-    "Correct errors on previously filed returns",
-    "Claim missed deductions and credits",
-    "Report additional income accurately",
+    "Claim a federal return – You can take a deduction that you have not taken.",
+    "Additional salary and withholding reporting – You might be able to redeem an additional amount.",
+    "Correct errors on previously filed returns.",
+    "Claim missed deductions and credits.",
+    "Report additional income accurately.",
   ];
 
   const lookForItems = [
@@ -67,9 +67,9 @@ const AmendingTaxReturns = () => {
   ];
 
   const includedDocuments = [
-    "A copy of the federal deposit slip",
-    "Unsubmitted 1099 or W-2 forms or schedules previously not submitted",
-    "Additional supporting documentation, schedules, or forms substantiating the amended return",
+    "A copy of the federal deposit slip.",
+    "Unsubmitted 1099 or W-2 forms or schedules previously not submitted.",
+    "Additional supporting documentation, schedules, or forms substantiating the amended return.",
   ];
 
   return (
@@ -214,7 +214,7 @@ const AmendingTaxReturns = () => {
             </p>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              What to Look for in the 1040X Form
+              What to Look for in the 1040X Form?
             </h2>
             <p className="mb-4 text-gray-700">
               It's a good idea to go through your original return before
@@ -234,7 +234,7 @@ const AmendingTaxReturns = () => {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              What to Include in Your Amended Return
+              What to Include in Your Amended Return?
             </h2>
             <p className="mb-4 text-gray-700">
               These items will be required to support the modifications to your
@@ -308,7 +308,7 @@ const AmendingTaxReturns = () => {
             </div>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              When NOT to File an Amended Return
+              When NOT to File an Amended Return?
             </h2>
             <p className="mb-6 text-gray-700">
               You don't need to amend your return if you make math mistakes; the
