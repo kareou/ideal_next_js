@@ -8,6 +8,8 @@ import TestimonalReviews from "../components/MainLanderComponents/CsrComponents/
 import { Button } from "@/components/ui/button";
 import { Star, Quote, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import Image from 'next/image';
 
@@ -28,7 +30,7 @@ const Reviews = () => {
               tax resolution services.
             </p>
            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/survey"
                 className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
@@ -42,7 +44,7 @@ const Reviews = () => {
               >
                 Call (877) 518-2860
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -140,7 +142,7 @@ const Reviews = () => {
     <TestimonalReviews/>
 
 
-      <section className="py-16 bg-white w-full flex justify-center">
+    <section className="py-16 bg-white w-full flex justify-center">
       <div className="max-w-[90%] w-full mx-auto px-5 sm:px-6 lg:px-8 text-center">
         <div className="mb-8" >
           <div className="inline-flex items-center justify-center w-[100%] mx-auto">
@@ -175,6 +177,66 @@ const Reviews = () => {
           </div>
         </div>
 
+        {/* <div className="mt-16 bg-[#F6F9FF] p-6 sm:p-8 rounded-xl flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left"  >
+          <div className="mb-4 md:mb-0">
+            <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">
+              Ready to Join Our Success Stories?
+            </h3>
+            <p className="text-[#1947BA] text-sm sm:text-base">
+              Join over 10,000+ happy clients
+            </p>
+          </div>
+
+          <Link
+            href="/survey"
+            className="mt-4 md:mt-0 flex w-full md:w-auto items-center justify-center md:justify-start space-x-2 bg-[#3059E4] text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors group shadow-md text-center"
+          >
+            <span>Get Your Free Consultation</span>
+            <span>→</span>
+          </Link>
+        </div> */}
+    
+      </div>
+    </section>
+
+    <section className="py-16 bg-[#E7EEF9] w-full flex justify-center ">
+      <div className="max-w-[90%] w-full mx-auto px-5 sm:px-6 lg:px-8 text-center">
+        <div className="mb-8" >
+          <div className="inline-flex items-center justify-center w-[100%] mx-auto">
+             <Image
+                src="/trust.webp"
+                alt="trust"
+                width={200}      
+                height={80}     
+              />  
+          </div>
+        </div>
+
+        <h2 className="text-[40px] md:text-5xl font-bold text-gray-900 mb-20"  >
+          Our Trustpilot Stats
+        </h2>
+
+      
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-12 sm:gap-24 mb-16">
+          <div className="text-center sm:border-r sm:border-gray-200 sm:pr-12 mb-8 sm:mb-0"  >
+            <div className="text-4xl sm:text-[45px] font-bold text-[#3059E4] mb-5 flex items-center gap-2">
+                  4.5/5
+                  <FontAwesomeIcon icon={faStar} className="text-yellow-400 w-[30px]" />
+                </div>
+            <div className="text-sm sm:text-[18px] text-gray-900">Rating</div>
+          </div>
+
+          <div className="text-center sm:pr-12 mb-8 sm:mb-0"  >
+            <div className="text-4xl sm:text-[45px] font-bold text-[#3059E4] mb-5">175+</div>
+            <div className="text-sm sm:text-[18px] text-gray-900 mr-4">5 Star Reviews</div>
+          </div>
+{/* 
+          <div className="text-center" >
+            <div className="text-4xl sm:text-[45px] font-bold text-[#3059E4] mb-5">Less Than 1%</div>
+            <div className="text-sm sm:text-[18px] text-gray-900">Complaint Rate</div>
+          </div> */}
+        </div>
+
         <div className="mt-16 bg-[#F6F9FF] p-6 sm:p-8 rounded-xl flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left"  >
           <div className="mb-4 md:mb-0">
             <h3 className="text-lg sm:text-xl font-medium text-gray-900 mb-2">
@@ -193,10 +255,11 @@ const Reviews = () => {
             <span>→</span>
           </Link>
         </div>
+    
       </div>
     </section>
 
-      <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue"  >
+      {/* <section className="py-20 bg-gradient-to-r from-brand-teal to-brand-blue"  >
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
@@ -214,7 +277,8 @@ const Reviews = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
+      
     </div>
   );
 };
