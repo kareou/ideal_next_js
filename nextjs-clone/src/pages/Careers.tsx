@@ -18,6 +18,7 @@ const Careers = () => {
   });
 
   const { toast } = useToast();
+  const [showDetails, setShowDetails] = useState(false);
 
   const benefits = [
     "Competitive salary and benefits",
@@ -100,23 +101,43 @@ const Careers = () => {
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               {/* Left side - Job posting style info */}
               <div>
-                <div className="bg-white rounded-2xl p-8 shadow-lg">
-                  <h3 className="text-2xl font-bold text-brand-teal mb-4">
-                    Servicing Manager, Tax Resolution
-                  </h3>
-                  <div className="space-y-2 mb-6">
-                    <p className="text-gray-700">
-                      <span className="font-semibold">Location:</span> 240 Progress Suite 250 Irvine, CA 92618
-                    </p>
-                    <p className="text-gray-700">
-                      <span className="font-semibold">Department:</span>{" "}
-                      Servicing
-                    </p>
-                  </div>
-                  <Button className="bg-brand-teal hover:bg-brand-teal/90 text-white px-6 py-2 rounded-md">
-                    + VIEW DETAILS
-                  </Button>
-                </div>
+                <div className="bg-white rounded-2xl p-8 shadow-lg max-w-md mx-auto">
+      <h3 className="text-2xl font-bold text-brand-teal mb-4">
+        Servicing Manager, Tax Resolution
+      </h3>
+      <div className="space-y-2 mb-6">
+        <p className="text-gray-700">
+          <span className="font-semibold">Location:</span> 240 Progress Suite 250 Irvine, CA 92618
+        </p>
+        <p className="text-gray-700">
+          <span className="font-semibold">Department:</span> Servicing
+        </p>
+      </div>
+
+      <Button
+        className="bg-brand-teal hover:bg-brand-teal/90 text-white px-6 py-2 rounded-md"
+        onClick={() => setShowDetails(!showDetails)}
+      >
+        {showDetails ? "- HIDE DETAILS" : "+ VIEW DETAILS"}
+      </Button>
+
+      {showDetails && (
+        <div className="mt-4 p-4 border rounded-lg bg-gray-50 space-y-2 text-gray-700">
+          <p>
+            <span className="font-semibold">Email:</span> customercare@idealtax.com
+          </p>
+          <p>
+            <span className="font-semibold">Phone:</span> 877-518-2860
+          </p>
+          {/* <p>
+            <span className="font-semibold">Team Size:</span> 12 members
+          </p> */}
+          {/* <p>
+            <span className="font-semibold">Additional Info:</span> Handles all servicing and escalation cases for clients.
+          </p> */}
+        </div>
+      )}
+    </div>
               </div>
 
               {/* Right side - Join Talent Network Form */}
