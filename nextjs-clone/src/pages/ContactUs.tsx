@@ -169,12 +169,13 @@ const ContactUs = () => {
                   ></textarea>
                 </div>
                 <div className="md:col-span-2 text-center">
+                  <a href="mailto:customercare@idealtax.com">
                   <Button
                     size="lg"
                     className="bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 hover:shadow-lg transform hover:scale-105"
                   >
                     Send Message
-                  </Button>
+                  </Button></a>
                 </div>
               </form>
             </div>
