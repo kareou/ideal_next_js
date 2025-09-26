@@ -51,8 +51,7 @@ const OurProcessSectionClient: React.FC = () => {
 
   return (
 <div className="main_con_pr w-full flex justify-center flex-col min-h-[65vh] items-center space-y-10 mt-[50px] lg:mt-[0px] mb-[80px]">
-     <motion.div
-  key={Math.random()} 
+   <motion.div
   className="first_line_container w-[90%]"
   initial={{ opacity: 0, y: 15 }}
   whileInView={{ opacity: 1, y: 0 }}
@@ -62,10 +61,10 @@ const OurProcessSectionClient: React.FC = () => {
   <h2 className="text-[#1947BA] font-bold text-[16px]">OUR PROCESS</h2>
   <h1 className="font-semibold text-[36px]">The Ideal Process</h1>
   <p className="text-gray-500 text-[20px]">
-    {/* Refined over 15 years of proven experience in the business */}
     Refined over 15 years of proven industry experience.
   </p>
 </motion.div>
+
 
      <div className="cards_container flex flex-col sm:flex-row justify-between w-[90%] gap-6">
   {steps.map((step, i) => (

@@ -7,12 +7,14 @@ import FloatingContact from "../../components/MainLanderComponents/HeaderContact
 import Box1 from "../../components/MainLanderComponents/HeroContactBox";
 import Footer from "../../components/MainLanderComponents/Footer";
 import { usePathname } from "next/navigation";
+import useSmoothScroll from "@/components/useSmoothScroll";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useSmoothScroll();
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -22,7 +24,7 @@ export default function RootLayout({
       {!isHome && (
   <>
     <div className="hidden md:block">
-      <Box1 />
+      {/* <Box1 /> */}
     </div>
 
     <div className="block md:hidden">
