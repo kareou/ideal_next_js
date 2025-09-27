@@ -209,7 +209,7 @@ const HeroSection: React.FC = () => {
         <Navbar />
 
         {/* <div className="py-10 flex justify-center w-[100%] pt-[50px] sm:py-[0px]"> */}
-        <div className="flex justify-center w-full pt-[50px] pb-[3.5rem] sm:pt-[10px] sm:pb-10">
+        <div className="flex justify-center w-full pt-[50px] pb-[3.6rem] sm:pt-[10px] sm:pb-10">
 
           <div className="flex justify-center w-[100%] md:pr-[60px]">
             <div className="space-y-6 md:space-y-8 flex flex-col w-[100%] items-center text-center md:ml-[60px]">
@@ -229,7 +229,7 @@ const HeroSection: React.FC = () => {
                 {/* <div className="cont flex justify-center w-[100%] pt-[40px]"> */}
                 
 
-                     <div className="cont flex justify-center w-[100%] pt-[30px] pb-[30px]">
+                     <div className="cont flex justify-center w-[100%] pt-[20px] pb-[20px]">
                     <Link
                       href="/survey"
                       className="inline-flex items-center space-x-2 bg-[#3059E4] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-blue-700 transition-colors group shadow-md"
@@ -240,8 +240,12 @@ const HeroSection: React.FC = () => {
                 </div> 
 
 
-              <div className="flex items-center w-[100%] justify-center space-x-4 sm:pt-[100px] pt-[20px]">
-                <div className="flex -space-x-2">
+              {/* <div className="flex items-center w-[100%] justify-center space-x-0 sm:pt-[100px] pt-[0px] flex-col">
+                 <span className="text-[#1C1F21] font-medium text-sm sm:text-base">
+                  Join more than 10,000 <br /> happy clients
+                </span>
+
+                <div className="flex -space-x-1 pt-[20px] ">
                   {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
                     <div
                       key={i}
@@ -258,10 +262,35 @@ const HeroSection: React.FC = () => {
                     <span className="text-xs font-bold text-gray-800">+10k</span>
                   </div>
                 </div>
-                <span className="text-[#1C1F21] font-medium text-sm sm:text-base">
-                  Join more than 10,000 happy clients
-                </span>
-              </div>
+               
+              </div> */}
+
+
+                 <div className="flex flex-col sm:flex-row-reverse items-center w-full justify-center sm:space-x-reverse sm:space-x-4 space-y-4 sm:space-y-0 sm:pt-[100px] pt-0">
+  <span className="text-[#1C1F21] font-medium text-sm sm:text-base text-center sm:text-left">
+    Join more than 10,000 
+    <br className="sm:hidden" /> {/* only break on mobile */}
+    <span className="sm:ml-1">happy clients</span>
+  </span>
+
+  <div className="flex -space-x-1 sm:pt-0 pt-5">
+    {["avatar1.jpg","avatar2.jpg","avatar3.jpg","avatar4.jpg"].map((src, i) => (
+      <div
+        key={i}
+        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white overflow-hidden relative ${
+          i === 0 ? "bg-blue-400" :
+          i === 1 ? "bg-green-400" :
+          i === 2 ? "bg-purple-400" : "bg-red-400"
+        }`}
+      >
+        <Image src={`/${src}`} alt={`Avatar ${i + 1}`} fill className="object-cover" />
+      </div>
+    ))}
+    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#e6eefd] rounded-full border-2 border-white flex items-center justify-center">
+      <span className="text-xs font-bold text-gray-800">+10k</span>
+    </div>
+  </div>
+</div>
 
                
             </div>
