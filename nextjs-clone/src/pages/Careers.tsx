@@ -46,7 +46,6 @@ const Careers = () => {
       title: "Application Submitted",
       description: "Thank you for your interest! We'll be in touch soon.",
     });
-    // Reset form
     setFormData({
       firstName: "",
       lastName: "",

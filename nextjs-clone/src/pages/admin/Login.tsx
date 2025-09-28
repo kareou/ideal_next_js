@@ -26,7 +26,11 @@ const AdminLogin = () => {
       console.log('Login response:', response);
       if (response.status === 200) {
         // Assuming the response contains a success message or token
-        router.push('/admin/dashboard'); // Redirect to admin dashboard
+          localStorage.setItem("isAdminLoggedIn", "true");
+          const check = localStorage.getItem("isAdminLoggedIn");
+          console.log("Login - localStorage verification:", check);
+
+        router.push('/admin/testAd'); // Redirect to admin dashboard
         toast({ title: 'Login successful!', description: 'Welcome to the admin dashboard.' });
         // navigate('/admin/dashboard'); // Redirect to admin dashboard
       }

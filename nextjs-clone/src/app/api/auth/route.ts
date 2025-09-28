@@ -7,15 +7,16 @@ export async function POST(request: Request) {
   const { email, password } = await request.json();
   let user = await prisma.user.findUnique({ where: { email } });
 
+  
   if (!user || !(await bcrypt.compare(password, user.password))) {
+  //   user = await prisma.user.create({
+  //   data: {
+  //     email,
+  //     password: await bcrypt.hash(password, 10), // Hash the password
+  //     name: email.split('@')[0], // Default name from email
+  //   },
+  // });
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
-    // user = await prisma.user.create({
-    //   data: {
-    //     email,
-    //     password: await bcrypt.hash(password, 10), // Hash the password
-    //     name: email.split('@')[0], // Default name from email
-    //   },
-    // });
   }
 
   // Issue JWT
