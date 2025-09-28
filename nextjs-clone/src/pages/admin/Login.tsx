@@ -30,7 +30,7 @@ const AdminLogin = () => {
           const check = localStorage.getItem("isAdminLoggedIn");
           console.log("Login - localStorage verification:", check);
 
-        router.push('/admin/testAd'); // Redirect to admin dashboard
+        router.push('/admin/billing'); // Redirect to admin dashboard
         toast({ title: 'Login successful!', description: 'Welcome to the admin dashboard.' });
         // navigate('/admin/dashboard'); // Redirect to admin dashboard
       }
