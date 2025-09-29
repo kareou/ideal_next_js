@@ -1,46 +1,163 @@
+// "use client";
+// import React, { useState } from 'react';
+// // import { useNavigate } from 'react-router-dom';
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+// import { Input } from '@/components/ui/input';
+// import { Label } from '@/components/ui/label';
+// import { Button } from '@/components/ui/button';
+// import { useToast } from '@/hooks/use-toast';
+// import { useRouter } from 'next/navigation';
+// import axios from 'axios';
+// import Image from 'next/image';
+
+// const AdminLogin = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [isLoading, setIsLoading] = useState(false);
+//   const router = useRouter();
+//   // const navigate = useNavigate();
+//   const { toast } = useToast();
+
+//   const handleLogin = async (e: React.FormEvent) => {
+//     e.preventDefault();
+//     setIsLoading(true);
+//     try {
+//       const response = await axios.post('/api/auth/', { email, password });
+//       console.log('Login response:', response);
+//       if (response.status === 200) {
+//         // Assuming the response contains a success message or token
+//           localStorage.setItem("isAdminLoggedIn", "true");
+//           const check = localStorage.getItem("isAdminLoggedIn");
+//           console.log("Login - localStorage verification:", check);
+
+//         router.push('/admin/billing'); // Redirect to admin dashboard
+//         toast({ title: 'Login successful!', description: 'Welcome to the admin dashboard.' });
+//         // navigate('/admin/dashboard'); // Redirect to admin dashboard
+//       }
+//     } catch (error : Object) {
+//       // console.error('Login error:', error);
+//       console.log('Login error:', error.response?.data || error.message);
+//       toast({ title: 'Login failed', description: 'Invalid email or password.', variant: 'destructive' });
+//     }
+
+//     setIsLoading(false);
+//   };
+
+//   return (
+//     <div className="min-h-screen bg-gradient-to-br from-mint-50 via-white to-deep-blue-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+//       <Card className="w-full max-w-md shadow-2xl border-0 bg-white/90 backdrop-blur-sm">
+//         <CardHeader className="text-center bg-gradient-to-r from-brand-teal/10 to-brand-blue/10 rounded-t-lg">
+//           <div className="flex justify-center mb-4">
+//             <div className="bg-gradient-to-r from-brand-teal to-brand-blue p-3 rounded-xl">
+//               <Image
+//                 src="/lovable-uploads/2fba1b84-500b-4f86-8218-2081e703994c.png"
+//                 alt="IdealTax Logo"
+//                 width={32}
+//                 height={32}
+//                 className="h-8 w-auto"
+//                 unoptimized
+//               />
+//             </div>
+//           </div>
+//           <CardTitle className="text-2xl font-bold text-gray-900">Admin Login</CardTitle>
+//           <CardDescription className="text-gray-600">
+//             Sign in to access the admin dashboard
+//           </CardDescription>
+//         </CardHeader>
+//         <CardContent className="p-6">
+//           <form onSubmit={handleLogin} className="space-y-6">
+//             <div>
+//               <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
+//               <Input
+//                 id="email"
+//                 type="email"
+//                 value={email}
+//                 onChange={(e) => setEmail(e.target.value)}
+//                 placeholder="admin@idealtax.com"
+//                 required
+//                 className="mt-1 border-gray-300 focus:border-brand-teal focus:ring-brand-teal"
+//               />
+//             </div>
+//             <div>
+//               <Label htmlFor="password" className="text-gray-700 font-medium">Password</Label>
+//               <Input
+//                 id="password"
+//                 type="password"
+//                 value={password}
+//                 onChange={(e) => setPassword(e.target.value)}
+//                 placeholder="Enter your password"
+//                 required
+//                 className="mt-1 border-gray-300 focus:border-brand-teal focus:ring-brand-teal"
+//               />
+//             </div>
+//             <Button
+//               type="submit"
+//               className="w-full bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+//               disabled={isLoading}
+//             >
+//               {isLoading ? 'Signing in...' : 'Sign In'}
+//             </Button>
+//           </form>
+          
+//           <div className="mt-6 p-4 bg-mint-50 rounded-lg border border-mint-200">
+//             <p className="text-sm text-gray-600 text-center">
+//               <strong>Demo Credentials:</strong><br />
+//               Email: admin@idealtax.com<br />
+//               Password: admin123
+//             </p>
+//           </div>
+//         </CardContent>
+//       </Card>
+//     </div>
+//   );
+// };
+
+// export default AdminLogin;
+
 "use client";
-import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '@/components/ui/button';
-import { useToast } from '@/hooks/use-toast';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import axios, { AxiosError } from "axios";
+import Image from "next/image";
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState(""); // <-- changed from email to name
+  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  // const navigate = useNavigate();
   const { toast } = useToast();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      const response = await axios.post('/api/auth/', { email, password });
-      console.log('Login response:', response);
+      const response = await axios.post("/api/auth", { name, password });
+
       if (response.status === 200) {
-        // Assuming the response contains a success message or token
-          localStorage.setItem("isAdminLoggedIn", "true");
-          const check = localStorage.getItem("isAdminLoggedIn");
-          console.log("Login - localStorage verification:", check);
-
-        router.push('/admin/billing'); // Redirect to admin dashboard
-        toast({ title: 'Login successful!', description: 'Welcome to the admin dashboard.' });
-        // navigate('/admin/dashboard'); // Redirect to admin dashboard
+        toast({
+          title: "Login successful!",
+          description: "Welcome to the admin dashboard.",
+        });
+        router.push("/admin/billing");
       }
-    } catch (error : Object) {
-      // console.error('Login error:', error);
-      console.log('Login error:', error.response?.data || error.message);
-      toast({ title: 'Login failed', description: 'Invalid email or password.', variant: 'destructive' });
-    }
+    } catch (err) {
+      const error = err as AxiosError;
+      console.log("Login error:", error.response?.data || error.message);
 
-    setIsLoading(false);
+      toast({
+        title: "Login failed",
+        description: "Invalid name or password.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -67,13 +184,13 @@ const AdminLogin = () => {
         <CardContent className="p-6">
           <form onSubmit={handleLogin} className="space-y-6">
             <div>
-              <Label htmlFor="email" className="text-gray-700 font-medium">Email</Label>
+              <Label htmlFor="name" className="text-gray-700 font-medium">Name</Label>
               <Input
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="admin@idealtax.com"
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter your name"
                 required
                 className="mt-1 border-gray-300 focus:border-brand-teal focus:ring-brand-teal"
               />
@@ -95,14 +212,14 @@ const AdminLogin = () => {
               className="w-full bg-gradient-to-r from-brand-teal to-brand-blue hover:from-brand-blue hover:to-brand-teal text-white font-semibold py-3 transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               disabled={isLoading}
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
-          
+
           <div className="mt-6 p-4 bg-mint-50 rounded-lg border border-mint-200">
             <p className="text-sm text-gray-600 text-center">
               <strong>Demo Credentials:</strong><br />
-              Email: admin@idealtax.com<br />
+              Name: admin<br />
               Password: admin123
             </p>
           </div>
