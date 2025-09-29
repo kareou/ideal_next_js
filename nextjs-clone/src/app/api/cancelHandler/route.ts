@@ -65,7 +65,17 @@ export async function POST(req: Request) {
     const full_date = firstPayment.ScheduledDate;
 
     const NewDate = full_date.split("T")[0];
-    const scheduledDateTime = new Date(`${NewDate}T${NewHour}:00Z`);
+    // const scheduledDateTime = new Date(`${NewDate}T${NewHour}:00Z`);
+
+    const [hours, minutes] = NewHour.split(":").map(Number);
+
+    const pstDate = new Date(NewDate);
+    pstDate.setHours(hours, minutes, 0, 0);
+
+    const scheduledDateTime = new Date(pstDate.getTime() + 8 * 60 * 60 * 1000);
+
+    console.log("Scheduled GMT date:", scheduledDateTime);
+
 
     console.log("Scheduled DateTime:", scheduledDateTime);
 

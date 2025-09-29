@@ -122,19 +122,19 @@ export async function processPaymentJob(
 // CHECK ARRAY IF IT CONTAINS FAILURE STATUS IN ITS PAYMENTS IF YES THEN WE CONTINUE, 
 // ELSE WE RETURN "IT GOT ALREADY SUCCESSFUL PAYMENTS"
 
-  if (payments.Data && payments.Data.length > 0) {
-  const paidPayments = payments.Data.filter(p => p.TransactionStatus == "SUCCESS");
+//   if (payments.Data && payments.Data.length > 0) {
+//   const paidPayments = payments.Data.filter(p => p.TransactionStatus == "SUCCESS");
 
-  if (paidPayments.length > 0) {
-    console.log("Already has a successful payment:", paidPayments.length);
-    return {
-      status: "processed_payments",
-      message: `Already processed payments: ${paidPayments.length} for ${caseId}`,
-    };
-  }
+//   if (paidPayments.length > 0) {
+//     console.log("Already has a successful payment:", paidPayments.length);
+//     return {
+//       status: "processed_payments",
+//       message: `Already processed payments: ${paidPayments.length} for ${caseId}`,
+//     };
+//   }
 
-  console.log("Payments found, but none successful. Retrying failed ones.");
-}
+//   console.log("Payments found, but none successful. Retrying failed ones.");
+// }
 
 // GUARD 
 // WE CHECK IF ITS POST DATE, MAKING SURE SCHEDULEDDATE AND SCHEDULEDOUR WAS WELL RECEIVED THEN 
@@ -148,87 +148,117 @@ const dueDate = firstPayment.ScheduledDate.split("T")[0];
 
 
 
-if ( ScheduledTime === "post_date" && ScheduledHour  ) {
-  // const datePart = ScheduledDate.split("T")[0]; 
-  const scheduledDateTime = new Date(`${dueDate}T${ScheduledHour}:00Z`);
+// if ( ScheduledTime === "post_date" && ScheduledHour  ) {
+//   // const datePart = ScheduledDate.split("T")[0]; 
+//   const scheduledDateTime = new Date(`${dueDate}T${ScheduledHour}:00Z`);
 
-  console.log(scheduledDateTime);
-  console.log("tesssssssssst", Source);
+//   console.log(scheduledDateTime);
+//   console.log("tesssssssssst", Source);
 
-  await schedulePayment(caseId, scheduledDateTime, Source, "scheduled", am,"Scheduled by the sales agent");
-  const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "scheduled", Amount : am, SalesDate : scheduledDateTime, StatusId : Source};   
+//   await schedulePayment(caseId, scheduledDateTime, Source, "scheduled", am,"Scheduled by the sales agent");
+//   const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "scheduled", Amount : am, SalesDate : scheduledDateTime, StatusId : Source};   
+//   await storePaymentCase(seed_data);
+//   console.log(`Stored scheduled payment for ${caseId} at ${scheduledDateTime.toISOString()}`);
+
+//   return {
+//     status: "scheduled_post_date",
+//     message: `Payment scheduled on ${scheduledDateTime.toISOString().split(".")[0]} for ${caseId}`,
+//   };
+// }
+
+if (ScheduledTime === "post_date" && ScheduledHour) {
+  const [hours, minutes] = ScheduledHour.split(":").map(Number);
+
+  const pstDate = new Date(dueDate);
+  pstDate.setHours(hours);
+  pstDate.setMinutes(minutes);
+  const gmtDate = new Date(pstDate.getTime() + 8 * 60 * 60 * 1000);
+
+  console.log("Scheduled GMT date:", gmtDate);
+
+  await schedulePayment(caseId, gmtDate, Source, "scheduled", am, "Scheduled by the sales agent");
+  const seed_data = {
+    CaseID: caseId,
+    SalesAgent: setOfficer_name,
+    PaymentStatus: "scheduled",
+    Amount: am,
+    SalesDate: gmtDate,
+    StatusId: Source,
+  };
   await storePaymentCase(seed_data);
-  console.log(`Stored scheduled payment for ${caseId} at ${scheduledDateTime.toISOString()}`);
+  console.log(`Stored scheduled payment for ${caseId} at ${gmtDate.toISOString()}`);
 
   return {
     status: "scheduled_post_date",
-    message: `Payment scheduled on ${scheduledDateTime.toISOString().split(".")[0]} for ${caseId}`,
+    message: `Payment scheduled on ${gmtDate.toISOString().split(".")[0]} for ${caseId}`,
   };
 }
+
 
   console.log("Processing first payment for case:", caseId);
 
 
-  if (today < dueDate) {
-    await schedulePayment(caseId, new Date(dueDate), Source,"scheduled" ,am, "Scheduled by automation");
-    const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "scheduled", Amount : am, SalesDate : dueDate, StatusId : Source};   
-    await storePaymentCase(seed_data);
-    console.log(`Scheduled for future (${dueDate})`);
-    return { status: 'scheduled_future', message: `Scheduled for future: ${dueDate} for ${caseId}` };
-  }
+  // if (today < dueDate) {
+  //   await schedulePayment(caseId, new Date(dueDate), Source,"scheduled" ,am, "Scheduled by automation");
+  //   const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "scheduled", Amount : am, SalesDate : dueDate, StatusId : Source};   
+  //   await storePaymentCase(seed_data);
+  //   console.log(`Scheduled for future (${dueDate})`);
+  //   return { status: 'scheduled_future', message: `Scheduled for future: ${dueDate} for ${caseId}` };
+  // }
 
-  if (today >= dueDate) {
-    console.log("Processing payment now...");
-    console.log(am);
+  // if (today >= dueDate) {
+  //   console.log("Processing payment now...");
+  //   console.log(am);
     
-    try {
+  //   try {
       
-      await makePayments(caseId, am); // PAYMENT FUNCTION !
+  //     await makePayments(caseId, am); // PAYMENT FUNCTION !
 
-      const paymentCheck = await getPayments(caseId);
+  //     const paymentCheck = await getPayments(caseId);
     
-      // console.log(paymentCheck);
-      //----------------------------------------------------- USELESS PART ----------------------------------------------------------------------------
-      // const latestPayment = paymentCheck.Data[0];
-      // const latestPayment = paymentCheck.Data
-      //     .sort((a, b) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime())[0];
-      //----------------------------------------------------- END USELESS PART ----------------------------------------------------------------------------
+  //     // console.log(paymentCheck);
+  //     //----------------------------------------------------- USELESS PART ----------------------------------------------------------------------------
+  //     // const latestPayment = paymentCheck.Data[0];
+  //     // const latestPayment = paymentCheck.Data
+  //     //     .sort((a, b) => new Date(b.CreatedDate).getTime() - new Date(a.CreatedDate).getTime())[0];
+  //     //----------------------------------------------------- END USELESS PART ----------------------------------------------------------------------------
 
-      console.log(paymentCheck.Data.length)
-      const latestPayment = paymentCheck.Data[paymentCheck.Data.length - 1];
-      // const latestPayment = {TransactionStatus : "FAILURE", TransactionComment : "testing obj"};
-      // const latestPayment = {TransactionStatus : "SUCCESS", TransactionComment : "testing obj"};
-      console.log(latestPayment);
-      console.log(latestPayment?.TransactionStatus); // FAILURE || SUCCESS 
+  //     console.log(paymentCheck.Data.length)
+  //     const latestPayment = paymentCheck.Data[paymentCheck.Data.length - 1];
+  //     // const latestPayment = {TransactionStatus : "FAILURE", TransactionComment : "testing obj"};
+  //     // const latestPayment = {TransactionStatus : "SUCCESS", TransactionComment : "testing obj"};
+  //     console.log(latestPayment);
+  //     console.log(latestPayment?.TransactionStatus); // FAILURE || SUCCESS 
     
-      if (latestPayment?.TransactionStatus == "SUCCESS") {
-          await schedulePayment(caseId, new Date(dueDate), Source, "processed" , am, "scheduled + processed same day");
-          const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "PAID", Amount : am, SalesDate : dueDate, StatusId : Source};   
-          await storePaymentCase(seed_data);
-          await updateCase(caseId, Source, "Auto Activated after payment");
-          await markAsProcessed(caseId);
+  //     if (latestPayment?.TransactionStatus == "SUCCESS") {
+  //         await schedulePayment(caseId, new Date(dueDate), Source, "processed" , am, "scheduled + processed same day");
+  //         const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "PAID", Amount : am, SalesDate : dueDate, StatusId : Source};   
+  //         await storePaymentCase(seed_data);
+  //         await updateCase(caseId, Source, "Auto Activated after payment");
+  //         await markAsProcessed(caseId);
 
-          await sendReceipt(caseInfo, {
-            Amount,
-            PaidDate: today,
-          });
+  //         await sendReceipt(caseInfo, {
+  //           Amount,
+  //           PaidDate: today,
+  //         });
 
-      console.log("Case activated and payment logged");
-      return { status: 'case_activated_pay', message: `Case activated and payment logged for ${caseId}` };
-      } else {
-          const decline_message = latestPayment?.TransactionComment;
-          console.log(parsePaymentMessage(decline_message));
-          await schedulePayment(caseId, new Date(dueDate), Source, "failed", am, decline_message);
-          await markAsFailed(caseId, decline_message);
-          const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "declined", Amount : am, SalesDate : dueDate, StatusId : Source};   
-          await storePaymentCase(seed_data);
-          return {status : 'payment_failure', message : `Payment Declined Please RETRY ${caseId}, for the Reason ${parsePaymentMessage(decline_message) }` }
-      }
-    } catch(err){
-        console.error("Error making payment:", err);
-        return { status: 'payment_failure', message: `Payment Error for a valid ${caseId} try again !` };
-    }   
-  } } catch(err){
+  //     console.log("Case activated and payment logged");
+  //     return { status: 'case_activated_pay', message: `Case activated and payment logged for ${caseId}` };
+  //     } else {
+  //         const decline_message = latestPayment?.TransactionComment;
+  //         console.log(parsePaymentMessage(decline_message));
+  //         await schedulePayment(caseId, new Date(dueDate), Source, "failed", am, decline_message);
+  //         await markAsFailed(caseId, decline_message);
+  //         const seed_data = {CaseID : caseId, SalesAgent : setOfficer_name, PaymentStatus : "declined", Amount : am, SalesDate : dueDate, StatusId : Source};   
+  //         await storePaymentCase(seed_data);
+  //         return {status : 'payment_failure', message : `Payment Declined Please RETRY ${caseId}, for the Reason ${parsePaymentMessage(decline_message) }` }
+  //     }
+  //   } catch(err){
+  //       console.error("Error making payment:", err);
+  //       return { status: 'payment_failure', message: `Payment Error for a valid ${caseId} try again !` };
+  //   }   
+  // } 
+  } catch(err){
       console.error("Error:", err);
         return { status: 'error_app', message: `Error during processing the Case Number : ${caseId}. Please try again !` };
   }
